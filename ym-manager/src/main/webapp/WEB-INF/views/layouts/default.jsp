@@ -115,7 +115,7 @@
             <div class="page-bar">
                 <ul class="page-breadcrumb">
                     <li>
-                        <span>流动问卷</span>
+                        <span>医美</span>
                         <i class="fa fa-circle"></i>
                     </li>
                     <li>
