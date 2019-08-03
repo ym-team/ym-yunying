@@ -1,0 +1,70 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.hmn.ym</groupId>
+	<artifactId>ym-parent</artifactId>
+	<name>ym-parent</name>
+	<packaging>pom</packaging>
+	<description>医美</description>
+	<version>1.0</version>
+
+	<properties>
+		<!-- 其他版本管理 -->
+		<mybatis.pagehelper.version>1.2.3</mybatis.pagehelper.version>
+		<mybatis.spring.boot.starter.version>1.2.0</mybatis.spring.boot.starter.version>
+		<fastjson.version>1.2.13</fastjson.version>
+		<jackson.version>1.9.13</jackson.version>
+		<commons.io.version>2.5</commons.io.version>
+		<commons.lang.version>3.3.2</commons.lang.version>
+		<commons.logging.version>1.1</commons.logging.version>
+		<httpclient.version>3.1</httpclient.version>
+		<springside.version>5.0.0-RC1</springside.version>
+		<guava.version>20.0</guava.version>
+		<xiaoleilu.version>3.1.1</xiaoleilu.version>
+		<druid.version>1.0.26</druid.version>
+		<mybatis.plus.version>3.0.6</mybatis.plus.version>
+		<mysql.connector.version>8.0.11</mysql.connector.version>
+		<mybatis.generator.version>1.3.7</mybatis.generator.version>
+
+		<ym.version>1.0</ym.version>
+		<spring.boot.version>2.0.2.RELEASE</spring.boot.version>
+		<!-- 编译配置 -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.version>1.8</java.version>
+	</properties>
+
+
+	<dependencyManagement>
+		<dependencies>
+			<!-- spring-boot -->
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>${spring.boot.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<modules>
+		<module>ym-common</module>
+		<module>ym-dao</module>
+		<module>ym-manager</module>
+	</modules>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.5.1</version>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+					<encoding>${project.build.sourceEncoding}</encoding>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

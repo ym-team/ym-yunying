@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hmn.ym.dao.mapper.system.MenuMapper">
+    <resultMap id="BaseResultMap" type="com.hmn.ym.dao.entities.po.system.Menu">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <result column="id" jdbcType="INTEGER" property="id"/>
+        <result column="code" jdbcType="VARCHAR" property="code"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="action" jdbcType="VARCHAR" property="action"/>
+        <result column="parent_id" jdbcType="INTEGER" property="parentId"/>
+        <result column="status" jdbcType="TINYINT" property="status"/>
+        <result column="level" jdbcType="INTEGER" property="level"/>
+        <result column="sort" jdbcType="INTEGER" property="sort"/>
+        <result column="create_id" jdbcType="INTEGER" property="createId"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+    </resultMap>
+
+    <!-- 菜单树 -->
+    <select id="selectByUserId" parameterType="java.util.Map" resultType="com.hmn.ym.dao.entities.vo.system.MenuVo">
+        SELECT
+        sm.id,
+        sm.code,
+        sm.`name`,
+        sm.action,
+        sm.parent_id as parentId
+        FROM
+        t_sys_user su
+        LEFT JOIN t_sys_user_role sur ON sur.user_id = su.id
+        LEFT JOIN t_sys_role sr ON sr.id = sur.role_id
+        LEFT JOIN t_sys_role_menu srm ON srm.role_id = sr.id
+        LEFT JOIN t_sys_menu sm ON sm.id = srm.menu_id
+        WHERE
+        1 = 1
+        AND sm.status = 1
+        <if test="userId != null">
+            AND su.id = #{userId}
+        </if>
+        <if test="projectId != null">
+            AND sm.project_id in ('0',#{projectId})
+        </if>
+        GROUP BY
+        sm.id
+        ORDER BY sm.sort ASC
+    </select>
+</mapper>
