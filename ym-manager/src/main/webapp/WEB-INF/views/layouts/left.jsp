@@ -54,12 +54,39 @@
                 </a>
             </li>
             <li class="heading">
-                <h3 class="uppercase">数据统计</h3>
+                <h3 class="uppercase">店铺管理</h3>
             </li>
             <li id="menu6" class="nav-item">
+                <a href="${ctx}/shop/list" class="nav-link nav-toggle">
+                    <i class="icon-layers"></i>
+                    <span class="title">店铺管理</span>
+                    <span class="selected"></span>
+                    <span class="arrow open"></span>
+                </a>
+            </li>
+            <li id="menu7" class="nav-item">
+                <a href="${ctx}/salesMan/list" class="nav-link nav-toggle">
+                    <i class="icon-layers"></i>
+                    <span class="title">业务员管理</span>
+                    <span class="selected"></span>
+                    <span class="arrow open"></span>
+                </a>
+            </li>
+            <li class="heading">
+                <h3 class="uppercase">数据统计</h3>
+            </li>
+            <li id="menu8" class="nav-item">
                 <a href="${ctx}/doctor/list" class="nav-link nav-toggle">
                     <i class="icon-layers"></i>
                     <span class="title">日报表</span>
+                    <span class="selected"></span>
+                    <span class="arrow open"></span>
+                </a>
+            </li>
+            <li id="menu9" class="nav-item">
+                <a href="${ctx}/doctor/list" class="nav-link nav-toggle">
+                    <i class="icon-layers"></i>
+                    <span class="title">月报表</span>
                     <span class="selected"></span>
                     <span class="arrow open"></span>
                 </a>

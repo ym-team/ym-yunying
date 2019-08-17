@@ -9,7 +9,7 @@ $(document).ready(function () {
         "ordering": false,
         "pagingType": 'full_numbers',
         "ajax": {
-            "url": ctx + '/api/hospital/list',
+            "url": ctx + '/api/hospital/page',
             "type": 'post'
         },
         "columnDefs": [{

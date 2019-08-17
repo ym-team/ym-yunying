@@ -1,11 +1,9 @@
 package com.hmn.ym.manager.web.rest.hospital;
 
 import com.hmn.ym.common.model.BaseResp;
-import com.hmn.ym.dao.entities.po.hospital.Doctor;
 import com.hmn.ym.dao.entities.vo.BaseQueryVo;
 import com.hmn.ym.dao.entities.vo.DataTablePage;
 import com.hmn.ym.dao.entities.vo.hospital.DoctorVo;
-import com.hmn.ym.dao.entities.vo.system.RoleVo;
 import com.hmn.ym.manager.service.hospital.IDoctorService;
 import com.hmn.ym.manager.utils.RespUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +19,8 @@ public class DoctorRestController {
     @Autowired
     private IDoctorService doctorService;
 
-    @RequestMapping(value = "/list")
-    public DataTablePage<Doctor> list(Model model, BaseQueryVo vo) {
+    @RequestMapping(value = "/page")
+    public DataTablePage<DoctorVo> page(Model model, BaseQueryVo vo) {
         return doctorService.page(vo);
     }
 

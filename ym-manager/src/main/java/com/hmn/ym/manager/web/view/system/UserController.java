@@ -15,7 +15,7 @@ public class UserController {
 
     @GetMapping(value = "/list")
     public String list(Model model) {
-        model.addAttribute("roles", roleService.list());
+        model.addAttribute("roles", roleService.selectAll());
 
         return "/system/user-list";
     }

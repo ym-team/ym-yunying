@@ -29,4 +29,9 @@ public class DoctorVo extends BaseVo {
      * 医院Id
      */
     private Integer hospitalId;
+
+    /**
+     * 医院名称
+     */
+    private String hospitalName;
 }

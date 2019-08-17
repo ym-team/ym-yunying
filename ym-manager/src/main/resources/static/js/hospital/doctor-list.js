@@ -9,7 +9,7 @@ $(document).ready(function () {
         "ordering": false,
         "pagingType": 'full_numbers',
         "ajax": {
-            "url": ctx + '/api/doctor/list',
+            "url": ctx + '/api/doctor/page',
             "type": 'post'
         },
         "columnDefs": [{
@@ -26,7 +26,7 @@ $(document).ready(function () {
             {"data": "name"},
             {"data": "position"},
             {"data": "phone"},
-            {"data": "hospitalId"},
+            {"data": "hospitalName"},
             {"data": "headImg"},
             {
                 "data": "createTime", "render": function (data) {

@@ -7,8 +7,6 @@ import com.hmn.ym.dao.entities.vo.DataTablePage;
 import com.hmn.ym.dao.entities.vo.hospital.HospitalVo;
 import com.hmn.ym.manager.service.BaseService;
 
-import java.util.List;
-
 public interface IHospitalService extends BaseService<Hospital> {
 
     /**
@@ -18,13 +16,6 @@ public interface IHospitalService extends BaseService<Hospital> {
      * @return
      */
     DataTablePage<Hospital> page(BaseQueryVo vo);
-
-    /**
-     * 获取医院
-     *
-     * @return
-     */
-    List<Hospital> list();
 
     /**
      * 保存医院

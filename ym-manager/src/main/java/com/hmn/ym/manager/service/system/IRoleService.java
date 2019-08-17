@@ -7,8 +7,6 @@ import com.hmn.ym.dao.entities.vo.DataTablePage;
 import com.hmn.ym.dao.entities.vo.system.RoleVo;
 import com.hmn.ym.manager.service.BaseService;
 
-import java.util.List;
-
 public interface IRoleService extends BaseService<Role> {
 
     /**
@@ -18,13 +16,6 @@ public interface IRoleService extends BaseService<Role> {
      * @return
      */
     DataTablePage<Role> page(BaseQueryVo vo);
-
-    /**
-     * 获取角色
-     *
-     * @return
-     */
-    List<Role> list();
 
     /**
      * 保存角色

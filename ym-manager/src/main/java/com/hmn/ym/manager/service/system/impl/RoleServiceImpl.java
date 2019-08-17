@@ -20,7 +20,6 @@ import org.springframework.transaction.annotation.Transactional;
 import tk.mybatis.mapper.entity.Example;
 
 import java.util.Date;
-import java.util.List;
 
 @Service
 public class RoleServiceImpl extends BaseServiceImpl<Role, RoleMapper> implements IRoleService {
@@ -38,11 +37,6 @@ public class RoleServiceImpl extends BaseServiceImpl<Role, RoleMapper> implement
         PageHelper.startPage(vo.getStart(), vo.getLength());
         Page<Role> page = (Page<Role>) roleMapper.selectAll();
         return new DataTablePage<Role>(vo.getDraw(), (int) page.getTotal(), page.getResult());
-    }
-
-    @Override
-    public List<Role> list() {
-        return roleMapper.selectAll();
     }
 
     @Transactional

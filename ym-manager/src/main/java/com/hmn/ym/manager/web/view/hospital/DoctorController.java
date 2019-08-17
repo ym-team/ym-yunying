@@ -13,7 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class DoctorController {
     @Autowired
     private IDoctorService doctorService;
-
+    @Autowired
+    private IHospitalService iHospitalService;
 
     @GetMapping(value = "/list")
     public String list() {
@@ -23,6 +24,7 @@ public class DoctorController {
     @GetMapping(value = "/handle")
     public String handle(Model model, Integer doctorId) {
         model.addAttribute("doctor", doctorService.selectByPrimaryKey(doctorId));
+        model.addAttribute("hospitals", iHospitalService.selectAll());
 
         return "/hospital/doctor-handle";
     }

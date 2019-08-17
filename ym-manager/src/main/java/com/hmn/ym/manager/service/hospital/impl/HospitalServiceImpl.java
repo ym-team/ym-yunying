@@ -16,7 +16,6 @@ import org.springframework.transaction.annotation.Transactional;
 import tk.mybatis.mapper.entity.Example;
 
 import java.util.Date;
-import java.util.List;
 
 @Service
 public class HospitalServiceImpl extends BaseServiceImpl<Hospital, HospitalMapper> implements IHospitalService {
@@ -28,11 +27,6 @@ public class HospitalServiceImpl extends BaseServiceImpl<Hospital, HospitalMappe
         PageHelper.startPage(vo.getStart(), vo.getLength());
         Page<Hospital> page = (Page<Hospital>) hospitalMapper.selectAll();
         return new DataTablePage<Hospital>(vo.getDraw(), (int) page.getTotal(), page.getResult());
-    }
-
-    @Override
-    public List<Hospital> list() {
-        return hospitalMapper.selectAll();
     }
 
     @Transactional

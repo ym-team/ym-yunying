@@ -70,7 +70,12 @@
                         </div>
                         <div class="form-group">
                             <label>所属医院：</label>
-                            <input id="hospitalId" name="hospitalId" style="width: 50%" class="form-control" value="${doctor.hospitalId}">
+                            <select id="hospitalId" name="hospitalId" class="form-control" style="width: 50%">
+                                <option value="">请选择类型</option>
+                                <c:forEach items="${hospitals}" var="hospital">
+                                    <option <c:if test="${hospital.id==doctor.hospitalId}">selected</c:if> value="2">${hospital.name}</option>
+                                </c:forEach>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label>头像：</label>
