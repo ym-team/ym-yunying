@@ -4,7 +4,7 @@
 <%
 	String path = request.getContextPath();
 	String pathWeb = request.getContextPath() ;
-	String configjscss = path + "/common/ym";
+	String configjscss = path + "/";
 %>
 
 <c:set var="path" value="<%=path%>"></c:set>
