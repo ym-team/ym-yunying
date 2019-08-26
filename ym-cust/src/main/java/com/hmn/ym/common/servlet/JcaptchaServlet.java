@@ -1,4 +1,4 @@
-package com.hmn.ym.servlet;
+package com.hmn.ym.common.servlet;
 
 import java.awt.Color;
 import java.awt.Font;
