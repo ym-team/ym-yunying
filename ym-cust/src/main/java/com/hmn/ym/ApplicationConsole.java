@@ -1,4 +1,4 @@
-package com.hmn.ym.manager;
+package com.hmn.ym;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
@@ -17,7 +17,7 @@ public class ApplicationConsole extends SpringBootServletInitializer {
     public static void main(String[] args) throws Exception {
         SpringApplication.run(ApplicationConsole.class, args);
 
-        log.info("======================管理后台启动成功======================");
+        log.info("======================启动成功======================");
     }
 
     @Override
