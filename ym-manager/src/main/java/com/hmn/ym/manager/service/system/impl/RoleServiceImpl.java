@@ -2,15 +2,12 @@ package com.hmn.ym.manager.service.system.impl;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
-import com.hmn.ym.dao.entities.po.system.Role;
-import com.hmn.ym.dao.entities.po.system.RolePermission;
+import com.hmn.ym.dao.entities.po.Role;
 import com.hmn.ym.dao.entities.vo.BaseQueryVo;
 import com.hmn.ym.dao.entities.vo.DataTablePage;
 import com.hmn.ym.dao.entities.vo.system.RoleVo;
-import com.hmn.ym.dao.mapper.system.RoleMapper;
-import com.hmn.ym.dao.mapper.system.RoleMenuMapper;
-import com.hmn.ym.dao.mapper.system.RolePermissionMapper;
-import com.hmn.ym.dao.mapper.system.UserRoleMapper;
+import com.hmn.ym.dao.mapper.AdminRoleMapper;
+import com.hmn.ym.dao.mapper.RoleMapper;
 import com.hmn.ym.manager.service.BaseServiceImpl;
 import com.hmn.ym.manager.service.system.IRoleService;
 import org.springframework.beans.BeanUtils;
@@ -26,11 +23,7 @@ public class RoleServiceImpl extends BaseServiceImpl<Role, RoleMapper> implement
     @Autowired
     private RoleMapper roleMapper;
     @Autowired
-    private RoleMenuMapper roleMenuMapper;
-    @Autowired
-    private RolePermissionMapper rolePermissionMapper;
-    @Autowired
-    private UserRoleMapper userRoleMapper;
+    private AdminRoleMapper userRoleMapper;
 
     @Override
     public DataTablePage<Role> page(BaseQueryVo vo) {
@@ -56,7 +49,7 @@ public class RoleServiceImpl extends BaseServiceImpl<Role, RoleMapper> implement
 
             Role role = new Role();
             BeanUtils.copyProperties(vo, role);
-            role.setCreateTime(new Date());
+            //role.setCreateTime(new Date());
 
             roleMapper.insertSelective(role);
         }
@@ -68,13 +61,7 @@ public class RoleServiceImpl extends BaseServiceImpl<Role, RoleMapper> implement
         //删除角色
         roleMapper.deleteByPrimaryKey(id);
         //删除角色用户
-        userRoleMapper.deleteByRoleId(id);
-        //删除角色菜单
-        roleMenuMapper.deleteByRoleId(id);
-        //删除角色按钮
-        Example example = new Example(RolePermission.class);
-        example.createCriteria().andEqualTo("roleId", id);
-        rolePermissionMapper.deleteByExample(example);
+        //userRoleMapper.deleteByRoleId(id);
     }
 
     private void exit(String roleName) {

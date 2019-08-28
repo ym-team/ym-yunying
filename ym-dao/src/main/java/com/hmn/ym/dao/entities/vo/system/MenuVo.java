@@ -51,8 +51,4 @@ public class MenuVo extends BaseVo {
      * 子菜单
      */
     private List<MenuVo> childMenus;
-    /**
-     * 项目ID
-     */
-    private Integer projectId;
 }

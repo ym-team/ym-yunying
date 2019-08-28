@@ -1,25 +1,25 @@
 package com.hmn.ym.manager.service.shop.impl;
 
 import com.google.common.collect.Lists;
-import com.hmn.ym.dao.entities.po.hospital.Doctor;
+import com.hmn.ym.dao.entities.po.Doctor;
+import com.hmn.ym.dao.entities.po.SaleMan;
 import com.hmn.ym.dao.entities.vo.BaseQueryVo;
 import com.hmn.ym.dao.entities.vo.DataTablePage;
 import com.hmn.ym.dao.entities.vo.shop.SalesManVo;
-import com.hmn.ym.dao.mapper.hospital.DoctorMapper;
+import com.hmn.ym.dao.mapper.DoctorMapper;
+import com.hmn.ym.dao.mapper.SaleManMapper;
 import com.hmn.ym.manager.service.BaseServiceImpl;
 import com.hmn.ym.manager.service.hospital.IHospitalService;
-import com.hmn.ym.manager.service.shop.ISalesManService;
+import com.hmn.ym.manager.service.shop.ISaleManService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class SalesManServiceImpl extends BaseServiceImpl<Doctor, DoctorMapper> implements ISalesManService {
+public class SaleManServiceImpl extends BaseServiceImpl<SaleMan, SaleManMapper> implements ISaleManService {
     @Autowired
-    private DoctorMapper doctorMapper;
-    @Autowired
-    private IHospitalService hospitalService;
+    private SaleManMapper saleManMapper;
 
     @Override
     public DataTablePage<SalesManVo> page(BaseQueryVo vo) {

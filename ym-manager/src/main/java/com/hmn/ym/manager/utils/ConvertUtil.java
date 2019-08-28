@@ -11,7 +11,7 @@ import java.util.Set;
 public final class ConvertUtil {
     private static final String REGEX = ",";
 
-    public static String convertUserRoleNames(final List<RoleVo> userRoles) {
+    public static String convertAdminRoleNames(final List<RoleVo> userRoles) {
         if (CollectionUtils.isEmpty(userRoles)) {
             return StringUtils.EMPTY;
         }
@@ -25,7 +25,7 @@ public final class ConvertUtil {
         return StringUtils.join(roleNames, REGEX);
     }
 
-    public static String convertUserRoleIds(final List<RoleVo> userRoles) {
+    public static String convertAdminRoleIds(final List<RoleVo> userRoles) {
         if (CollectionUtils.isEmpty(userRoles)) {
             return StringUtils.EMPTY;
         }

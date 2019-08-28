@@ -45,8 +45,4 @@ public class MenuPageVo extends BaseQueryVo {
      * 父菜单名称
      */
     private String parentName;
-    /**
-     * 项目Id
-     */
-    private Integer projectId;
 }

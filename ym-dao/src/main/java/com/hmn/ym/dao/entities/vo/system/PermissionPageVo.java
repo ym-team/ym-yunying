@@ -23,8 +23,4 @@ public class PermissionPageVo extends BaseQueryVo {
      * 菜单ID
      */
     private Integer menuId;
-    /**
-     * 项目ID
-     */
-    private Integer projectId;
 }

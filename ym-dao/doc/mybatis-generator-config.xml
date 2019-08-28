@@ -32,7 +32,7 @@
         </javaTypeResolver>
 
         <!--model包路径-->
-        <javaModelGenerator targetPackage="com.hmn.ym.dao.entities.po.system" targetProject="src/main/java">
+        <javaModelGenerator targetPackage="com.hmn.ym.dao.entities.po" targetProject="src/main/java">
             <!-- enableSubPackages:是否让schema作为包的后缀 -->
             <property name="enableSubPackages" value="false"/>
             <!-- 从数据库返回的值被清理前后的空格 -->
@@ -42,17 +42,15 @@
             <property name="immutable" value="false"/>
         </javaModelGenerator>
         <!--mapper.xml包路径-->
-        <sqlMapGenerator targetPackage="mapper/system" targetProject="src/main/resources"/>
+        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources"/>
         <!--mapper包路径-->
-        <javaClientGenerator targetPackage="com.hmn.ym.dao.mapper.system" targetProject="src/main/java" type="XMLMAPPER">
-        </javaClientGenerator>
+        <javaClientGenerator targetPackage="com.hmn.ym.dao.mapper" targetProject="src/main/java" type="XMLMAPPER"></javaClientGenerator>
 
-
-        <table tableName="t_sys_menu" domainObjectName="Menu" mapperName="{0}Mapper">
+        <table tableName="t_sys_admin" domainObjectName="Admin" mapperName="{0}Mapper">
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
 
-        <table tableName="t_sys_permission" domainObjectName="Permission" mapperName="{0}Mapper">
+        <table tableName="t_sys_admin_role" domainObjectName="AdminRole" mapperName="{0}Mapper">
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
 
@@ -60,36 +58,22 @@
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
 
-        <table tableName="t_sys_role_menu" domainObjectName="RoleMenu" mapperName="{0}Mapper">
+        <table tableName="t_hospital" domainObjectName="Hospital" mapperName="{0}Mapper">
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
 
-        <table tableName="t_sys_role_permission" domainObjectName="RolePermission" mapperName="{0}Mapper">
+        <table tableName="t_hospital_doctor" domainObjectName="Doctor" mapperName="{0}Mapper">
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
 
-        <table tableName="t_sys_user" domainObjectName="User" mapperName="{0}Mapper">
+        <table tableName="t_saleman" domainObjectName="SaleMan" mapperName="{0}Mapper">
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
 
-        <table tableName="t_sys_user_role" domainObjectName="UserRole" mapperName="{0}Mapper">
+        <table tableName="t_user" domainObjectName="User" mapperName="{0}Mapper">
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
 
-        <table tableName="t_sys_user_role" domainObjectName="UserRole" mapperName="{0}Mapper">
-            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
-        </table>
-
-        <!--
-               <table tableName="t_hospital" domainObjectName="Hospital" mapperName="{0}Mapper">
-                   <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
-               </table>
-
-               <table tableName="t_hospital_doctor" domainObjectName="Doctor" mapperName="{0}Mapper">
-                   <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
-               </table>
-
-         -->
-           </context>
-       </generatorConfiguration>
+    </context>
+</generatorConfiguration>
 

@@ -3,9 +3,9 @@ package com.hmn.ym.manager.web.rest.system;
 import com.hmn.ym.common.model.BaseResp;
 import com.hmn.ym.dao.entities.vo.BaseQueryVo;
 import com.hmn.ym.dao.entities.vo.DataTablePage;
-import com.hmn.ym.dao.entities.vo.system.UserRoleVo;
-import com.hmn.ym.dao.entities.vo.system.UserVo;
-import com.hmn.ym.manager.service.system.IUserService;
+import com.hmn.ym.dao.entities.vo.system.AdminRoleVo;
+import com.hmn.ym.dao.entities.vo.system.AdminVo;
+import com.hmn.ym.manager.service.system.IAdminService;
 import com.hmn.ym.manager.utils.RespUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,15 +17,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/api/user")
 public class UserRestController {
     @Autowired
-    private IUserService userService;
+    private IAdminService userService;
 
     @RequestMapping(value = "/list")
-    public DataTablePage<UserVo> list(BaseQueryVo vo) {
+    public DataTablePage<AdminVo> list(BaseQueryVo vo) {
         return userService.page(vo);
     }
 
     @PostMapping(value = "/save")
-    public ResponseEntity<BaseResp> save(UserVo vo) {
+    public ResponseEntity<BaseResp> save(AdminVo vo) {
         userService.save(vo);
 
         return RespUtil.success();
@@ -39,7 +39,7 @@ public class UserRestController {
     }
 
     @PostMapping(value = "/addUserRole")
-    public ResponseEntity<BaseResp> addUserRole(UserRoleVo vo) {
+    public ResponseEntity<BaseResp> addUserRole(AdminRoleVo vo) {
         userService.addUserRole(vo);
 
         return RespUtil.success();

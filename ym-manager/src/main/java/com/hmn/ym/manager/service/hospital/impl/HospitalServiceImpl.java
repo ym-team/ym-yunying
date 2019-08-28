@@ -2,11 +2,11 @@ package com.hmn.ym.manager.service.hospital.impl;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
-import com.hmn.ym.dao.entities.po.hospital.Hospital;
+import com.hmn.ym.dao.entities.po.Hospital;
 import com.hmn.ym.dao.entities.vo.BaseQueryVo;
 import com.hmn.ym.dao.entities.vo.DataTablePage;
 import com.hmn.ym.dao.entities.vo.hospital.HospitalVo;
-import com.hmn.ym.dao.mapper.hospital.HospitalMapper;
+import com.hmn.ym.dao.mapper.HospitalMapper;
 import com.hmn.ym.manager.service.BaseServiceImpl;
 import com.hmn.ym.manager.service.hospital.IHospitalService;
 import org.springframework.beans.BeanUtils;

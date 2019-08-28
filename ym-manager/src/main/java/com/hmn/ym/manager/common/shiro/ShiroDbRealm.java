@@ -4,7 +4,7 @@ import com.hmn.ym.dao.entities.po.system.Permission;
 import com.hmn.ym.dao.entities.po.system.User;
 import com.hmn.ym.dao.entities.vo.ShiroUser;
 import com.hmn.ym.dao.entities.vo.system.RoleVo;
-import com.hmn.ym.manager.service.system.IUserService;
+import com.hmn.ym.manager.service.system.IAdminService;
 import com.hmn.ym.manager.utils.Encodes;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.authc.*;
@@ -22,7 +22,7 @@ import java.util.List;
 public class ShiroDbRealm extends AuthorizingRealm {
     private static final String SALT = "7efbd59d9741d34f";
     @Autowired
-    private IUserService userService;
+    private IAdminService userService;
 
     @PostConstruct
     public void initCredentialsMatcher() {

@@ -1,7 +1,6 @@
 package com.hmn.ym.manager.service.system;
 
-
-import com.hmn.ym.dao.entities.po.system.Role;
+import com.hmn.ym.dao.entities.po.Role;
 import com.hmn.ym.dao.entities.vo.BaseQueryVo;
 import com.hmn.ym.dao.entities.vo.DataTablePage;
 import com.hmn.ym.dao.entities.vo.system.RoleVo;
