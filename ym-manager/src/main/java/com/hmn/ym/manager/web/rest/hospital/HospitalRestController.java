@@ -1,7 +1,7 @@
 package com.hmn.ym.manager.web.rest.hospital;
 
 import com.hmn.ym.common.model.BaseResp;
-import com.hmn.ym.dao.entities.po.hospital.Hospital;
+import com.hmn.ym.dao.entities.po.Hospital;
 import com.hmn.ym.dao.entities.vo.BaseQueryVo;
 import com.hmn.ym.dao.entities.vo.DataTablePage;
 import com.hmn.ym.dao.entities.vo.hospital.HospitalVo;

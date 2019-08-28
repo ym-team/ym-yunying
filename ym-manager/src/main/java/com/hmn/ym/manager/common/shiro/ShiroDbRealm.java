@@ -1,7 +1,6 @@
 package com.hmn.ym.manager.common.shiro;
 
-import com.hmn.ym.dao.entities.po.system.Permission;
-import com.hmn.ym.dao.entities.po.system.User;
+import com.hmn.ym.dao.entities.po.Admin;
 import com.hmn.ym.dao.entities.vo.ShiroUser;
 import com.hmn.ym.dao.entities.vo.system.RoleVo;
 import com.hmn.ym.manager.service.system.IAdminService;
@@ -34,7 +33,7 @@ public class ShiroDbRealm extends AuthorizingRealm {
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authcToken) throws AuthenticationException {
         UsernamePasswordToken token = (UsernamePasswordToken) authcToken;
-        User user = userService.getByUserName(token.getUsername());
+        Admin user = userService.getByAdminName(token.getUsername());
         if (user == null) {
             throw new RuntimeException("用户不存在");
         }
@@ -53,11 +52,6 @@ public class ShiroDbRealm extends AuthorizingRealm {
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
         for (RoleVo role : roleList) {
             info.addRole(role.getName());
-            for (Permission p : role.getPermissions()) {
-                if (StringUtils.isNotBlank(p.getCode())) {
-                    info.addStringPermission(p.getCode());
-                }
-            }
         }
         return info;
     }

@@ -1,7 +1,7 @@
 package com.hmn.ym.manager.web.rest.system;
 
 import com.hmn.ym.common.model.BaseResp;
-import com.hmn.ym.dao.entities.po.system.Role;
+import com.hmn.ym.dao.entities.po.Role;
 import com.hmn.ym.dao.entities.vo.BaseQueryVo;
 import com.hmn.ym.dao.entities.vo.DataTablePage;
 import com.hmn.ym.dao.entities.vo.system.RoleVo;

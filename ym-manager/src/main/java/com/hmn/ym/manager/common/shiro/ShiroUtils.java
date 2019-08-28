@@ -1,6 +1,6 @@
 package com.hmn.ym.manager.common.shiro;
 
-import com.hmn.ym.dao.entities.po.system.User;
+import com.hmn.ym.dao.entities.po.Admin;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 
@@ -12,12 +12,12 @@ public final class ShiroUtils {
      *
      * @return
      */
-    public static User getUser() {
+    public static Admin getUser() {
         Subject subject = SecurityUtils.getSubject();
         if (subject == null) {
             return null;
         }
-        return (User) subject.getSession().getAttribute("user");
+        return (Admin) subject.getSession().getAttribute("user");
     }
 
     /**

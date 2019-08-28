@@ -40,7 +40,7 @@ public class UserRestController {
 
     @PostMapping(value = "/addUserRole")
     public ResponseEntity<BaseResp> addUserRole(AdminRoleVo vo) {
-        userService.addUserRole(vo);
+        userService.addAdminRole(vo);
 
         return RespUtil.success();
     }
