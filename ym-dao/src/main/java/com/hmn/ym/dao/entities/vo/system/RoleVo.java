@@ -1,7 +1,5 @@
 package com.hmn.ym.dao.entities.vo.system;
 
-import com.hmn.ym.dao.entities.po.system.Menu;
-import com.hmn.ym.dao.entities.po.system.Permission;
 import com.hmn.ym.dao.entities.vo.BaseVo;
 import lombok.Data;
 
@@ -25,14 +23,4 @@ public class RoleVo extends BaseVo {
      * 角色描述
      */
     private String description;
-
-    /**
-     * 角色菜单
-     */
-    private List<Menu> menus;
-
-    /**
-     * 角色按钮
-     */
-    private List<Permission> permissions;
 }
