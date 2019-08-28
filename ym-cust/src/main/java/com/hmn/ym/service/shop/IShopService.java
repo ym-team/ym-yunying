@@ -1,6 +1,6 @@
 package com.hmn.ym.service.shop;
 
-import com.hmn.ym.dao.entities.po.hospital.Doctor;
+import com.hmn.ym.dao.entities.po.Doctor;
 import com.hmn.ym.dao.entities.vo.BaseQueryVo;
 import com.hmn.ym.dao.entities.vo.DataTablePage;
 import com.hmn.ym.dao.entities.vo.shop.ShopVo;

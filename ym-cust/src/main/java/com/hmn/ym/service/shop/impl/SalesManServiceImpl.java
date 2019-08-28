@@ -1,11 +1,11 @@
 package com.hmn.ym.service.shop.impl;
 
 import com.google.common.collect.Lists;
-import com.hmn.ym.dao.entities.po.hospital.Doctor;
+import com.hmn.ym.dao.entities.po.Doctor;
 import com.hmn.ym.dao.entities.vo.BaseQueryVo;
 import com.hmn.ym.dao.entities.vo.DataTablePage;
 import com.hmn.ym.dao.entities.vo.shop.SalesManVo;
-import com.hmn.ym.dao.mapper.hospital.DoctorMapper;
+import com.hmn.ym.dao.mapper.DoctorMapper;
 import com.hmn.ym.service.BaseServiceImpl;
 import com.hmn.ym.service.shop.ISalesManService;
 import org.springframework.beans.factory.annotation.Autowired;
