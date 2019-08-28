@@ -27,20 +27,8 @@
                         connectionURL="jdbc:mysql://47.106.222.97:3306/ym_home?useUnicode=true&amp;characterEncoding=utf8&amp;serverTimezone=UTC&amp;serverTimezone=Asia/Shanghai"
                         userId="ym_home"
                         password="ym_home_123"/>
-        <javaTypeResolver>
-            <property name="forceBigDecimals" value="false"/>
-        </javaTypeResolver>
-
         <!--model包路径-->
-        <javaModelGenerator targetPackage="com.hmn.ym.dao.entities.po" targetProject="src/main/java">
-            <!-- enableSubPackages:是否让schema作为包的后缀 -->
-            <property name="enableSubPackages" value="false"/>
-            <!-- 从数据库返回的值被清理前后的空格 -->
-            <property name="trimStrings" value="false"/>
-            <!--  for MyBatis3/MyBatis3Simple自动为每一个生成的类创建一个构造方法，构造方法包含了所有的field；而不是使用setter-->
-            <property name="constructorBased" value="flase"/>
-            <property name="immutable" value="false"/>
-        </javaModelGenerator>
+        <javaModelGenerator targetPackage="com.hmn.ym.dao.entities.po" targetProject="src/main/java"></javaModelGenerator>
         <!--mapper.xml包路径-->
         <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources"/>
         <!--mapper包路径-->

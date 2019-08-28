@@ -49,7 +49,7 @@ public class RoleServiceImpl extends BaseServiceImpl<Role, RoleMapper> implement
 
             Role role = new Role();
             BeanUtils.copyProperties(vo, role);
-            //role.setCreateTime(new Date());
+            role.setCreateTime(new Date());
 
             roleMapper.insertSelective(role);
         }
