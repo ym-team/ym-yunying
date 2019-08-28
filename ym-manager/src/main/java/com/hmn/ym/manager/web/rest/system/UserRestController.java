@@ -17,30 +17,30 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/api/user")
 public class UserRestController {
     @Autowired
-    private IAdminService userService;
+    private IAdminService adminService;
 
     @RequestMapping(value = "/list")
     public DataTablePage<AdminVo> list(BaseQueryVo vo) {
-        return userService.page(vo);
+        return adminService.page(vo);
     }
 
     @PostMapping(value = "/save")
     public ResponseEntity<BaseResp> save(AdminVo vo) {
-        userService.save(vo);
+        adminService.save(vo);
 
         return RespUtil.success();
     }
 
     @PostMapping(value = "/delete")
     public ResponseEntity<BaseResp> delete(Integer id) {
-        userService.delete(id);
+        adminService.delete(id);
 
         return RespUtil.success();
     }
 
     @PostMapping(value = "/addUserRole")
     public ResponseEntity<BaseResp> addUserRole(AdminRoleVo vo) {
-        userService.addAdminRole(vo);
+        adminService.addAdminRole(vo);
 
         return RespUtil.success();
     }
