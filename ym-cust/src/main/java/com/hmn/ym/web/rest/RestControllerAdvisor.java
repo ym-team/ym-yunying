@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * 异常统一处理，并转友好提示
+ * 异常统一处理，并转友好提示 
  */
 @RestControllerAdvice(annotations = RestController.class)
 public class RestControllerAdvisor {
