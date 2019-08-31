@@ -22,8 +22,6 @@ import java.util.Date;
 public class RoleServiceImpl extends BaseServiceImpl<Role, RoleMapper> implements IRoleService {
     @Autowired
     private RoleMapper roleMapper;
-    @Autowired
-    private AdminRoleMapper userRoleMapper;
 
     @Override
     public DataTablePage<Role> page(BaseQueryVo vo) {
@@ -60,8 +58,6 @@ public class RoleServiceImpl extends BaseServiceImpl<Role, RoleMapper> implement
     public void delete(Integer id) {
         //删除角色
         roleMapper.deleteByPrimaryKey(id);
-        //删除角色用户
-        //userRoleMapper.deleteByRoleId(id);
     }
 
     private void exit(String roleName) {
