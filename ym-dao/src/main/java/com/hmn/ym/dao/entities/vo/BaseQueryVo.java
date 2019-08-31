@@ -8,13 +8,25 @@ import lombok.Data;
  * @author xufz
  */
 @Data
-public class BaseQueryVo extends DataTableQuery {
-    /**
-     * 当前页数
+public class BaseQueryVo {
+    /*
+     * 第几次请求
      */
-    private Integer pageNum = 0;
-    /**
-     * 每页显示数量
+    private int draw;
+    /*
+     *  起止位置
      */
-    private Integer numPerPage = 10;
+    private int start;
+    /*
+     * 数据长度
+     */
+    private int length;
+
+    public BaseQueryVo() {
+
+    }
+
+    public void setStart(int start) {
+        this.start = (start / 10) + 1;
+    }
 }
