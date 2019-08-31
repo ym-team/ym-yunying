@@ -1,4 +1,4 @@
-package com.hmn.ym.manager.web.rest;
+package com.hmn.ym.web.rest;
 
 import com.hmn.ym.common.exception.BizException;
 import com.hmn.ym.common.model.BaseResp;
