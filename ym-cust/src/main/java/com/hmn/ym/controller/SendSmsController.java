@@ -1,15 +1,4 @@
-package com.hmn.ym.web.view;
-
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
+package com.hmn.ym.controller;
 
 import com.hmn.ym.utils.CachCfgParaUtil;
 import com.hmn.ym.utils.CfgParaUtils;
@@ -17,9 +6,19 @@ import com.hmn.ym.utils.SendSmsUtils;
 import com.hmn.ym.utils.SpringUtils;
 import com.hmn.ym.utils.des.DesEncrypt;
 import com.hmn.ym.utils.result.JsonResult;
+import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @Controller
-public class SendSmsController extends BaseController{
+public class SendSmsController extends BaseController {
 	protected Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	@RequestMapping("sendSms.do")

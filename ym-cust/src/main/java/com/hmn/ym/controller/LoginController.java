@@ -1,24 +1,19 @@
-package com.hmn.ym.web.view;
+package com.hmn.ym.controller;
 
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import com.hmn.ym.utils.SpringUtils;
+import com.hmn.ym.utils.result.JsonResult;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.hmn.ym.utils.Const;
-import com.hmn.ym.utils.SpringUtils;
-import com.hmn.ym.utils.des.DesEncrypt;
-import com.hmn.ym.utils.des.MD5Utils;
-import com.hmn.ym.utils.result.JsonResult;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
-public class LoginController extends BaseController{
+public class LoginController extends BaseController {
 	
 	/**
 	 * 登录页面

@@ -1,24 +1,19 @@
-package com.hmn.ym.web.view;
+package com.hmn.ym.controller;
 
-import java.io.IOException;
-import java.util.UUID;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import com.hmn.ym.utils.SpringUtils;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.hmn.ym.utils.SpringUtils;
-import com.hmn.ym.utils.qrcode.QRCodeUtil;
-import com.hmn.ym.utils.upload.UploadUtils;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 @Controller
 @RequestMapping("user/")
-public class UserController extends BaseController{
+public class UserController extends BaseController {
 	
 	/**
 	 * 用户信息

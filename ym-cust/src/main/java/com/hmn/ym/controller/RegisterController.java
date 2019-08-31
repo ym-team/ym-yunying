@@ -1,18 +1,16 @@
-package com.hmn.ym.web.view;
+package com.hmn.ym.controller;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import com.hmn.ym.utils.Const;
+import com.hmn.ym.utils.des.DesEncrypt;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.hmn.ym.utils.Const;
-import com.hmn.ym.utils.des.DesEncrypt;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 用户注册信息
@@ -21,13 +19,13 @@ import com.hmn.ym.utils.des.DesEncrypt;
  */
 
 @Controller
-public class RegisterController extends BaseController{
+public class RegisterController extends BaseController {
 	
 	/**
 	 * 注册第一步 进入填写密码页面
 	 * @param request
 	 * @param response
-	 * @param model
+	 * @param plugin
 	 * @return
 	 */
 	public static final String register = "register" ;

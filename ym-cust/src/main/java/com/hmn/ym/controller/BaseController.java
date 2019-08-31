@@ -1,4 +1,4 @@
-package com.hmn.ym.web.view;
+package com.hmn.ym.controller;
 
 import com.google.common.collect.Maps;
 import com.hmn.ym.common.servlet.JcaptchaServlet;

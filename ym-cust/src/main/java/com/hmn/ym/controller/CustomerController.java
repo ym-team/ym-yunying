@@ -1,4 +1,4 @@
-package com.hmn.ym.web.view;
+package com.hmn.ym.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
