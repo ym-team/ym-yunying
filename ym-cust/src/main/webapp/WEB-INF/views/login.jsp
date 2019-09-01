@@ -49,12 +49,10 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
-
 		var message = '${message}';
 		if (message) {
 			alert(message);
 		}
-
 	});
 
 	function login() {

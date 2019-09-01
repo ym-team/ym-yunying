@@ -21,8 +21,7 @@ public class WebAppConfig implements WebMvcConfigurer {
         patterns.add("/css/*");
         patterns.add("/images/*");
         patterns.add("/js/*");
-        patterns.add("/login.do");
-        patterns.add("/index.do");
+        patterns.add("/captcha.do");
         registry.addInterceptor(loginInterceptor).addPathPatterns("/**").excludePathPatterns(patterns);
     }
 }

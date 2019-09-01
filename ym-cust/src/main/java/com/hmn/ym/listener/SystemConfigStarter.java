@@ -14,9 +14,7 @@ import com.hmn.ym.service.ICfgParaDetailService;
  * @author 
  */
 public class SystemConfigStarter implements Starter  {
-
-	private static Logger logger = LoggerFactory
-			.getLogger(SystemConfigStarter.class); 
+	private static Logger logger = LoggerFactory.getLogger(SystemConfigStarter.class);
 	
 	private ICfgParaDetailService cfgParaDetailService;
 	/**

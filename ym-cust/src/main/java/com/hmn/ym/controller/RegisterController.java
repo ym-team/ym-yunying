@@ -1,5 +1,8 @@
 package com.hmn.ym.controller;
 
+import cn.hutool.captcha.CaptchaUtil;
+import cn.hutool.captcha.CircleCaptcha;
+import com.hmn.ym.common.annotation.NotNeedSecurity;
 import com.hmn.ym.utils.Const;
 import com.hmn.ym.utils.des.DesEncrypt;
 import org.springframework.stereotype.Controller;
@@ -9,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,6 +24,8 @@ import java.util.Map;
 
 @Controller
 public class RegisterController extends BaseController {
+    private static final String CAPTCHA_SESSION = "CAPTCHA_SESSION";
+
 
     /**
      * 注册第一步 进入填写密码页面
@@ -56,6 +62,7 @@ public class RegisterController extends BaseController {
      * @param model
      * @return
      */
+    @NotNeedSecurity
     @RequestMapping(value = "toRegister.do")
     public String toRegister(HttpServletRequest request, Model model) {
         model.addAttribute("publickey", Const.DES_PUBLIC_ENCRYPT_KEY);
@@ -74,6 +81,7 @@ public class RegisterController extends BaseController {
      * @return
      */
     @RequestMapping(value = "toNext.do")
+    @NotNeedSecurity
     public String toNext(HttpServletRequest request, HttpServletResponse response, Model model) {
         Map<String, String> param = this.getParameters(request);
         if (!param.containsKey("userPhone")) {
@@ -123,6 +131,7 @@ public class RegisterController extends BaseController {
      * @return
      */
     @RequestMapping("register.do")
+    @NotNeedSecurity
     public String register(HttpServletRequest request, HttpServletResponse response, Model model) {
         Map<String, String> param = this.getParameters(request);
 
@@ -135,9 +144,23 @@ public class RegisterController extends BaseController {
      * 注册协议
      */
     @RequestMapping("getProtocol.do")
+    @NotNeedSecurity
     public String getProtocol(HttpServletRequest request, HttpServletResponse response, Model model) {
         model.addAttribute("protocol", "");
         return protocol;
     }
 
+    @RequestMapping("captcha.do")
+    @NotNeedSecurity
+    public void captcha(HttpServletRequest req, HttpServletResponse resp) {
+        //定义图形验证码的长、宽、验证码字符数、干扰元素个数
+        CircleCaptcha captcha = CaptchaUtil.createCircleCaptcha(200, 100, 4, 10);
+        // 将图像输出到Servlet输出流中。
+        try {
+            captcha.write(resp.getOutputStream());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        req.getSession().setAttribute(CAPTCHA_SESSION, captcha.getCode().toUpperCase());
+    }
 }

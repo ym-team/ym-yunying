@@ -48,6 +48,13 @@ public class UserServiceImpl extends BaseServiceImpl<User, UserMapper> implement
         userMapper.deleteByPrimaryKey(id);
     }
 
+    @Override
+    public User getByUserAccount(String userAccount) {
+        Example example = new Example(User.class);
+        example.createCriteria().andEqualTo("phone", userAccount);
+        return userMapper.selectOneByExample(example);
+    }
+
     private void exit(String roleName) {
         Example example = new Example(Role.class);
         example.createCriteria().andEqualTo("name", roleName);

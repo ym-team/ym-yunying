@@ -18,4 +18,11 @@ public interface IUserService extends BaseService<User> {
      * @param id
      */
     void delete(Integer id);
+
+    /**
+     * 获取
+     *
+     * @param userAccount
+     */
+    User getByUserAccount(String userAccount);
 }

@@ -29,9 +29,9 @@
 						<span><input style="width: 50%; height: 2.5rem; color: #666 !important;background:white !important;"
 							class="hqyzm" type="text" placeholder="请输入图形验证码" name="captcha"
 							id="captcha" maxlength="4"><img
-							src="${path }/captcha.svl" id="captchaImg"
+							src="${path }/captcha.do" id="captchaImg"
 							style="float: right; width: 3.5rem; height: 2rem; margin-top: 0.7rem; margin-right: 0.5rem;"
-							onclick="this.src='${path}/captcha.svl?d='+new Date()*1"
+							onclick="this.src='${path}/captcha.do?d='+new Date()*1"
 							title="验证码" /></span>
 					</li>
 					<li >
