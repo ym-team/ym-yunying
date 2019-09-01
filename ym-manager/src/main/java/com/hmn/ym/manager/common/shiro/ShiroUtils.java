@@ -12,7 +12,7 @@ public final class ShiroUtils {
      * @return
      */
     public static ShiroUser getUser() {
-        ShiroUser subject = (ShiroUser) SecurityUtils.getSubject();
+        ShiroUser subject = (ShiroUser) SecurityUtils.getSubject().getPrincipal();
         if (subject == null) {
             return null;
         }
@@ -25,7 +25,7 @@ public final class ShiroUtils {
      * @return
      */
     public static Integer getUserId() {
-        ShiroUser subject = (ShiroUser) SecurityUtils.getSubject();
+        ShiroUser subject = (ShiroUser) SecurityUtils.getSubject().getPrincipal();
         if (subject == null) {
             return null;
         }
@@ -38,7 +38,7 @@ public final class ShiroUtils {
      * @return
      */
     public static String getUserName() {
-        ShiroUser subject = (ShiroUser) SecurityUtils.getSubject();
+        ShiroUser subject = (ShiroUser) SecurityUtils.getSubject().getPrincipal();
         if (subject == null) {
             return null;
         }
