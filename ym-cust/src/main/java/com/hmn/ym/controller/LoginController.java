@@ -8,7 +8,6 @@ import com.hmn.ym.entity.LoginVo;
 import com.hmn.ym.service.user.IUserService;
 import com.hmn.ym.utils.Const;
 import com.hmn.ym.utils.RespUtil;
-import com.hmn.ym.utils.des.DesEncrypt;
 import com.hmn.ym.utils.des.MD5Utils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,9 +25,6 @@ import java.util.Map;
 
 @Controller
 public class LoginController extends BaseController {
-    private static final DesEncrypt desEncrpt = new DesEncrypt(Const.DES_PUBLIC_ENCRYPT_KEY);
-    private static final DesEncrypt aesEncrypt = new DesEncrypt(Const.DES_PRIVATE_ENCRYPT_KEY);
-
     @Autowired
     private IUserService userService;
 
@@ -39,7 +35,8 @@ public class LoginController extends BaseController {
 
     @GetMapping("login.do")
     @NotNeedSecurity
-    public String login() {
+    public String login(Model model) {
+        model.addAttribute("publickey", Const.DES_PUBLIC_ENCRYPT_KEY);
         return "login";
     }
 
@@ -61,12 +58,12 @@ public class LoginController extends BaseController {
             return RespUtil.failMsg("用户已失效！！！");
         }
         String checkpassword = MD5Utils.stringToMD5(aesEncrypt.encrypt(desEncrpt.decrypt(vo.getUserPassword())));
-        if (user.getPassword().equals(checkpassword)) {
+        if (!user.getPassword().equals(checkpassword)) {
             return RespUtil.failMsg("用户密码错误！！！");
         }
         request.getSession().setAttribute(Constants.ADMIN_USER_SESSION, user);
 
-        return RespUtil.success();
+        return RespUtil.success(user.getType());
     }
 
     @RequestMapping(value = "foot.do")

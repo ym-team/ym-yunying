@@ -4,6 +4,9 @@ import com.hmn.ym.dao.entities.po.User;
 import com.hmn.ym.dao.mapper.UserMapper;
 import com.hmn.ym.service.BaseServiceImpl;
 import com.hmn.ym.service.user.IUserService;
+import com.hmn.ym.utils.Const;
+import com.hmn.ym.utils.des.DesEncrypt;
+import com.hmn.ym.utils.des.MD5Utils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +17,9 @@ import java.util.Date;
 
 @Service
 public class UserServiceImpl extends BaseServiceImpl<User, UserMapper> implements IUserService {
+    private static final DesEncrypt desEncrpt = new DesEncrypt(Const.DES_PUBLIC_ENCRYPT_KEY);
+    private static final DesEncrypt aesEncrypt = new DesEncrypt(Const.DES_PRIVATE_ENCRYPT_KEY);
+
     @Autowired
     private UserMapper userMapper;
 
@@ -34,6 +40,7 @@ public class UserServiceImpl extends BaseServiceImpl<User, UserMapper> implement
 
             User user = new User();
             BeanUtils.copyProperties(vo, user);
+            user.setPassword(MD5Utils.stringToMD5(aesEncrypt.encrypt(desEncrpt.decrypt(vo.getPassword()))));
             user.setCreateTime(new Date());
 
             userMapper.insertSelective(user);
