@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.PostConstruct;
 import java.util.List;
 
 /**
@@ -23,16 +24,12 @@ public class CfgParaDetailServiceImpl extends BaseServiceImpl<CfgParaDetail, Cfg
     @Autowired
     private CfgParaDetailMapper cfgParaDetailMapper;
 
-
-    /**
-     * 服务启动加载
-     */
     @Override
+    @PostConstruct
     public void getAllCfgParaToCach() {
         for (CfgParaDetail cfg : selectCfgParaDetailEntityList()) {
             CachCfgParaUtil.putCfgCache(cfg.getParaKey(), cfg.getParaValue());
         }
-
     }
 
     private List<CfgParaDetail> selectCfgParaDetailEntityList() {

@@ -1,8 +1,6 @@
 package com.hmn.ym.controller;
 
 import com.hmn.ym.common.annotation.NotNeedSecurity;
-import com.hmn.ym.utils.CachCfgParaUtil;
-import com.hmn.ym.utils.CfgParaUtils;
 import com.hmn.ym.utils.SendSmsUtils;
 import com.hmn.ym.utils.SpringUtils;
 import com.hmn.ym.utils.des.DesEncrypt;
@@ -40,10 +38,10 @@ public class SendSmsController extends BaseController {
         request.getSession().setAttribute("phonevalcode", code + "");
         String content = "您的验证码是：" + code + "。请不要把验证码泄露给其他人。";
         System.out.println("==============验证码是：" + content);
-        if (CfgParaUtils.SEND_CODE_VALUE.equals(CachCfgParaUtil.getCfgCache(
+        /*if (CfgParaUtils.SEND_CODE_VALUE.equals(CachCfgParaUtil.getCfgCache(
                 CfgParaUtils.SEND_CODE))) {
-//			  SendSmsUtils.sendSms(phoneNum, code);
-        }
+                // SendSmsUtils.sendSms(phoneNum, code);
+        }*/
         SpringUtils.renderJsonResult(response, JsonResult.SUCCESS, "手机认证短信发送成功");
     }
 

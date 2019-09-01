@@ -26,7 +26,6 @@ import java.util.Map;
 public class RegisterController extends BaseController {
     private static final String CAPTCHA_SESSION = "CAPTCHA_SESSION";
 
-
     /**
      * 注册第一步 进入填写密码页面
      *
@@ -37,12 +36,10 @@ public class RegisterController extends BaseController {
      */
     public static final String register = "register";
 
-
     /**
      * 注册第2步
      */
     public static final String register2 = "register2";
-
 
     /**
      * 用户注册成功后跳转用户页面
@@ -53,7 +50,6 @@ public class RegisterController extends BaseController {
      * 注册协议
      */
     public static final String protocol = "protocol";
-
 
     /**
      * 注册页面第一步
@@ -135,14 +131,9 @@ public class RegisterController extends BaseController {
     public String register(HttpServletRequest request, HttpServletResponse response, Model model) {
         Map<String, String> param = this.getParameters(request);
 
-
         return userIndex;
     }
 
-
-    /**
-     * 注册协议
-     */
     @RequestMapping("getProtocol.do")
     @NotNeedSecurity
     public String getProtocol(HttpServletRequest request, HttpServletResponse response, Model model) {
