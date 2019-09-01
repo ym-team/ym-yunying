@@ -12,40 +12,40 @@ import java.io.IOException;
 @RequestMapping("performance/")
 public class PerformanceController extends BaseController {
 
-	/**
-	 * performanceView
-	 * 
-	 * @param request
-	 * @param response
-	 * @return
-	 */
-	@GetMapping("performanceView.do")
-	public String performanceView(HttpServletRequest request, HttpServletResponse response) {
+    /**
+     * performanceView
+     *
+     * @param request
+     * @param response
+     * @return
+     */
+    @GetMapping("performanceView.do")
+    public String performanceView(HttpServletRequest request, HttpServletResponse response) {
 
-		return "/salesman/performance";
-	}
+        return "/salesman/performance";
+    }
 
-	@GetMapping("teamView.do")
-	public String teamView(HttpServletRequest request, HttpServletResponse response) {
+    @GetMapping("teamView.do")
+    public String teamView(HttpServletRequest request, HttpServletResponse response) {
 
-		return "/salesman/team";
-	}
+        return "/salesman/team";
+    }
 
-	@GetMapping("myCustView.do")
-	public String myCustView(HttpServletRequest request, HttpServletResponse response) {
+    @GetMapping("myCustView.do")
+    public String myCustView(HttpServletRequest request, HttpServletResponse response) {
 
-		return "/salesman/mycust";
-	}
-	
-	@GetMapping("myCustomerView.do")
-	public String myCustomerView(HttpServletRequest request, HttpServletResponse response) {
+        return "/salesman/mycust";
+    }
 
-		return "/salesman/mycustomer";
-	}
-	
-	
-	@RequestMapping(value = "salesmanindex.do")
-	public String salesmanindex(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		return "/salesman/salesmanindex";
-	}
+    @GetMapping("myCustomerView.do")
+    public String myCustomerView(HttpServletRequest request, HttpServletResponse response) {
+
+        return "/salesman/mycustomer";
+    }
+
+
+    @RequestMapping(value = "salesmanindex.do")
+    public String salesmanindex(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        return "/salesman/salesmanindex";
+    }
 }

@@ -16,8 +16,25 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class BaseController {
-    protected final Logger logger = LoggerFactory.getLogger(this.getClass());
     private static final Pattern regex = Pattern.compile("1[3|5|7|8|][0-9]{9}");
+    protected final Logger logger = LoggerFactory.getLogger(this.getClass());
+
+    /**
+     * 将cookie封装到Map里面
+     *
+     * @param request
+     * @return
+     */
+    public static Map<String, String> readCookieMap(HttpServletRequest request) {
+        Map<String, String> cookieMap = Maps.newHashMap();
+        Cookie[] cookies = request.getCookies();
+        if (null != cookies) {
+            for (Cookie cookie : cookies) {
+                cookieMap.put(cookie.getName(), cookie.getValue());
+            }
+        }
+        return cookieMap;
+    }
 
     public Map<String, String> getParameters(HttpServletRequest request) {
         if (request == null) {
@@ -49,23 +66,6 @@ public class BaseController {
             return p;
         }
         return p;
-    }
-
-    /**
-     * 将cookie封装到Map里面
-     *
-     * @param request
-     * @return
-     */
-    public static Map<String, String> readCookieMap(HttpServletRequest request) {
-        Map<String, String> cookieMap = Maps.newHashMap();
-        Cookie[] cookies = request.getCookies();
-        if (null != cookies) {
-            for (Cookie cookie : cookies) {
-                cookieMap.put(cookie.getName(), cookie.getValue());
-            }
-        }
-        return cookieMap;
     }
 
     public boolean validateCaptcha(HttpServletRequest request, String code) {

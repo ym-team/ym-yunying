@@ -19,30 +19,30 @@ import javax.servlet.http.HttpServletResponse;
 
 @Controller
 public class SendSmsController extends BaseController {
-	protected Logger logger = LoggerFactory.getLogger(this.getClass());
-	
-	@RequestMapping("sendSms.do")
-	public void sendMsg(HttpServletRequest request, HttpServletResponse response, Model model ) throws Exception{
-		String captchaCode = request.getParameter("captcha");
-		String phoneNum = request.getParameter("tel");
-		if (StringUtils.isBlank(captchaCode)) {
-			SpringUtils.renderJsonResult(response, JsonResult.ERROR, "验证码输入错误");
-			return; 
-		}
-		String code = SendSmsUtils.randomCode(6);
-		DesEncrypt desEnc = new DesEncrypt();
-		String randEnc = desEnc.encrypt(code + "");
-		Cookie cookie = new Cookie("smsRand", randEnc);
-		cookie.setMaxAge(1 * 60);
-		response.addCookie(cookie);
-		request.getSession().setAttribute("phonevalcode", code + "");
-		String content = "您的验证码是：" + code + "。请不要把验证码泄露给其他人。";
-		System.out.println("==============验证码是："+content);
-		  if(CfgParaUtils.SEND_CODE_VALUE.equals(CachCfgParaUtil.getCfgCache(
-		  CfgParaUtils.SEND_CODE) )) { 
+    protected Logger logger = LoggerFactory.getLogger(this.getClass());
+
+    @RequestMapping("sendSms.do")
+    public void sendMsg(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
+        String captchaCode = request.getParameter("captcha");
+        String phoneNum = request.getParameter("tel");
+        if (StringUtils.isBlank(captchaCode)) {
+            SpringUtils.renderJsonResult(response, JsonResult.ERROR, "验证码输入错误");
+            return;
+        }
+        String code = SendSmsUtils.randomCode(6);
+        DesEncrypt desEnc = new DesEncrypt();
+        String randEnc = desEnc.encrypt(code + "");
+        Cookie cookie = new Cookie("smsRand", randEnc);
+        cookie.setMaxAge(1 * 60);
+        response.addCookie(cookie);
+        request.getSession().setAttribute("phonevalcode", code + "");
+        String content = "您的验证码是：" + code + "。请不要把验证码泄露给其他人。";
+        System.out.println("==============验证码是：" + content);
+        if (CfgParaUtils.SEND_CODE_VALUE.equals(CachCfgParaUtil.getCfgCache(
+                CfgParaUtils.SEND_CODE))) {
 //			  SendSmsUtils.sendSms(phoneNum, code);
-		  }
-		SpringUtils.renderJsonResult(response, JsonResult.SUCCESS, "手机认证短信发送成功");
-	}
-	
+        }
+        SpringUtils.renderJsonResult(response, JsonResult.SUCCESS, "手机认证短信发送成功");
+    }
+
 }

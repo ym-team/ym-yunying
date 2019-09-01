@@ -9,38 +9,36 @@ import org.springframework.web.context.WebApplicationContext;
 /**
  * @author
  */
-public class BeanTool extends ApplicationObjectSupport implements ApplicationContextAware{
-	
-	static ApplicationContext context;
+public class BeanTool extends ApplicationObjectSupport implements ApplicationContextAware {
 
-	public static void setApplicationContext(WebApplicationContext applicationContext) {
-		BeanTool.applicationContext = applicationContext;
-	}
+    static ApplicationContext context;
+    private static ApplicationContext applicationContext = null;
 
-	public BeanTool getInstance(){
-		return new BeanTool();
-	}
+    public static void setApplicationContext(WebApplicationContext applicationContext) {
+        BeanTool.applicationContext = applicationContext;
+    }
 
-	private static ApplicationContext applicationContext = null;
-	
+    public static ApplicationContext getAppContext() {
+        return applicationContext;
+    }
+
+    public static Object getBean(String name) {
+        return getAppContext().getBean(name);
+    }
+
+    public BeanTool getInstance() {
+        return new BeanTool();
+    }
+
     @Override
     protected void initApplicationContext(ApplicationContext context)
-      throws BeansException {
-     super.initApplicationContext(context);
-     if(BeanTool.applicationContext == null){
-    	 BeanTool.applicationContext = context;
-      System.out.println("========ApplicationContext配置成功,在普通类可以通过调用ApplicationContextTool.getAppContext()获取applicationContext对象,applicationContext="+applicationContext+"========");
-     }
+            throws BeansException {
+        super.initApplicationContext(context);
+        if (BeanTool.applicationContext == null) {
+            BeanTool.applicationContext = context;
+            System.out.println("========ApplicationContext配置成功,在普通类可以通过调用ApplicationContextTool.getAppContext()获取applicationContext对象,applicationContext=" + applicationContext + "========");
+        }
     }
- 
-    public static ApplicationContext getAppContext() {
-     return applicationContext;
-    }
-    
-    public static Object getBean(String name){
-     return getAppContext().getBean(name);
-    }
-    
-	 
+
 
 }

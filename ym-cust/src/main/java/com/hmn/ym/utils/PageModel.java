@@ -6,182 +6,181 @@ import java.util.List;
 
 /**
  * 翻页模板工具类
- * 
  */
 @SuppressWarnings("rawtypes")
 public final class PageModel implements Serializable {
-	private static final long serialVersionUID = 1L;
-	
-	/**
-	 * 当前页
-	 */
-	private int currentPage = 1;
-	
-	/**
-	 * 每页显示条数
-	 */
-	private int pageSize = 10;
-	
-	/**
-	 * 总页数
-	 */
-	private int totalPage;
-	
-	/**
-	 * 总记录数
-	 */
-	private int totalRecord;
-	
-	/**
-	 * 分页数据
-	 */
-	private List list = new ArrayList();
-	private String pageStr;
+    private static final long serialVersionUID = 1L;
 
-	public PageModel() {
-	}
+    /**
+     * 当前页
+     */
+    private int currentPage = 1;
 
-	public PageModel(Integer currentPage) {
-		this.currentPage = currentPage;
-	}
+    /**
+     * 每页显示条数
+     */
+    private int pageSize = 10;
 
-	/*
-	 * 初始化PageModel实例
-	 */
-	@SuppressWarnings("unused")
-	private PageModel(final int pageSize, final String page) {
-		// 初始化每页显示条数
-		this.pageSize = pageSize;
-		// 初始化总页数
-		setTotalPage();
-		// 初始化当前页
-		setCurrentPage();
-	}
+    /**
+     * 总页数
+     */
+    private int totalPage;
 
-	/*
-	 * 初始化PageModel实例
-	 */
-	private PageModel(final int pageSize, final String page, final int totalRecord) {
-		// 初始化每页显示条数
-		this.pageSize = pageSize;
-		// 设置总记录数
-		this.totalRecord = totalRecord;
-		// 初始化总页数
-		setTotalPage();
-		// 初始化当前页
-		setCurrentPage();
-	}
+    /**
+     * 总记录数
+     */
+    private int totalRecord;
 
-	/*
-	 * 外界获得PageModel实例
-	 */
-	public static PageModel newPageModel(final int pageSize, final String page, final int totalRecord) {
-		return new PageModel(pageSize, page, totalRecord);
-	}
+    /**
+     * 分页数据
+     */
+    private List list = new ArrayList();
+    private String pageStr;
 
-	// 设置当前请求页
-	private void setCurrentPage() {
-		// 如果当前页小于第一页时，当前页指定到首页
-		if (currentPage < 1) {
-			currentPage = 1;
-		}
-		if (currentPage > totalPage) {
-			currentPage = totalPage;
-		}
-	}
+    public PageModel() {
+    }
 
-	private void setTotalPage() {
-		if (totalRecord % pageSize == 0) {
+    public PageModel(Integer currentPage) {
+        this.currentPage = currentPage;
+    }
 
-			totalPage = totalRecord / pageSize;
-		} else {
-			totalPage = totalRecord / pageSize + 1;
-		}
-	}
+    /*
+     * 初始化PageModel实例
+     */
+    @SuppressWarnings("unused")
+    private PageModel(final int pageSize, final String page) {
+        // 初始化每页显示条数
+        this.pageSize = pageSize;
+        // 初始化总页数
+        setTotalPage();
+        // 初始化当前页
+        setCurrentPage();
+    }
 
-	/*
-	 * 获得当前页
-	 */
-	public int getCurrentPage() {
-		return currentPage;
-	}
+    /*
+     * 初始化PageModel实例
+     */
+    private PageModel(final int pageSize, final String page, final int totalRecord) {
+        // 初始化每页显示条数
+        this.pageSize = pageSize;
+        // 设置总记录数
+        this.totalRecord = totalRecord;
+        // 初始化总页数
+        setTotalPage();
+        // 初始化当前页
+        setCurrentPage();
+    }
 
-	/*
-	 * 获得总页数
-	 */
-	public int getTotalPage() {
-		return totalPage;
+    /*
+     * 外界获得PageModel实例
+     */
+    public static PageModel newPageModel(final int pageSize, final String page, final int totalRecord) {
+        return new PageModel(pageSize, page, totalRecord);
+    }
 
-	}
+    // 设置当前请求页
+    private void setCurrentPage() {
+        // 如果当前页小于第一页时，当前页指定到首页
+        if (currentPage < 1) {
+            currentPage = 1;
+        }
+        if (currentPage > totalPage) {
+            currentPage = totalPage;
+        }
+    }
 
-	/*
-	 * 获得开始行数
-	 */
-	public int getStartRow() {
-		return (currentPage - 1) * pageSize;
-	}
+    private void setTotalPage() {
+        if (totalRecord % pageSize == 0) {
 
-	/*
-	 * 获得结束行
-	 */
-	public int getEndRow() {
-		return currentPage * pageSize;
-	}
+            totalPage = totalRecord / pageSize;
+        } else {
+            totalPage = totalRecord / pageSize + 1;
+        }
+    }
 
-	// 首页
-	public int getFirst() {
-		return 1;
-	}
+    /*
+     * 获得当前页
+     */
+    public int getCurrentPage() {
+        return currentPage;
+    }
 
-	// 上一页
-	public int getPrevious() {
-		return currentPage - 1;
-	}
+    /*
+     * 获得总页数
+     */
+    public int getTotalPage() {
+        return totalPage;
 
-	// 下一页
-	public int getNext() {
-		return currentPage + 1;
-	}
+    }
 
-	// 尾页
-	public int getLast() {
-		return totalPage;
-	}
+    /*
+     * 获得开始行数
+     */
+    public int getStartRow() {
+        return (currentPage - 1) * pageSize;
+    }
 
-	public int getTotalRecord() {
-		return totalRecord;
-	}
+    /*
+     * 获得结束行
+     */
+    public int getEndRow() {
+        return currentPage * pageSize;
+    }
 
-	public void setTotalRecord(int totalRecord) {
-		this.totalRecord = totalRecord;
-		// 初始化总页数
-		setTotalPage();
-		// 初始化当前页
-		setCurrentPage();
-	}
+    // 首页
+    public int getFirst() {
+        return 1;
+    }
 
-	public String getPageStr() {
-		return pageStr;
-	}
+    // 上一页
+    public int getPrevious() {
+        return currentPage - 1;
+    }
 
-	public void setPageStr(String pageStr) {
-		this.pageStr = pageStr;
-	}
+    // 下一页
+    public int getNext() {
+        return currentPage + 1;
+    }
 
-	public int getPageSize() {
-		return pageSize;
-	}
+    // 尾页
+    public int getLast() {
+        return totalPage;
+    }
 
-	public void setPageSize(int pageSize) {
-		this.pageSize = pageSize;
-	}
+    public int getTotalRecord() {
+        return totalRecord;
+    }
 
-	public List getList() {
-		return list;
-	}
+    public void setTotalRecord(int totalRecord) {
+        this.totalRecord = totalRecord;
+        // 初始化总页数
+        setTotalPage();
+        // 初始化当前页
+        setCurrentPage();
+    }
 
-	public void setList(List list) {
-		this.list = list;
-	}
+    public String getPageStr() {
+        return pageStr;
+    }
+
+    public void setPageStr(String pageStr) {
+        this.pageStr = pageStr;
+    }
+
+    public int getPageSize() {
+        return pageSize;
+    }
+
+    public void setPageSize(int pageSize) {
+        this.pageSize = pageSize;
+    }
+
+    public List getList() {
+        return list;
+    }
+
+    public void setList(List list) {
+        this.list = list;
+    }
 
 }
