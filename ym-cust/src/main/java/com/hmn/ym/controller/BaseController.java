@@ -1,7 +1,6 @@
 package com.hmn.ym.controller;
 
 import com.google.common.collect.Maps;
-import com.hmn.ym.common.servlet.JcaptchaServlet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -69,7 +68,7 @@ public class BaseController {
     }
 
     public boolean validateCaptcha(HttpServletRequest request, String code) {
-        String cd = request.getSession().getAttribute(JcaptchaServlet.CAPTCHA_SESSION) + "";
+        String cd = request.getSession().getAttribute("CAPTCHA_SESSION") + "";
         if (cd.equals(code.toUpperCase())) {
             return true;
         }
