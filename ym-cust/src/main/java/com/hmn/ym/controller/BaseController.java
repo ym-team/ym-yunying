@@ -1,6 +1,8 @@
 package com.hmn.ym.controller;
 
 import com.google.common.collect.Maps;
+import com.hmn.ym.common.Constants;
+import com.hmn.ym.dao.entities.po.User;
 import com.hmn.ym.utils.Const;
 import com.hmn.ym.utils.des.DesEncrypt;
 import org.slf4j.Logger;
@@ -101,5 +103,16 @@ public class BaseController {
             return "";
         }
         return str;
+    }
+
+    /**
+     * 获取当前登录用户
+     *
+     * @param request
+     * @return
+     */
+    public User getUser(HttpServletRequest request) {
+        User user = (User) request.getSession().getAttribute(Constants.ADMIN_USER_SESSION);
+        return user;
     }
 }
