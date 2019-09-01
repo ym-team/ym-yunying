@@ -49,7 +49,7 @@ public class UserServiceImpl extends BaseServiceImpl<User, UserMapper> implement
 
     @Transactional
     @Override
-    public void addUserByPhone(String phone) {
+    public Long addUserByPhone(String phone) {
         User user = new User();
         user.setPhone(phone);
         user.setPassword(MD5Utils.stringToMD5(aesEncrypt.encrypt(desEncrpt.decrypt("123456"))));
@@ -57,6 +57,8 @@ public class UserServiceImpl extends BaseServiceImpl<User, UserMapper> implement
         user.setCreateTime(new Date());
         user.setUpdateTime(new Date());
         userMapper.insertSelective(user);
+
+        return user.getId();
     }
 
     @Transactional

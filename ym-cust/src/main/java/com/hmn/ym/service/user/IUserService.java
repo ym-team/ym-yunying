@@ -17,7 +17,7 @@ public interface IUserService extends BaseService<User> {
      *
      * @param phone
      */
-    void addUserByPhone(String phone);
+    Long addUserByPhone(String phone);
 
     /**
      * 删除
