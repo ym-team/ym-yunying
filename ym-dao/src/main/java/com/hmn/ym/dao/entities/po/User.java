@@ -29,12 +29,12 @@ public class User implements Serializable {
     /**
      * 用户类型( 1：业务员  2：店家 3：消费者 )
      */
-    private Boolean type;
+    private Integer type;
 
     /**
      * 用户状态( 1：有效  2：失效 )
      */
-    private Boolean status;
+    private Integer status;
 
     /**
      * 邀请码
