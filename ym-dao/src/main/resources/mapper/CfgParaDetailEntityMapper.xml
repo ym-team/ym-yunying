@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- NAMESPACE必须和接口的类路径一样 -->
+<mapper
+	namespace="com.hmn.ym.dao.mapper.CfgParaDetailMapper">
+
+	<resultMap id="BaseResultMap"
+		type="com.hmn.ym.dao.entities.CfgParaDetailEntity">
+		<id column="PK_ID" property="pkId" jdbcType="VARCHAR" />
+		<id column="PARA_KEY" property="paraKey" jdbcType="VARCHAR" />
+		<id column="PARA_VALUE" property="paraValue" jdbcType="VARCHAR" />
+		<id column="PARA_CODE" property="paraCode" jdbcType="VARCHAR" />
+		<id column="PARA_NAME" property="paraName" jdbcType="VARCHAR" />
+		<id column="PARA_DESC" property="paraDesc" jdbcType="VARCHAR" />
+		<id column="STATE" property="state" jdbcType="INTEGER" />
+		<id column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+		<id column="UP_TIME" property="upTime" jdbcType="TIMESTAMP" />
+		<id column="REMARKS" property="remarks" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<sql id="baseColumns">
+		PK_ID
+		,
+		PARA_KEY
+		,
+		PARA_VALUE
+		,
+		PARA_CODE
+		,
+		PARA_NAME
+		,
+		PARA_DESC
+		,
+		STATE
+		,
+		CREATE_TIME
+		,
+		UP_TIME
+		,
+		REMARKS
+	</sql>
+ <!-- 服务启动时,查询所有有效的配置参数 -->
+	<select id="selectCfgParaDetailEntityList"
+		resultMap="BaseResultMap" parameterType="Map" fetchSize="200">
+		select
+		<include refid="baseColumns" />
+		from cfg_para_detail where 1=1 and state = 1 
+	</select>
+
+</mapper>
