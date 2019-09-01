@@ -15,21 +15,15 @@ import java.io.IOException;
 @RequestMapping("user/")
 public class UserController extends BaseController {
 
-    /**
-     * 用户信息
-     */
-    private static final String user_info = "user/userInfo";
-
-    private static final String user_code = "user/usercode";
-
+    @RequestMapping("userIndex.do")
+    public String userIndex() {
+        return "user/userIndex";
+    }
 
     @RequestMapping(value = "userInfoView.do")
     public String userInfoView(HttpServletRequest request, Model model) {
-
-
-        return user_info;
+        return "user/userInfo";
     }
-
 
     @RequestMapping(value = "userCode.do")
     public String userCode(HttpServletRequest request, Model model) {
@@ -41,7 +35,7 @@ public class UserController extends BaseController {
             e.printStackTrace();
         }
         model.addAttribute("pathUrl", path2);
-        return user_code;
+        return "user/usercode";
     }
 
     /**
@@ -53,15 +47,12 @@ public class UserController extends BaseController {
      */
     @RequestMapping("createImg.do")
     public void createImg(HttpServletRequest request, HttpServletResponse response, Model model) {
-
         String code = "500";
         String msg = "";
-
         String path = request.getContextPath();
         String uid = "123";
         // 二维码扫描跳转链接
-        String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
-                + path + "/web/toRegister.do?u=" + uid;
+        String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/web/toRegister.do?u=" + uid;
         try {
 //			String fileSufix = UploadUtils.getRelatedPath();
 //			String str = "/" +uid+ "-" + UUID.randomUUID().toString() + ".png";
@@ -71,14 +62,12 @@ public class UserController extends BaseController {
 //			QRCodeUtil.encode(basePath, null, twoCodeUrl, true);
             // 把邀请用户二维码存入数据库
             msg = "fileSufix + str";
-//				msg = fileSufix + str;
+//			msg = fileSufix + str;
 //			msg = twoCodeUrl;
             code = "200";
         } catch (Exception e) {
-            logger.error("createImg error ", e);
+            logger.error("createImg error " + e.getMessage(), e);
         }
-
         SpringUtils.renderJsonResult(response, code, msg);
     }
-
 }

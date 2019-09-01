@@ -28,11 +28,6 @@ public class LoginController extends BaseController {
     @Autowired
     private IUserService userService;
 
-    @RequestMapping("userIndex.do")
-    public String userIndex() {
-        return "user/userIndex";
-    }
-
     @GetMapping("login.do")
     @NotNeedSecurity
     public String login(Model model) {
@@ -57,8 +52,8 @@ public class LoginController extends BaseController {
         if (user.getStatus() != 1) {
             return RespUtil.failMsg("用户已失效！！！");
         }
-        String checkpassword = MD5Utils.stringToMD5(aesEncrypt.encrypt(desEncrpt.decrypt(vo.getUserPassword())));
-        if (!user.getPassword().equals(checkpassword)) {
+        String checkPassword = MD5Utils.stringToMD5(aesEncrypt.encrypt(desEncrpt.decrypt(vo.getUserPassword())));
+        if (!user.getPassword().equals(checkPassword)) {
             return RespUtil.failMsg("用户密码错误！！！");
         }
         request.getSession().setAttribute(Constants.ADMIN_USER_SESSION, user);
