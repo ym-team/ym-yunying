@@ -1,5 +1,6 @@
 package com.hmn.ym.controller;
 
+import com.hmn.ym.common.annotation.NotNeedSecurity;
 import com.hmn.ym.utils.CachCfgParaUtil;
 import com.hmn.ym.utils.CfgParaUtils;
 import com.hmn.ym.utils.SendSmsUtils;
@@ -22,6 +23,7 @@ public class SendSmsController extends BaseController {
     protected Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @RequestMapping("sendSms.do")
+    @NotNeedSecurity
     public void sendMsg(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
         String captchaCode = request.getParameter("captcha");
         String phoneNum = request.getParameter("tel");
