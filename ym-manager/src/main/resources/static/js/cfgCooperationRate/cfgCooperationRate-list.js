@@ -24,19 +24,19 @@ $(document).ready(function () {
         }],
         "columns": [
             {"data": "id"},
-            {"data": "amortization_id"},
+            {"data": "amortizationId"},
             {"data": "status"},
             {"data": "rate"},
             {"data": "type"},
             {
-                "data": "create_time", "render": function (data) {
+                "data": "createTime", "render": function (data) {
                     return (new Date(data)).Format("yyyy-MM-dd hh:mm:ss");
                 }
             },
-            {"data": "update_time"},
+            {"data": "updateTime"},
             {"data": "remark"},
-            {"data": "update_id"},
-            {"data": "create_id"},
+            {"data": "updateId"},
+            {"data": "createId"},
      
 
             {"data": null}

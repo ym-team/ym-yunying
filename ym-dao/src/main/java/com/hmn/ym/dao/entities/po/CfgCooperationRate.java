@@ -19,7 +19,7 @@ public class CfgCooperationRate implements Serializable {
     @Column(name = "amortization_id")
     private Long amortizationId;
 
-    private Byte status;
+    private Long status;
 
     /**
      * 医院提成比例
@@ -29,7 +29,7 @@ public class CfgCooperationRate implements Serializable {
     /**
      * 提成类型 1医院 2店面
      */
-    private Byte type;
+    private int type;
 
     /**
      * 创建时间

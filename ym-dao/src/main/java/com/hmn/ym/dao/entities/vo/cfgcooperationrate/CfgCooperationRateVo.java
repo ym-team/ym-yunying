@@ -19,7 +19,7 @@ public class CfgCooperationRateVo implements Serializable {
     @Column(name = "amortization_id")
     private Long amortizationId;
 
-    private Byte status;
+    private Long status;
 
     /**
      * 医院提成比例
