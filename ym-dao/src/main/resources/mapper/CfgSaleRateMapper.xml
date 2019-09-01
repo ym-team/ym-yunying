@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hmn.ym.dao.mapper.CfgSaleRateMapper">
+  <resultMap id="BaseResultMap" type="com.hmn.ym.dao.entities.po.CfgSaleRate">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="mon_sale_total_amt_begin" jdbcType="DECIMAL" property="monSaleTotalAmtBegin" />
+    <result column="mon_sale_total_amt_end" jdbcType="DECIMAL" property="monSaleTotalAmtEnd" />
+    <result column="rate" jdbcType="DOUBLE" property="rate" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="create_id" jdbcType="BIGINT" property="createId" />
+    <result column="update_id" jdbcType="BIGINT" property="updateId" />
+    <result column="type" jdbcType="BIGINT" property="type" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+  </resultMap>
+</mapper>

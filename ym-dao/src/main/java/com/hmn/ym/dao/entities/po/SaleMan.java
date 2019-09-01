@@ -86,5 +86,10 @@ public class SaleMan implements Serializable {
     @Column(name = "update_time")
     private Date updateTime;
 
+    /**
+     * 个人提成比例分配
+     */
+    private Double rate;
+
     private static final long serialVersionUID = 1L;
 }

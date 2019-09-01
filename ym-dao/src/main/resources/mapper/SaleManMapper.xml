@@ -18,5 +18,6 @@
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_id" jdbcType="BIGINT" property="updateId" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="rate" jdbcType="DOUBLE" property="rate" />
   </resultMap>
 </mapper>

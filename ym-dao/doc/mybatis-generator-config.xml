@@ -34,15 +34,27 @@
         <!--mapper包路径-->
         <javaClientGenerator targetPackage="com.hmn.ym.dao.mapper" targetProject="src/main/java" type="XMLMAPPER"></javaClientGenerator>
 
-        <table tableName="t_sys_admin" domainObjectName="Admin" mapperName="{0}Mapper">
+        <table tableName="t_bussiness_sum" domainObjectName="BussinessSum" mapperName="{0}Mapper">
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
 
-        <table tableName="t_sys_admin_role" domainObjectName="AdminRole" mapperName="{0}Mapper">
+        <table tableName="t_cfg_cooperation_rate" domainObjectName="CfgCooperationRate" mapperName="{0}Mapper">
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
 
-        <table tableName="t_sys_role" domainObjectName="Role" mapperName="{0}Mapper">
+        <table tableName="t_cfg_sale_rate" domainObjectName="CfgSaleRate" mapperName="{0}Mapper">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+
+        <table tableName="t_consume_dtl" domainObjectName="ConsumeDtl" mapperName="{0}Mapper">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+
+        <table tableName="t_cust_consumer" domainObjectName="CustConsumer" mapperName="{0}Mapper">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+
+        <table tableName="t_cust_shop" domainObjectName="CustShop" mapperName="{0}Mapper">
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
 
@@ -58,10 +70,29 @@
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
 
-        <table tableName="t_user" domainObjectName="User" mapperName="{0}Mapper">
+        <table tableName="t_sys_admin" domainObjectName="Admin" mapperName="{0}Mapper">
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
 
+        <table tableName="t_sys_admin_role" domainObjectName="AdminRole" mapperName="{0}Mapper">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+
+        <table tableName="t_sys_role" domainObjectName="Role" mapperName="{0}Mapper">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+
+        <table tableName="t_team" domainObjectName="Team" mapperName="{0}Mapper">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+
+        <table tableName="t_team_sum" domainObjectName="TeamSum" mapperName="{0}Mapper">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+
+        <table tableName="t_user" domainObjectName="User" mapperName="{0}Mapper">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
     </context>
 </generatorConfiguration>
 
