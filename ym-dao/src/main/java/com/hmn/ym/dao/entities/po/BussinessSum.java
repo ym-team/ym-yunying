@@ -10,6 +10,7 @@ import lombok.Setter;
 @Table(name = "t_bussiness_sum")
 @Getter@Setter
 public class BussinessSum implements Serializable {
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 

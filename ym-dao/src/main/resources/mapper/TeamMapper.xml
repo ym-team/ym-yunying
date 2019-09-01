@@ -5,7 +5,7 @@
     <!--
       WARNING - @mbg.generated
     -->
-    <result column="id" jdbcType="BIGINT" property="id" />
+    <id column="id" jdbcType="BIGINT" property="id" />
     <result column="user_id" jdbcType="BIGINT" property="userId" />
     <result column="parent_id" jdbcType="BIGINT" property="parentId" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />

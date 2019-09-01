@@ -5,7 +5,7 @@
     <!--
       WARNING - @mbg.generated
     -->
-    <result column="id" jdbcType="BIGINT" property="id" />
+    <id column="id" jdbcType="BIGINT" property="id" />
     <result column="bussiness_user_id" jdbcType="BIGINT" property="bussinessUserId" />
     <result column="team_id" jdbcType="BIGINT" property="teamId" />
     <result column="total_amt" jdbcType="DECIMAL" property="totalAmt" />

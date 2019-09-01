@@ -12,6 +12,7 @@ public class Team implements Serializable {
     /**
      * team主键id
      */
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
