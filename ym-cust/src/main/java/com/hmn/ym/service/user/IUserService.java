@@ -25,4 +25,11 @@ public interface IUserService extends BaseService<User> {
      * @param userAccount
      */
     User getByUserAccount(String userAccount);
+
+    /**
+     * 获取
+     *
+     * @param inviteCode
+     */
+    User getByInviteCode(String inviteCode);
 }

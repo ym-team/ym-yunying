@@ -47,7 +47,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
                         return false;
                     }
                     request.setAttribute("message", "未登录！");
-                    response.sendRedirect(request.getContextPath() + "/login");
+                    response.sendRedirect(request.getContextPath() + "/login.do");
                     return false;
                 }
             }

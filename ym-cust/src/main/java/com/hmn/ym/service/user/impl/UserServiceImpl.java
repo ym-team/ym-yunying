@@ -1,6 +1,5 @@
 package com.hmn.ym.service.user.impl;
 
-import com.hmn.ym.dao.entities.po.Role;
 import com.hmn.ym.dao.entities.po.User;
 import com.hmn.ym.dao.mapper.UserMapper;
 import com.hmn.ym.service.BaseServiceImpl;
@@ -55,12 +54,19 @@ public class UserServiceImpl extends BaseServiceImpl<User, UserMapper> implement
         return userMapper.selectOneByExample(example);
     }
 
-    private void exit(String roleName) {
-        Example example = new Example(Role.class);
-        example.createCriteria().andEqualTo("name", roleName);
+    @Override
+    public User getByInviteCode(String inviteCode) {
+        Example example = new Example(User.class);
+        example.createCriteria().andEqualTo("inviteCode", inviteCode);
+        return userMapper.selectOneByExample(example);
+    }
+
+    private void exit(String phone) {
+        Example example = new Example(User.class);
+        example.createCriteria().andEqualTo("phone", phone);
         User role = userMapper.selectOneByExample(example);
         if (role != null) {
-            throw new RuntimeException("该角色已经存在.");
+            throw new RuntimeException("该用户已经存在.");
         }
     }
 }
