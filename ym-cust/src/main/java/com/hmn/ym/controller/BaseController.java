@@ -3,8 +3,6 @@ package com.hmn.ym.controller;
 import com.google.common.collect.Maps;
 import com.hmn.ym.common.Constants;
 import com.hmn.ym.dao.entities.po.User;
-import com.hmn.ym.utils.Const;
-import com.hmn.ym.utils.des.DesEncrypt;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -19,8 +17,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class BaseController {
-    protected static final DesEncrypt desEncrpt = new DesEncrypt(Const.DES_PUBLIC_ENCRYPT_KEY);
-    protected static final DesEncrypt aesEncrypt = new DesEncrypt(Const.DES_PRIVATE_ENCRYPT_KEY);
     private static final Pattern regex = Pattern.compile("1[3|5|7|8|][0-9]{9}");
     protected final Logger logger = LoggerFactory.getLogger(this.getClass());
 

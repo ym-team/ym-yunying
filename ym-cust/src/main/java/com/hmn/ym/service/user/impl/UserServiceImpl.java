@@ -4,9 +4,7 @@ import com.hmn.ym.dao.entities.po.User;
 import com.hmn.ym.dao.mapper.UserMapper;
 import com.hmn.ym.service.BaseServiceImpl;
 import com.hmn.ym.service.user.IUserService;
-import com.hmn.ym.utils.Const;
-import com.hmn.ym.utils.des.DesEncrypt;
-import com.hmn.ym.utils.des.MD5Utils;
+import com.hmn.ym.utils.PasswordUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,42 +15,30 @@ import java.util.Date;
 
 @Service
 public class UserServiceImpl extends BaseServiceImpl<User, UserMapper> implements IUserService {
-    private static final DesEncrypt desEncrpt = new DesEncrypt(Const.DES_PUBLIC_ENCRYPT_KEY);
-    private static final DesEncrypt aesEncrypt = new DesEncrypt(Const.DES_PRIVATE_ENCRYPT_KEY);
-
     @Autowired
     private UserMapper userMapper;
 
     @Transactional
     @Override
     public void save(User vo) {
-        if (vo.getId() != null) {
-            User exit = userMapper.selectByPrimaryKey(vo.getId());
-            if (!exit.getPhone().equals(vo.getPhone())) {
-                this.exit(vo.getPhone());
-            }
-            User user = new User();
-            BeanUtils.copyProperties(vo, user);
+        this.exit(vo.getPhone());
 
-            userMapper.updateByPrimaryKeySelective(user);
-        } else {
-            this.exit(vo.getPhone());
+        User user = new User();
+        BeanUtils.copyProperties(vo, user);
+        user.setPassword(PasswordUtils.getPassword(vo.getPassword()));
+        user.setCreateTime(new Date());
 
-            User user = new User();
-            BeanUtils.copyProperties(vo, user);
-            user.setPassword(MD5Utils.stringToMD5(aesEncrypt.encrypt(desEncrpt.decrypt(vo.getPassword()))));
-            user.setCreateTime(new Date());
-
-            userMapper.insertSelective(user);
-        }
+        userMapper.insertSelective(user);
     }
 
     @Transactional
     @Override
     public Long addUserByPhone(String phone) {
+        this.exit(phone);
+
         User user = new User();
         user.setPhone(phone);
-        user.setPassword(MD5Utils.stringToMD5(aesEncrypt.encrypt("123456")));
+        user.setPassword(PasswordUtils.getInitPassword());
         user.setType(2);
         user.setCreateTime(new Date());
         user.setUpdateTime(new Date());
@@ -64,7 +50,6 @@ public class UserServiceImpl extends BaseServiceImpl<User, UserMapper> implement
     @Transactional
     @Override
     public void delete(Integer id) {
-        //删除角色
         userMapper.deleteByPrimaryKey(id);
     }
 
@@ -87,7 +72,7 @@ public class UserServiceImpl extends BaseServiceImpl<User, UserMapper> implement
         example.createCriteria().andEqualTo("phone", phone);
         User role = userMapper.selectOneByExample(example);
         if (role != null) {
-            throw new RuntimeException("该用户已经存在.");
+            throw new RuntimeException("该用户手机号已经存在.");
         }
     }
 }

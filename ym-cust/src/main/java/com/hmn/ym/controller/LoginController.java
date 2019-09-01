@@ -7,8 +7,8 @@ import com.hmn.ym.dao.entities.po.User;
 import com.hmn.ym.entity.LoginVo;
 import com.hmn.ym.service.user.IUserService;
 import com.hmn.ym.utils.Const;
+import com.hmn.ym.utils.PasswordUtils;
 import com.hmn.ym.utils.RespUtil;
-import com.hmn.ym.utils.des.MD5Utils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -52,7 +52,7 @@ public class LoginController extends BaseController {
         if (user.getStatus() != 1) {
             return RespUtil.failMsg("用户已失效！！！");
         }
-        String checkPassword = MD5Utils.stringToMD5(aesEncrypt.encrypt(desEncrpt.decrypt(vo.getUserPassword())));
+        String checkPassword = PasswordUtils.getPassword(vo.getUserPassword());
         if (!user.getPassword().equals(checkPassword)) {
             return RespUtil.failMsg("用户密码错误！！！");
         }
