@@ -1,10 +1,12 @@
 package com.hmn.ym.manager.service.shop.impl;
 
 import com.google.common.collect.Lists;
+import com.hmn.ym.dao.entities.po.CustShop;
 import com.hmn.ym.dao.entities.po.Doctor;
 import com.hmn.ym.dao.entities.vo.BaseQueryVo;
 import com.hmn.ym.dao.entities.vo.DataTablePage;
 import com.hmn.ym.dao.entities.vo.shop.ShopVo;
+import com.hmn.ym.dao.mapper.CustShopMapper;
 import com.hmn.ym.dao.mapper.DoctorMapper;
 import com.hmn.ym.manager.service.BaseServiceImpl;
 import com.hmn.ym.manager.service.shop.IShopService;
@@ -13,7 +15,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ShopServiceImpl extends BaseServiceImpl<Doctor, DoctorMapper> implements IShopService {
+public class ShopServiceImpl extends BaseServiceImpl<CustShop, CustShopMapper> implements IShopService {
 
     @Override
     public DataTablePage<ShopVo> page(BaseQueryVo vo) {

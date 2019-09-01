@@ -7,6 +7,9 @@ import com.hmn.ym.dao.entities.vo.DataTablePage;
 import com.hmn.ym.dao.entities.vo.hospital.HospitalVo;
 import com.hmn.ym.manager.service.hospital.IHospitalService;
 import com.hmn.ym.manager.utils.RespUtil;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
@@ -23,6 +26,12 @@ public class HospitalRestController {
     @RequestMapping(value = "/page")
     public DataTablePage<Hospital> page(Model model, BaseQueryVo vo) {
         return hospitalService.page(vo);
+    }
+    
+    
+    @RequestMapping(value = "/list")
+    public List<Hospital> list(Model model) {
+        return hospitalService.selectAll();
     }
 
     @PostMapping(value = "/save")

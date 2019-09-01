@@ -1,10 +1,14 @@
 package com.hmn.ym.manager.web.rest.shop;
 
+import com.hmn.ym.dao.entities.po.CustShop;
 import com.hmn.ym.dao.entities.vo.BaseQueryVo;
 import com.hmn.ym.dao.entities.vo.DataTablePage;
 import com.hmn.ym.dao.entities.vo.hospital.DoctorVo;
 import com.hmn.ym.dao.entities.vo.shop.ShopVo;
 import com.hmn.ym.manager.service.shop.IShopService;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,5 +23,11 @@ public class ShopRestController {
     @RequestMapping(value = "/page")
     public DataTablePage<ShopVo> page(BaseQueryVo vo) {
         return shopService.page(vo);
+    }
+    
+    
+    @RequestMapping(value = "/list")
+    public List<CustShop> list() {
+        return shopService.selectAll();
     }
 }

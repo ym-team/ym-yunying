@@ -91,6 +91,47 @@
                     <span class="arrow open"></span>
                 </a>
             </li>
+            
+            
+            
+            <li class="heading">
+                <h3 class="uppercase">提成管理</h3>
+            </li>
+            <li id="menu10" class="nav-item">
+                <a href="${ctx}/cfgCooperationRate/list" class="nav-link nav-toggle">
+                    <i class="icon-layers"></i>
+                    <span class="title">合作方提成</span>
+                    <span class="selected"></span>
+                    <span class="arrow open"></span>
+                </a>
+            </li>
+            
+              <li id="menu11" class="nav-item">
+                <a href="${ctx}/hospital/list" class="nav-link nav-toggle">
+                    <i class="icon-layers"></i>
+                    <span class="title">业务员提成</span>
+                    <span class="selected"></span>
+                    <span class="arrow open"></span>
+                </a>
+            </li>
+            
+            
+            
+            
+            
+                        <li class="heading">
+                <h3 class="uppercase">医院管理</h3>
+            </li>
+            <li id="menu12" class="nav-item">
+                <a href="${ctx}/hospital/list" class="nav-link nav-toggle">
+                    <i class="icon-layers"></i>
+                    <span class="title">医院管理</span>
+                    <span class="selected"></span>
+                    <span class="arrow open"></span>
+                </a>
+            </li>
+            
+            
         </ul>
     </div>
 </div>
