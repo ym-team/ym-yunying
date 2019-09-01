@@ -52,7 +52,7 @@ public class UserServiceImpl extends BaseServiceImpl<User, UserMapper> implement
     public Long addUserByPhone(String phone) {
         User user = new User();
         user.setPhone(phone);
-        user.setPassword(MD5Utils.stringToMD5(aesEncrypt.encrypt(desEncrpt.decrypt("123456"))));
+        user.setPassword(MD5Utils.stringToMD5(aesEncrypt.encrypt("123456")));
         user.setType(2);
         user.setCreateTime(new Date());
         user.setUpdateTime(new Date());
