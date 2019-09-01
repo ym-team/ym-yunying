@@ -30,7 +30,7 @@ public class BaseController {
      * @param request
      * @return
      */
-    public static Map<String, String> readCookieMap(HttpServletRequest request) {
+    public Map<String, String> readCookieMap(HttpServletRequest request) {
         Map<String, String> cookieMap = Maps.newHashMap();
         Cookie[] cookies = request.getCookies();
         if (null != cookies) {
