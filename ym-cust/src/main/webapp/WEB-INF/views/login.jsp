@@ -69,15 +69,15 @@
         }
     }
 
-    function loginCallBack(data) {
-        if ($_SUCCESS_CODE == data.code) {
-            if (data.type == 1) {
+    function loginCallBack(result) {
+        if ($_SUCCESS_CODE == result.code) {
+            if (result.data == 1) {
                 openPage("${pathWeb }/userIndex.do");
-            } else if (data.type == 2) {
+            } else if (result.data == 2) {
                 openPage("${pathWeb }/store/storeLogin.do");
             }
         } else {
-            alert(data.msg);
+            alert(result.msg);
         }
     }
 </script>
