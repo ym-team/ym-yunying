@@ -13,6 +13,13 @@ public interface IUserService extends BaseService<User> {
     void save(User vo);
 
     /**
+     * 保存
+     *
+     * @param phone
+     */
+    void addUserByPhone(String phone);
+
+    /**
      * 删除
      *
      * @param id
