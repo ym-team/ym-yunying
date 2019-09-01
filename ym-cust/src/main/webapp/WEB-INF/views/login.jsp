@@ -69,13 +69,13 @@
         }
     }
 
-    var $_SUCCESS_CODE3 = '3';
-
     function loginCallBack(data) {
         if ($_SUCCESS_CODE == data.code) {
-            openPage("${pathWeb }/userIndex.do");
-        } else if ($_SUCCESS_CODE3 == data.code) {
-            openPage("${pathWeb }/store/storeLogin.do");
+            if (data.type == 1) {
+                openPage("${pathWeb }/userIndex.do");
+            } else if (data.type == 2) {
+                openPage("${pathWeb }/store/storeLogin.do");
+            }
         } else {
             alert(data.msg);
         }
