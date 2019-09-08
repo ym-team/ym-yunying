@@ -72,7 +72,7 @@
     function loginCallBack(result) {
         if ($_SUCCESS_CODE == result.code) {
             if (result.data == 1) {
-                openPage("${pathWeb }/userIndex.do");
+                openPage("${pathWeb }/user/userIndex.do");
             } else if (result.data == 2) {
                 openPage("${pathWeb }/store/storeLogin.do");
             }
