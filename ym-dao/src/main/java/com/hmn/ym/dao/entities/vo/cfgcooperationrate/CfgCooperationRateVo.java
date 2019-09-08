@@ -10,7 +10,7 @@ public class CfgCooperationRateVo extends BaseVo {
      */
     private Long amortizationId;
 
-    private Byte status;
+    private Long status;
 
     /**
      * 医院提成比例
