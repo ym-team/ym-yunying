@@ -28,35 +28,35 @@
 			<li class="sl_ji">
 				<p>店面名称</p>
 				<div class="position-rel">
-					<input type="text" class="form-control" style="width: 9rem;"
+					<input type="text" class="form-control" style="width: 9rem;" id="shopName" name="shopName"
 						placeholder="请输入店门名称">
 				</div>
 			</li>
 			<li class="sl_ji">
 				<p>地址</p>
 				<div class="position-rel">
-					<input type="text" class="form-control" style="width: 9rem;"
+					<input type="text" class="form-control" style="width: 9rem;" id="shopAddress" name="shopAddress"
 						placeholder="请输入店门地址">
 				</div>
 			</li>
 			<li class="sl_ji">
 				<p>联系人</p>
 				<div class="position-rel">
-					<input type="number" class="form-control" style="width: 9rem;"
+					<input type="number" class="form-control" style="width: 9rem;" id="shopUserName" name="shopUserName"
 						placeholder="请输入联系人姓名">
 				</div>
 			</li>
 			<li class="sl_ji">
 				<p>联系电话</p>
 				<div class="position-rel">
-					<input type="text" style="width: 9rem;" class="form-control"
+					<input type="text" style="width: 9rem;" class="form-control" id="shopPhone" name="shopPhone"
 						placeholder="请输入联系人电话">
 				</div>
 			</li>
 			<li class="sl_ji">
 				<p>联系人证件号</p>
 				<div class="position-rel">
-					<input type="text" style="width: 9rem;" class="form-control"
+					<input type="text" style="width: 9rem;" class="form-control" id="shopIdCard" name="shopIdCard"
 						placeholder="请输入证件号码">
 				</div>
 				
@@ -85,13 +85,22 @@
 </body>
 <script type="text/javascript">
 	function sub(){
+		var shopName = $("#shopName").val();
+        var shopAddress = $("#shopAddress").val();
+        var shopUserName = $("#shopUserName").val();
+        var shopIdCard = $("#shopIdCard").val();
+        var shopPhone = $("#shopPhone").val();
 		 var data = {
-				  
+				 "shopName": shopName,
+	                "shopAddress": shopAddress,
+	                "shopUserName": shopUserName,
+	                "shopIdCard": shopIdCard,
+	                "shopPhone": shopPhone
 		  };
 		  $.ajax({
 				cache : false,
 				type : "POST",
-				url : "",
+				url : "${pathWeb }/business/store/saveEnter.do",
 				data : data,
 				async : false,
 				error : function(request) {
