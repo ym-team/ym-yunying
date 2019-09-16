@@ -112,7 +112,7 @@ public class RegisterController extends BaseController {
         //设置seesion
         request.getSession().setAttribute(Constants.ADMIN_USER_SESSION, user);
 
-        return "redirect:/userIndex.do";
+        return "redirect:/user/userIndex.do";
     }
 
     @RequestMapping("getProtocol.do")
