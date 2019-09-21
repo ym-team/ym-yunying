@@ -19,11 +19,13 @@ public class ${tableClass.shortClassName}Vo extends BaseEntity {
 
 <#if tableClass.baseFields??>
 <#list tableClass.baseFields as field>
-
+	<#if field.fieldName != "id" && field.fieldName != "createId" && field.fieldName != "createName" && field.fieldName != "createTime"
+	&& field.fieldName!="updateId" && field.fieldName !="updateName" &&  field.fieldName!="updateTime">
 	/**
 	* ${field.remarks}
 	*/
 	private ${field.shortTypeName} ${field.fieldName};
+	</#if>
 </#list>
 </#if>
 }
