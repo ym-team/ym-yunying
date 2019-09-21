@@ -74,7 +74,7 @@
             if (result.data == 1) {
                 openPage("${pathWeb }/user/userIndex.do");
             } else if (result.data == 2) {
-                openPage("${pathWeb }/store/storeLogin.do");
+                openPage("${pathWeb }/business/store/storeLogin.do");
             }
         } else {
             alert(result.msg);

@@ -1,6 +1,7 @@
 package com.hmn.ym.service;
 
 import com.hmn.ym.dao.entity.po.CustConsumer;
+import com.hmn.ym.dao.entity.vo.CustConsumerVo;
 
 /**
  * @author xfz

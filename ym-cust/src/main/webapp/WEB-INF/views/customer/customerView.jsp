@@ -23,148 +23,104 @@
     </header>
 
     <div class="wd_con sl_wd_con">
+    
+    	<form action="" id="custConsumer">
         <ul class="sl_czfs">
-            <li class="sl_ji">
-                <p>预约日期</p>
-                <div class="position-rel">
-                    <input type="text" class="form-control" style="width: 9rem;" placeholder="请输入预约日期">
-                </div>
-            </li>
-            <li class="sl_ji">
-                <p>店名</p>
-                <div class="position-rel">
-                    <input type="text" class="form-control" style="width: 9rem;" placeholder="请输入店名">
-                </div>
-            </li>
+
             <li class="sl_ji">
                 <p>客人姓名</p>
                 <div class="position-rel">
-                    <input type="number" class="form-control" style="width: 9rem;" placeholder="请输入客人姓名">
+                    <input type="text" id="consuName" name="consuName" class="form-control" style="width: 9rem;" placeholder="请输入客人姓名">
                 </div>
             </li>
             <li class="sl_ji">
                 <p>客人电话</p>
                 <div class="position-rel">
-                    <input type="text" style="width: 9rem;" class="form-control" placeholder="客人电话">
+                    <input type="text" id="consuPhone" name="consuPhone" style="width: 9rem;" class="form-control" placeholder="客人电话">
                 </div>
             </li>
-            <li class="sl_ji">
-                <p>本次陪同姓名</p>
-                <div class="position-rel">
-                    <input type="number" class="form-control" style="width: 9rem;" placeholder="请输入本次陪同姓名">
-                </div>
-            </li>
-            <li class="sl_ji">
-                <p>本次陪同电话</p>
-                <div class="position-rel">
-                    <input type="text" style="width: 9rem;" class="form-control" placeholder="请输入本次陪同电话">
-                </div>
-            </li>
+
             <li class="sl_ji">
                 <p>客人年龄</p>
                 <div class="position-rel">
-                    <input type="text" style="width: 9rem;" class="form-control" placeholder="请输入客人年龄">
+                    <input type="text" id="consuAge" name="consuAge" style="width: 9rem;" class="form-control" placeholder="请输入客人年龄">
                 </div>
             </li>
             <li class="sl_ji">
                 <p>确定项目</p>
                 <div class="position-rel">
-                    <input type="text" style="width: 9rem;" class="form-control" placeholder="请输入确定项目">
+                    <input type="text" id="consuConfirmItem" name="consuConfirmItem" style="width: 9rem;" class="form-control" placeholder="请输入确定项目">
                 </div>
             </li>
             <li class="sl_ji">
                 <p>意向项目</p>
                 <div class="position-rel">
-                    <input type="text" style="width: 9rem;" class="form-control" placeholder="请输入意向项目">
-                </div>
-            </li>
-            <li class="sl_ji">
-                <p>铺垫价格</p>
-                <div class="position-rel">
-                    <input type="text" style="width: 9rem;" class="form-control" placeholder="请输入铺垫价格">
-                </div>
-            </li>
-            <li class="sl_ji">
-                <p>已收款金额</p>
-                <div class="position-rel">
-                    <input type="text" style="width: 9rem;" class="form-control" placeholder="请输入已收款金额">
+                    <input type="text" id="consuWanttoItem" name="consuWanttoItem" style="width: 9rem;" class="form-control" placeholder="请输入意向项目">
                 </div>
             </li>
 
-            <li class="sl_ji">
-                <p>预计升级金额</p>
-                <div class="position-rel">
-                    <input type="text" style="width: 9rem;" class="form-control" placeholder="请输入预计升级金额">
-                </div>
-            </li>
-
-            <li class="sl_ji" style="line-height:inherit">
-                <p>收款在哪里收？</p>
-                <div class="position-rel">
-                    <input type="text" style="width: 9rem;" class="form-control" placeholder="请输入收款在哪里收的？">
-                </div>
-            </li>
             <li class="sl_ji">
                 <p>享受政策</p>
                 <div class="position-rel">
-                    <input type="text" style="width: 9rem;" class="form-control" placeholder="请输入享受政策">
+                    <input type="text" id="enjoyPolicy" name="enjoyPolicy" style="width: 9rem;" class="form-control" placeholder="请输入享受政策">
                 </div>
             </li>
             <li class="sl_ji">
                 <p>服务顾问</p>
                 <div class="position-rel">
-                    <input type="text" style="width: 9rem;" class="form-control" placeholder="请输入服务顾问">
+                    <input type="text" id="serviceConsult" name="serviceConsult" style="width: 9rem;" class="form-control" placeholder="请输入服务顾问">
                 </div>
             </li>
             <li class="sl_ji">
                 <p>顾客分析</p>
                 <div class="position-rel">
-                    <input type="text" style="width: 9rem;" class="form-control" placeholder="请输入顾客分析">
+                    <input type="text" id="consuAnaylise" name="consuAnaylise" style="width: 9rem;" class="form-control" placeholder="请输入顾客分析">
                 </div>
             </li>
             <li class="sl_ji">
                 <p>工作</p>
                 <div class="position-rel">
-                    <input type="text" style="width: 9rem;" class="form-control" placeholder="请输入工作">
+                    <input type="text" id="consuWork" name="consuWork" style="width: 9rem;" class="form-control" placeholder="请输入工作">
                 </div>
             </li>
             <li class="sl_ji">
                 <p>性格</p>
                 <div class="position-rel">
-                    <input type="text" style="width: 9rem;" class="form-control" placeholder="请输入性格">
+                    <input type="text" id="consuCharacter" name="consuCharacter" style="width: 9rem;" class="form-control" placeholder="请输入性格">
                 </div>
             </li>
             <li class="sl_ji">
                 <p>年收入</p>
                 <div class="position-rel">
-                    <input type="text" style="width: 9rem;" class="form-control" placeholder="请输入年收入">
+                    <input type="text" id="consuIncome" name="consuIncome" style="width: 9rem;" class="form-control" placeholder="请输入年收入">
                 </div>
             </li>
             <li class="sl_ji">
                 <p>消费价值观</p>
                 <div class="position-rel">
-                    <input type="text" style="width: 9rem;" class="form-control" placeholder="请输入消费价值观">
+                    <input type="text" id="consuValue" name="consuValue" style="width: 9rem;" class="form-control" placeholder="请输入消费价值观">
                 </div>
             </li>
             <li class="sl_ji">
                 <p>铺垫次数</p>
                 <div class="position-rel">
-                    <input type="text" style="width: 9rem;" class="form-control" placeholder="请输入铺垫次数">
+                    <input type="text" id="consuPreCount" name="consuPreCount" style="width: 9rem;" class="form-control" placeholder="请输入铺垫次数">
                 </div>
             </li>
             <li class="sl_ji" style="line-height:inherit">
                 <p>最大的抗拒点是什么</p>
                 <div class="position-rel">
-                    <input type="text" style="width: 9rem;" class="form-control" placeholder="请输入最大的抗拒点是什么">
+                    <input type="text" id="consuMaxReject" name="consuMaxReject" style="width: 9rem;" class="form-control" placeholder="请输入最大的抗拒点是什么">
                 </div>
             </li>
             <li class="sl_ji">
                 <p>备注</p>
                 <div class="position-rel">
-                    <input type="text" style="width: 9rem;" class="form-control" placeholder="请输入备注">
+                    <input type="text" id="remark" name="remark" style="width: 9rem;" class="form-control" placeholder="请输入备注">
                 </div>
             </li>
         </ul>
+        </form>
     </div>
     <div class="btn4">
         <a style="margin-bottom: 5rem;" href="javascript:void(0)" onclick="sub();" class="com_btn1 sl_tixian">确认</a>
@@ -174,20 +130,25 @@
 </body>
 <script type="text/javascript">
     function sub() {
-    	alert('test');
+    	
+	    var formdata = $("#custConsumer").serialize();
+
+		//JSON.stringify(formdata)
+		
         var data = {};
         $.ajax({
             cache: false,
             type: "POST",
-            url: "${pathWeb }/customer/list.do",
-            data: data,
+            url: "${pathWeb }/customer/add.do",
+            data: formdata,
             async: false,
             error: function (request) {
                 alert("系统繁忙，请稍后重试");
             },
             success: function (data) {
                 if (data.code == "200") {
-                    window.location.reload();
+                    //window.location.reload();
+                	 openPage("${pathWeb }/customer/list.do");
                 }
             }
         });

@@ -16,10 +16,12 @@ import tk.mybatis.spring.annotation.MapperScan;
 @MapperScan(basePackages = "com.hmn.ym.dao.mapper")
 public class ApplicationConsole extends SpringBootServletInitializer {
 
+
+
     public static void main(String[] args) throws Exception {
         SpringApplication.run(ApplicationConsole.class, args);
 
-        log.info("======================启动成功======================");
+        log.info("======================启动成功 http://localhost:8091/ym/login.do ======================");
     }
 
     @Override
