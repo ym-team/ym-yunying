@@ -21,11 +21,6 @@
             <artifactId>ym-common</artifactId>
             <version>${ym.version}</version>
         </dependency>
-        <dependency>
-            <groupId>com.hmn.ym.dao</groupId>
-            <artifactId>ym-dao</artifactId>
-            <version>${ym.version}</version>
-        </dependency>
         <!-- ym end -->
 
         <!-- Spring Boot  begin -->
@@ -48,6 +43,35 @@
             <scope>test</scope>
         </dependency>
         <!-- Spring Boot  end -->
+
+        <!-- Spring Boot Mybatis 依赖 -->
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>${mybatis.spring.boot.starter.version}</version>
+        </dependency>
+
+        <!-- pagehelper -->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper-spring-boot-starter</artifactId>
+            <version>1.2.3</version>
+        </dependency>
+
+        <!-- MySQL 连接驱动依赖 -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.connector.version}</version>
+        </dependency>
+
+        <!--  mybatis -->
+        <dependency>
+            <groupId>tk.mybatis</groupId>
+            <artifactId>mapper-spring-boot-starter</artifactId>
+            <version>2.1.5</version>
+        </dependency>
+
 
         <dependency>
             <groupId>commons-io</groupId>

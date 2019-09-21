@@ -1,4 +1,4 @@
-package com.hmn.ym.dao.entity;
+package com.hmn.ym.dao.entity.vo;
 
 import lombok.Data;
 

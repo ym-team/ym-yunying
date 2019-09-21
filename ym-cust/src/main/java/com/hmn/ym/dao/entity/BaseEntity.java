@@ -10,7 +10,7 @@ import java.util.Date;
  * @author xfz
  */
 @Data
-public class BaseVo {
+public class BaseEntity {
     /**
      * 主键Id
      */
@@ -21,6 +21,10 @@ public class BaseVo {
      */
     private Integer createId;
     /**
+     * 创建人名称
+     */
+    private Integer createName;
+    /**
      * 创建时间
      */
     private Date createTime;
@@ -28,6 +32,10 @@ public class BaseVo {
      * 更新人Id
      */
     private Integer updateId;
+    /**
+     * 更新人名称
+     */
+    private Integer updateName;
     /**
      * 更新时间
      */

@@ -1,57 +1,55 @@
 package com.hmn.ym.controller;
 
-import java.io.IOException;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import com.hmn.ym.service.IShopService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.hmn.ym.service.IShopService;
-
-import lombok.extern.slf4j.Slf4j;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 
 /**
  * 业务员邀请店门入驻控制器
- * @author oymw
  *
+ * @author oymw
  */
 @Slf4j
 @Controller
 @RequestMapping("/business/store/")
 public class StoreController extends BaseController {
 
-	@Autowired
-	private IShopService shopService;
-	/**
-	 * 业务员邀请入驻
-	 */
+    /**
+     * 业务员邀请入驻
+     */
     private static final String addstoreenterview = "/business/addenterview";
-    
     /**
      * 业务员查看店门入驻详情
      */
-    private static final String queryenterdtl  = "business/enterdtl";
+    private static final String queryenterdtl = "business/enterdtl";
+    @Autowired
+    private IShopService shopService;
 
     /**
      * 业务员邀请店门入驻
+     *
      * @param request
      * @param response
      * @return
      */
     @RequestMapping(value = "StoreEnterView.do")
     public String StoreEnterView(HttpServletRequest request, HttpServletResponse response) {
-       log.info("业务员邀请店门入驻");
+        log.info("业务员邀请店门入驻");
 
         return addstoreenterview;
     }
-    
-    
+
+
     /**
      * 新增
+     *
      * @param request
      * @param response
      * @return
@@ -59,10 +57,9 @@ public class StoreController extends BaseController {
      */
     @RequestMapping(value = "saveEnter.do")
     public void saveEnter(HttpServletRequest request, HttpServletResponse response) {
-    	
+
 //    	shopService.insert(t)
     }
-    
 
 
     @RequestMapping(value = "StoreRegister.do")

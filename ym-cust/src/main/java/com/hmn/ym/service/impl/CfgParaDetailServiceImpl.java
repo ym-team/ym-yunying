@@ -2,7 +2,6 @@ package com.hmn.ym.service.impl;
 
 import com.hmn.ym.dao.entity.po.CfgParaDetail;
 import com.hmn.ym.dao.mapper.CfgParaDetailMapper;
-import com.hmn.ym.service.BaseServiceImpl;
 import com.hmn.ym.service.ICfgParaDetailService;
 import com.hmn.ym.utils.CachCfgParaUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +19,6 @@ import java.util.List;
 @Service
 @Transactional
 public class CfgParaDetailServiceImpl extends BaseServiceImpl<CfgParaDetail, CfgParaDetailMapper> implements ICfgParaDetailService {
-
     @Autowired
     private CfgParaDetailMapper cfgParaDetailMapper;
 
@@ -33,6 +31,6 @@ public class CfgParaDetailServiceImpl extends BaseServiceImpl<CfgParaDetail, Cfg
     }
 
     private List<CfgParaDetail> selectCfgParaDetailEntityList() {
-        return cfgParaDetailMapper.selectCfgParaDetailEntityList();
+        return cfgParaDetailMapper.selectAll();
     }
 }

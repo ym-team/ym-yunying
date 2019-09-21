@@ -4,9 +4,8 @@ import com.google.common.collect.Lists;
 import com.hmn.ym.dao.entity.po.Doctor;
 import com.hmn.ym.dao.entity.vo.BaseQueryVo;
 import com.hmn.ym.dao.entity.vo.DataTablePage;
-import com.hmn.ym.dao.entity.vo.shop.ShopVo;
+import com.hmn.ym.dao.entity.vo.ShopVo;
 import com.hmn.ym.dao.mapper.DoctorMapper;
-import com.hmn.ym.service.BaseServiceImpl;
 import com.hmn.ym.service.IShopService;
 import org.springframework.stereotype.Service;
 

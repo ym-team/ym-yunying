@@ -1,7 +1,6 @@
 package com.hmn.ym.service;
 
 import com.hmn.ym.dao.entity.po.User;
-import com.hmn.ym.service.BaseService;
 
 public interface IUserService extends BaseService<User> {
 

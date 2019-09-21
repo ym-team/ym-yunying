@@ -4,8 +4,7 @@ package com.hmn.ym.service;
 import com.hmn.ym.dao.entity.po.Doctor;
 import com.hmn.ym.dao.entity.vo.BaseQueryVo;
 import com.hmn.ym.dao.entity.vo.DataTablePage;
-import com.hmn.ym.dao.entity.vo.shop.SalesManVo;
-import com.hmn.ym.service.BaseService;
+import com.hmn.ym.dao.entity.vo.SalesManVo;
 
 public interface ISalesManService extends BaseService<Doctor> {
 

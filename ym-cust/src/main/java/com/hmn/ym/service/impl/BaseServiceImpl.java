@@ -1,5 +1,6 @@
-package com.hmn.ym.service;
+package com.hmn.ym.service.impl;
 
+import com.hmn.ym.service.BaseService;
 import org.apache.ibatis.session.RowBounds;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
