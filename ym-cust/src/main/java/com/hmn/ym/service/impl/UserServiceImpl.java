@@ -1,10 +1,11 @@
 package com.hmn.ym.service.impl;
 
 import com.hmn.ym.dao.entity.po.User;
+import com.hmn.ym.dao.entity.vo.FindPasswordVo;
+import com.hmn.ym.dao.entity.vo.RegisterVo;
 import com.hmn.ym.dao.mapper.UserMapper;
 import com.hmn.ym.service.IUserService;
 import com.hmn.ym.utils.PasswordUtils;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,15 +20,25 @@ public class UserServiceImpl extends BaseServiceImpl<User, UserMapper> implement
 
     @Transactional
     @Override
-    public void save(User vo) {
-        this.exit(vo.getPhone());
+    public User register(RegisterVo vo) {
+        this.exit(vo.getUserPhone());
 
         User user = new User();
-        BeanUtils.copyProperties(vo, user);
-        user.setPassword(PasswordUtils.getPassword(vo.getPassword()));
+        user.setPhone(vo.getUserPhone());
+        user.setPassword(vo.getUserPassword());
+        user.setType(1);
+        user.setInviteCode(vo.getInviteUserid());
+        User parent = this.getByInviteCode(vo.getInviteUserid());
+        if (parent != null) {
+            user.setParentId(parent.getId());
+        }
+        user.setPassword(PasswordUtils.getPassword(user.getPassword()));
         user.setCreateTime(new Date());
+        user.setUpdateTime(new Date());
 
         userMapper.insertSelective(user);
+
+        return user;
     }
 
     @Transactional
@@ -45,6 +56,21 @@ public class UserServiceImpl extends BaseServiceImpl<User, UserMapper> implement
 
         return user.getId();
     }
+
+    @Transactional
+    @Override
+    public void resetPassword(FindPasswordVo vo) {
+        User user = this.getByUserAccount(vo.getUserPhone());
+        if (user == null) {
+            throw new RuntimeException("手机号码不存在.");
+        }
+        User update = new User();
+        update.setId(user.getId());
+        update.setPassword(PasswordUtils.getPassword(vo.getUserPassword()));
+        update.setUpdateTime(new Date());
+        userMapper.updateByPrimaryKeySelective(user);
+    }
+
 
     @Transactional
     @Override

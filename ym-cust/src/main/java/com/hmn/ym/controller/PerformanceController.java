@@ -1,20 +1,24 @@
 package com.hmn.ym.controller;
 
+import com.hmn.ym.dao.entity.po.User;
+import com.hmn.ym.dao.entity.vo.SaleManVo;
 import com.hmn.ym.service.ISaleManService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 @Controller
 @RequestMapping("performance/")
 public class PerformanceController extends BaseController {
     @Autowired
-    private ISaleManService salesManService;
+    private ISaleManService saleManService;
 
     /**
      * performanceView
@@ -30,7 +34,10 @@ public class PerformanceController extends BaseController {
     }
 
     @GetMapping("teamView.do")
-    public String teamView(HttpServletRequest request, HttpServletResponse response) {
+    public String teamView(HttpServletRequest request, HttpServletResponse response, Model model) {
+        User user = this.getUser(request);
+        List<SaleManVo> saleMans = saleManService.getByParentId(user.getId());
+        model.addAttribute("saleMans", saleMans);
 
         return "/salesman/team";
     }

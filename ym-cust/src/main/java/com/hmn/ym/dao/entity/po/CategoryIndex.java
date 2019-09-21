@@ -55,8 +55,8 @@ public class CategoryIndex {
     /**
      * 创建用户id
      */
-    @Column(name = "user_id")
-    private Long userId;
+    @Column(name = "create_id")
+    private Long createId;
 
     /**
      * 是否展示前端页面1展示；0不展示
@@ -69,4 +69,10 @@ public class CategoryIndex {
      */
     @Column(name = "is_sort")
     private Integer isSort;
+
+    /**
+     * 更新人
+     */
+    @Column(name = "update_id")
+    private Long updateId;
 }

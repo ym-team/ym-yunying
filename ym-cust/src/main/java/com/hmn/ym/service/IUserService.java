@@ -1,6 +1,8 @@
 package com.hmn.ym.service;
 
 import com.hmn.ym.dao.entity.po.User;
+import com.hmn.ym.dao.entity.vo.FindPasswordVo;
+import com.hmn.ym.dao.entity.vo.RegisterVo;
 
 /**
  * @author xfz
@@ -13,7 +15,7 @@ public interface IUserService extends BaseService<User> {
      *
      * @param vo
      */
-    void save(User vo);
+    User register(RegisterVo vo);
 
     /**
      * 保存
@@ -21,6 +23,13 @@ public interface IUserService extends BaseService<User> {
      * @param phone
      */
     Long addUserByPhone(String phone);
+
+    /**
+     * 重置密码
+     *
+     * @param vo
+     */
+    void resetPassword(FindPasswordVo vo);
 
     /**
      * 删除

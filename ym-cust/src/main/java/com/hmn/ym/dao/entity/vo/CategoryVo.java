@@ -3,8 +3,6 @@ package com.hmn.ym.dao.entity.vo;
 import com.hmn.ym.dao.entity.BaseEntity;
 import lombok.Data;
 
-import java.util.Date;
-
 /**
  * <p>
  *
@@ -20,12 +18,10 @@ public class CategoryVo extends BaseEntity {
      * 类别名称
      */
     private String categoryName;
-
     /**
      * 状态1有效；0无效
      */
     private Integer status;
-
     /**
      * 备注描述
      */

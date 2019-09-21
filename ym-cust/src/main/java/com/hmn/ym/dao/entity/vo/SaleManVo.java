@@ -59,7 +59,15 @@ public class SaleManVo extends BaseEntity {
     private String remark;
 
     /**
+     * 业务员级别
+     */
+    private String level;
+    /**
      * 个人提成比例分配
      */
     private Double rate;
+    /**
+     * 个人业绩
+     */
+    private Integer achievement;
 }

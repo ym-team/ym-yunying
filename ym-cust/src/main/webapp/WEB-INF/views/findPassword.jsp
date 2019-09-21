@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-         pageEncoding="utf-8" %>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,59 +10,57 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <%@include file="taglibs.jsp" %>
 <body>
 <div class="ui-page ui-page-theme-a ui-page-active" data-role="page">
-    <form name="form1" id="form1" action="${pathWeb}/resetPassword.do"
-          data-ajax="false" method="post">
-        <input type="hidden" name="publickey" id="publickey"
-               value="${publickey}"/>
-        <!-- header -->
+    <form name="form1" id="form1" action="${pathWeb}/resetPassword.do" data-ajax="false" method="post">
+        <input type="hidden" name="publickey" id="publickey" value="${publickey}"/>
         <div class="dl_con">
             <h2>
                 <img src="${configjscss }/images/dl-logo.png">
             </h2>
             <ul>
-                <li><i><img src="${configjscss }/images/zc-ico2.png"></i><span><input
-                        id="userPhone" name="userPhone" type="text" placeholder="手机号"></span></li>
-                <li><i><img src="${configjscss }/images/zc-ico3.png"></i><span><input
-                        style="width: 50%; height: 2.5rem; color: #666 !important;"
-                        class="hqyzm" type="text" placeholder="请输入图形验证码" name="captcha"
-                        id="captcha" maxlength="4"><img
-                        src="${path }/captcha.svl" id="captchaImg"
-                        style="float: right; width: 3.5rem; height: 2rem; margin-top: 0.7rem; margin-right: 0.5rem;"
-                        onclick="this.src='${path}/captcha.svl?d='+new Date()*1"
-                        title="验证码"/></span></li>
-                <li><i><img src="${configjscss }/images/zc-ico3.png"></i><span><input
-                        name="smsCode" id="smsCode" style="width: 50%;" type="text"
-                        placeholder="验证码"><a class="hqyzm" id="sendCode"
-                                             class="hqyzm" href="javascript:void(0)" onclick="sendMsg()">获取验证码</a></span></li>
-                <li><i><img src="${configjscss }/images/dl-ico.png"></i><span><input
-                        id="userPassword" name="userPassword" type="password"
-                        placeholder="设置密码"></span></li>
-                <li style="border: none;"><i><img
-                        src="${configjscss }/images/dl-ico.png"></i><span><input
-                        id="passwordr" name="passwordr" type="password" placeholder="确认密码"></span></li>
+                <li>
+                    <i><img src="${configjscss }/images/zc-ico2.png"></i>
+                    <span><input id="userPhone" name="userPhone" type="text" placeholder="手机号"></span>
+                </li>
+                <li>
+                    <i><img src="${configjscss }/images/zc-ico3.png"></i>
+                    <span>
+                        <input style="width: 50%; height: 2.5rem; color: #666 !important;background:none;" class="hqyzm" type="text" placeholder="请输入图形验证码" name="captcha" id="captcha" maxlength="4">
+                        <img src="${path }/captcha.do" id="captchaImg" style="float: right; width: 3.5rem; height: 2rem; margin-top: 0.7rem; margin-right: 0.5rem;" onclick="this.src='${path}/captcha.do?d='+new Date()*1" title="验证码"/>
+                    </span>
+                </li>
+                <li>
+                    <i><img src="${configjscss }/images/zc-ico3.png"></i>
+                    <span>
+                        <input name="smsCode" id="smsCode" style="width: 50%;" type="text" placeholder="验证码">
+                        <a class="hqyzm" id="sendCode" class="hqyzm" href="javascript:void(0)" onclick="sendMsg()">获取验证码</a>
+                    </span>
+                </li>
+                <li>
+                    <i><img src="${configjscss }/images/dl-ico.png"></i>
+                    <span><input id="userPassword" name="userPassword" type="password" placeholder="设置密码"></span>
+                </li>
+                <li style="border: none;">
+                    <i><img src="${configjscss }/images/dl-ico.png"></i>
+                    <span><input id="passwordr" name="passwordr" type="password" placeholder="确认密码"></span>
+                </li>
             </ul>
             <div class="btn">
-                <a rel="external" href="javascript:void(0)"
-                   onclick="resetPassword()" class="com_btn">确&nbsp;定</a>
+                <a rel="external" href="javascript:void(0)" onclick="resetPassword()" class="com_btn">确&nbsp;定</a>
             </div>
-
         </div>
     </form>
 </div>
 </body>
 <script type="text/javascript">
     $(document).ready(function () {
-
         var message = '${message}';
         if (message) {
             alert(message);
         }
-
         var success = '${success}';
         if (success) {
             setInterval(openPage("${pathWeb}/login.do"), 3000);
@@ -176,11 +173,12 @@
     }
 
     function resetPassword() {
-        if (checkUserPhone() && checkPassword() && checkPwdRepeat()
-            && captchaValidate()) {
-            form1.userPassword.value = encryptByDES(form1.userPassword.value,
-                form1.publickey.value);
+        if (checkUserPhone() && checkPassword() && checkPwdRepeat() && captchaValidate()) {
+            form1.userPassword.value = encryptByDES(form1.userPassword.value, form1.publickey.value);
             $("#form1").submit();
+
+            openAjax("${pathWeb }/resetPassword.do", $("#form1"), sendSmsCallBack);
+
         }
     }
 </script>
