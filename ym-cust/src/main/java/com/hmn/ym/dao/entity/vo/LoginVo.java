@@ -12,9 +12,9 @@ public class LoginVo {
     /**
      * 用户名
      */
-    private String userName;
+    private String userAccount;
     /**
      * 密码
      */
-    private String password;
+    private String userPassword;
 }
