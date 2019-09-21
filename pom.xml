@@ -49,8 +49,6 @@
 
 	<modules>
 		<module>ym-common</module>
-		<module>ym-dao</module>
-		<module>ym-manager</module>
 		<module>ym-cust</module>
 	</modules>
 
