@@ -287,7 +287,8 @@
                 </c:if>
                 <c:if test="${saleMan.auditStatus == 2}">
                     <c:set value="${fn:length(saleMan.idCard)}" var="cardNumberLen"/>
-                    <input type="text" class="form-control" placeholder="身份证号" ${disabled} name="cardNum" id="cardNum" value="${fn:substring(saleMan.idCard,0,4)}*********${fn:substring(saleMan.idCard,14,cardNumberLen)}">
+                    <input type="text" class="form-control" placeholder="身份证号" ${disabled} name="cardNum" id="cardNum"
+                           value="${fn:substring(saleMan.idCard,0,4)}*********${fn:substring(saleMan.idCard,14,cardNumberLen)}">
                 </c:if>
                 <c:if test="${empty saleMan}">
                     <input type="text" class="form-control" placeholder="身份证号" name="idCard" id="idCard" value="">
@@ -443,7 +444,7 @@
                             $.ajax({
                                 cache: false,
                                 type: "POST",
-                                url: "${pathWeb}/saleMan/upload/testUploadmore",
+                                url: "${pathWeb}/user/uploadFiles",
                                 data: data,
                                 async: false,
                                 error: function (request) {
@@ -483,7 +484,7 @@
                     if (!/\/(?:jpeg|png|gif)/i.test(file.type)) return;
                     var reader = new FileReader();
                     var li = document.createElement("li");
-//	          获取图片大小
+                    // 获取图片大小
                     var size = file.size / 1024 > 1024 ? (~~(10 * file.size / 1024 / 1024)) / 10 + "MB" : ~~(file.size / 1024) + "KB";
                     li.innerHTML = '<div class="progress"><span></span></div><div class="size">' + size + '</div>';
                     $(".img-listfm").append($(li));
@@ -498,7 +499,7 @@
                             upload(result, file.type, $(li));
                             return;
                         }
-//	      图片加载完毕之后进行压缩，然后上传
+                        // 图片加载完毕之后进行压缩，然后上传
                         if (img.complete) {
                             callback();
                         } else {
@@ -517,7 +518,7 @@
                             $.ajax({
                                 cache: false,
                                 type: "POST",
-                                url: "${pathWeb}/saleMan/upload/testUploadmore",
+                                url: "${pathWeb}/user/uploadFiles",
                                 data: data,
                                 async: false,
                                 error: function (request) {
@@ -591,7 +592,7 @@
                             $.ajax({
                                 cache: false,
                                 type: "POST",
-                                url: "${pathWeb}/user/upload/testUploadmore",
+                                url: "${pathWeb}/user/uploadFiles",
                                 data: data,
                                 async: false,
                                 error: function (request) {
@@ -669,7 +670,7 @@
                 var xhr = new XMLHttpRequest();
                 var formdata = getFormData();
                 formdata.append('imagefile', blob);
-                xhr.open('post', '/cupload');
+                //xhr.open('post', '/cupload');
                 xhr.onreadystatechange = function () {
                     if (xhr.readyState == 4 && xhr.status == 200) {
                         var jsonData = JSON.parse(xhr.responseText);
