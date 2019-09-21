@@ -3,7 +3,7 @@ package com.hmn.ym.interceptor;
 import com.hmn.ym.common.Constants;
 import com.hmn.ym.common.annotation.NotNeedSecurity;
 import com.hmn.ym.dao.entity.po.User;
-import com.hmn.ym.service.user.IUserService;
+import com.hmn.ym.service.IUserService;
 import jdk.nashorn.internal.ir.annotations.Reference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

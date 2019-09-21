@@ -1,4 +1,4 @@
-package com.hmn.ym.service.user;
+package com.hmn.ym.service;
 
 import com.hmn.ym.dao.entity.po.User;
 import com.hmn.ym.service.BaseService;

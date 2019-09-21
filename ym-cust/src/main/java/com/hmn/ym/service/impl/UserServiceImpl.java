@@ -1,9 +1,9 @@
-package com.hmn.ym.service.user.impl;
+package com.hmn.ym.service.impl;
 
 import com.hmn.ym.dao.entity.po.User;
 import com.hmn.ym.dao.mapper.UserMapper;
 import com.hmn.ym.service.BaseServiceImpl;
-import com.hmn.ym.service.user.IUserService;
+import com.hmn.ym.service.IUserService;
 import com.hmn.ym.utils.PasswordUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;

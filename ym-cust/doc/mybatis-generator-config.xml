@@ -60,6 +60,11 @@
                         connectionURL="jdbc:mysql://47.106.222.97:3306/ym_home?useUnicode=true&amp;characterEncoding=utf8&amp;serverTimezone=UTC&amp;serverTimezone=Asia/Shanghai"
                         userId="ym_home"
                         password="ym_home_123"/>
+
+        <javaTypeResolver type="com.hmn.ym.common.generator.mapper.JavaTypeResolverImpl">
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
         <!--model包路径-->
         <javaModelGenerator targetPackage="com.hmn.ym.dao.entity.po" targetProject="src/main/java"></javaModelGenerator>
         <!--mapper.xml包路径-->

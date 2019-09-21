@@ -7,7 +7,7 @@ import com.hmn.ym.common.Constants;
 import com.hmn.ym.common.annotation.NotNeedSecurity;
 import com.hmn.ym.dao.entity.po.User;
 import com.hmn.ym.dao.entity.RegisterVo;
-import com.hmn.ym.service.user.IUserService;
+import com.hmn.ym.service.IUserService;
 import com.hmn.ym.utils.Const;
 import com.hmn.ym.utils.des.DesEncrypt;
 import org.springframework.beans.factory.annotation.Autowired;

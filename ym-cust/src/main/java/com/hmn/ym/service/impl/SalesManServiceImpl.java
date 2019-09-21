@@ -1,4 +1,4 @@
-package com.hmn.ym.service.shop.impl;
+package com.hmn.ym.service.impl;
 
 import com.google.common.collect.Lists;
 import com.hmn.ym.dao.entity.po.Doctor;
@@ -7,7 +7,7 @@ import com.hmn.ym.dao.entity.vo.DataTablePage;
 import com.hmn.ym.dao.entity.vo.shop.SalesManVo;
 import com.hmn.ym.dao.mapper.DoctorMapper;
 import com.hmn.ym.service.BaseServiceImpl;
-import com.hmn.ym.service.shop.ISalesManService;
+import com.hmn.ym.service.ISalesManService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

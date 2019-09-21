@@ -5,7 +5,7 @@ import com.hmn.ym.common.annotation.NotNeedSecurity;
 import com.hmn.ym.common.model.BaseResp;
 import com.hmn.ym.dao.entity.po.User;
 import com.hmn.ym.dao.entity.LoginVo;
-import com.hmn.ym.service.user.IUserService;
+import com.hmn.ym.service.IUserService;
 import com.hmn.ym.utils.Const;
 import com.hmn.ym.utils.PasswordUtils;
 import com.hmn.ym.utils.RespUtil;
