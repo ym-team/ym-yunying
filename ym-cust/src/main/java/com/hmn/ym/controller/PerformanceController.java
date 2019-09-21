@@ -36,8 +36,8 @@ public class PerformanceController extends BaseController {
     @GetMapping("teamView.do")
     public String teamView(HttpServletRequest request, HttpServletResponse response, Model model) {
         User user = this.getUser(request);
-        List<SaleMan> saleManList = saleManService.getByParentId(user.getId());
-        model.addAttribute("saleMans", saleManList);
+        List<SaleMan> saleMans = saleManService.getByParentId(user.getId());
+        model.addAttribute("saleMans", saleMans);
 
         return "/salesman/team";
     }

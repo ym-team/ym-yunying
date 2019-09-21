@@ -68,13 +68,19 @@ public class SaleMan {
      * 备注
      */
     private String remark;
-
+    /**
+     * 业务员级别
+     */
+    private String level;
+    /**
+     * 个人提成比例分配
+     */
+    private Double rate;
     /**
      * 创建时间
      */
     @Column(name = "create_time")
     private Date createTime;
-
     /**
      * 创建者Id
      */
@@ -86,9 +92,4 @@ public class SaleMan {
      */
     @Column(name = "update_time")
     private Date updateTime;
-
-    /**
-     * 个人提成比例分配
-     */
-    private Double rate;
 }
