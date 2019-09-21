@@ -21,6 +21,13 @@ public interface ISaleManService extends BaseService<SaleMan> {
      * @param id
      */
     void delete(Integer id);
+
+    /**
+     * 获取业务员
+     *
+     * @param userId
+     */
+    SaleMan getByUserId(Long userId);
 }
 
 

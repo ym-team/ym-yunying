@@ -4,6 +4,14 @@
 <head>
     <meta charset="utf-8">
     <title>身份信息</title>
+    <meta http-equiv="Expires" content="-1">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <%@include file="../taglibs.jsp" %>
     <style>
         * {
             margin: 0;
@@ -171,10 +179,7 @@
             max-height: 30px;
             margin: -4px 0 0 10px;
         }
-    </style>
 
-
-    <style type="text/css">
         .sfzwrap {
             border: 1px solid #ccc;
             border-radius: 8px;
@@ -249,21 +254,9 @@
             padding: 0 9px;
         }
     </style>
-
-
-    <meta http-equiv="Expires" content="-1">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Cache-Control" content="no-cache">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <%@include file="../taglibs.jsp" %>
 </head>
 <body>
 <div class="ui-page ui-page-theme-a ui-page-active" data-role="page">
-
     <header class="jwytz-header">
         <h3>
             <span onclick="history.go(-1)"></span>我的身份<em></em>

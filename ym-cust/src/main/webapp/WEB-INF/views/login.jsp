@@ -23,12 +23,12 @@
             <ul>
                 <li>
                     <i><img src="${configjscss }/images/dl-ico3.png"></i>
-                    <span><input type="number" placeholder="手机号" name="userAccount" id="userAccount" value=""></span>
+                    <span><input type="number" placeholder="手机号" name="userAccount" id="userAccount" value="13711792394"></span>
                 </li>
                 <li style="border: none;">
                     <i><img src="${configjscss }/images/dl-ico.png"></i><span>
                     <input type="hidden" name="publickey" id="publickey" value="${publickey}"/>
-                    <input type="password" placeholder="登录密码" name="userPassword" id="userPassword" value=""></span>
+                    <input type="password" placeholder="登录密码" name="userPassword" id="userPassword" value="qazwsx"></span>
                 </li>
             </ul>
             <div class="btn">
