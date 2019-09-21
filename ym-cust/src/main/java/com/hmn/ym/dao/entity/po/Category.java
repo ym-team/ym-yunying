@@ -20,8 +20,8 @@ public class Category {
     /**
      * 创建者用户id
      */
-    @Column(name = "create_user_id")
-    private Long createUserId;
+    @Column(name = "create_id")
+    private Long createId;
 
     /**
      * 类别名称
@@ -50,4 +50,10 @@ public class Category {
      */
     @Column(name = "update_time")
     private Date updateTime;
+
+    /**
+     * 更新人
+     */
+    @Column(name = "update_id")
+    private Long updateId;
 }

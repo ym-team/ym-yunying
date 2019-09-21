@@ -108,7 +108,20 @@ public class BaseController {
      * @return
      */
     public User getUser(HttpServletRequest request) {
+        return (User) request.getSession().getAttribute(Constants.ADMIN_USER_SESSION);
+    }
+
+    /**
+     * 获取当前登录用户Id
+     *
+     * @param request
+     * @return
+     */
+    public Long getUserId(HttpServletRequest request) {
         User user = (User) request.getSession().getAttribute(Constants.ADMIN_USER_SESSION);
-        return user;
+        if (user != null) {
+            return user.getId();
+        }
+        return null;
     }
 }

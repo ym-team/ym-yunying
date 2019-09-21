@@ -13,8 +13,9 @@
     <result column="descriptor" jdbcType="VARCHAR" property="descriptor" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
-    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="create_id" jdbcType="BIGINT" property="createId" />
     <result column="is_show" jdbcType="INTEGER" property="isShow" />
     <result column="is_sort" jdbcType="INTEGER" property="isSort" />
+    <result column="update_id" jdbcType="BIGINT" property="updateId" />
   </resultMap>
 </mapper>

@@ -1,6 +1,5 @@
 package com.hmn.ym.controller;
 
-import com.hmn.ym.common.Constants;
 import com.hmn.ym.dao.entity.po.SaleMan;
 import com.hmn.ym.dao.entity.po.User;
 import com.hmn.ym.service.ISaleManService;
@@ -29,7 +28,7 @@ public class UserController extends BaseController {
 
     @RequestMapping(value = "userInfoView.do")
     public String userInfoView(HttpServletRequest request, Model model) {
-        User user = (User) request.getSession().getAttribute(Constants.ADMIN_USER_SESSION);
+        User user = this.getUser(request);
         SaleMan saleMan = saleManService.getByUserId(user.getId());
 
         model.addAttribute("saleMan", saleMan);

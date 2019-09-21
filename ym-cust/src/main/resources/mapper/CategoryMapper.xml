@@ -6,11 +6,12 @@
       WARNING - @mbg.generated
     -->
     <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="create_user_id" jdbcType="BIGINT" property="createUserId" />
+    <result column="create_id" jdbcType="BIGINT" property="createId" />
     <result column="category_name" jdbcType="VARCHAR" property="categoryName" />
     <result column="status" jdbcType="INTEGER" property="status" />
     <result column="remark" jdbcType="VARCHAR" property="remark" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="update_id" jdbcType="BIGINT" property="updateId" />
   </resultMap>
 </mapper>
