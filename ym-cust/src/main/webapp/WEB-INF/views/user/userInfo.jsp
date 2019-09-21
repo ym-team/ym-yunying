@@ -262,43 +262,36 @@
             <span onclick="history.go(-1)"></span>我的身份<em></em>
         </h3>
     </header>
-    <c:if test="${user.realnameStatus=='2'||user.realnameStatus=='-1'}">
+    <c:if test="${saleMan.auditStatus=='1'}">
         <c:set value="disabled" var="disabled"/>
     </c:if>
     <div class="wd_con sl_wd_con">
         <ul class="sl_czfs">
             <li class="sl_ji sl_ji1">
-                <c:if test="${user.realnameStatus == 1}">
-                    <input type="text" class="form-control" placeholder="真实姓名" name="realName" id="realName" value="${user.realName}">
+                <c:if test="${saleMan.auditStatus == 1}">
+                    <input type="text" class="form-control" placeholder="真实姓名" name="realName" id="realName" value="${saleMan.realName}">
                 </c:if>
-                <c:if test="${user.realnameStatus == -1}">
-                    <input type="text" class="form-control" placeholder="真实姓名" ${disabled} name="realName" id="realName" value="${fn:substring(user.realName, 0, 1) }****">
-                </c:if>
-                <c:if test="${user.realnameStatus == 2}">
-                    <input type="text" class="form-control" placeholder="真实姓名" ${disabled} name="realName" id="realName" value="${fn:substring(user.realName, 0, 1) }****">
-                </c:if>
-
-                <c:if test="${empty user}">
-                    <input type="text" class="form-control" placeholder="真实姓名" name="realName" id="realName" value="">
+                <c:if test="${saleMan.auditStatus == 2 || saleMan.auditStatus == 3}">
+                    <input type="text" class="form-control" placeholder="真实姓名" ${disabled} name="realName" id="realName" value="${fn:substring(saleMan.realName, 0, 1) }****">
                 </c:if>
             </li>
             <li class="sl_ji sl_ji1">
-                <c:if test="${user.realnameStatus == 1}">
-                    <c:set value="${fn:length(user.cardNum)}" var="cardNumberLen"/>
-                    <input type="text" class="form-control" placeholder="身份证号" name="cardNum" id="cardNum" value="${user.cardNum}">
+                <c:if test="${saleMan.auditStatus == 1}">
+                    <c:set value="${fn:length(saleMan.idCard)}" var="cardNumberLen"/>
+                    <input type="text" class="form-control" placeholder="身份证号" name="idCard" id="idCard" value="${saleMan.idCard}">
                 </c:if>
-                <c:if test="${user.realnameStatus == -1}">
-                    <c:set value="${fn:length(user.cardNum)}" var="cardNumberLen"/>
+                <c:if test="${saleMan.auditStatus == -1}">
+                    <c:set value="${fn:length(saleMan.idCard)}" var="cardNumberLen"/>
+                    <input type="text" class="form-control" placeholder="身份证号" ${disabled} name="idCard" id="idCard"
+                           value="${fn:substring(saleMan.idCard,0,4)}*********${fn:substring(saleMan.idCard,14,cardNumberLen)}">
+                </c:if>
+                <c:if test="${saleMan.auditStatus == 2}">
+                    <c:set value="${fn:length(saleMan.idCard)}" var="cardNumberLen"/>
                     <input type="text" class="form-control" placeholder="身份证号" ${disabled} name="cardNum" id="cardNum"
-                           value="${fn:substring(user.cardNum,0,4)}*********${fn:substring(user.cardNum,14,cardNumberLen)}">
+                           value="${fn:substring(saleMan.idCard,0,4)}*********${fn:substring(saleMan.idCard,14,cardNumberLen)}">
                 </c:if>
-                <c:if test="${user.realnameStatus == 2}">
-                    <c:set value="${fn:length(user.cardNum)}" var="cardNumberLen"/>
-                    <input type="text" class="form-control" placeholder="身份证号" ${disabled} name="cardNum" id="cardNum"
-                           value="${fn:substring(user.cardNum,0,4)}*********${fn:substring(user.cardNum,14,cardNumberLen)}">
-                </c:if>
-                <c:if test="${empty user}">
-                    <input type="text" class="form-control" placeholder="身份证号" name="cardNum" id="cardNum" value="">
+                <c:if test="${empty saleMan}">
+                    <input type="text" class="form-control" placeholder="身份证号" name="idCard" id="idCard" value="">
                 </c:if>
             </li>
         </ul>
@@ -317,10 +310,10 @@
         </div>
 
         <!-- pho fm -->
-        <c:if test="${not empty user}">
-        <div class="sfzwrap prel" style="background-image: url('${path }${user.sfzFm }');">
+        <c:if test="${not empty saleMan}">
+        <div class="sfzwrap prel" style="background-image: url('${path }${saleMan.sfzFm }');">
             </c:if>
-            <c:if test="${empty user}">
+            <c:if test="${empty saleMan}">
             <div class="sfzwrap prel" style="background-image: url('${configjscss }/images/imgs/uppic2.png');">
                 </c:if>
                 <div class="phoes" id="mode2" class="uploader-list">
@@ -328,7 +321,7 @@
                     <input type="file" id="choosefm"/>
                     <input type="hidden" id="sfzfm" name="sfzfm"/>
 
-                    <c:if test="${empty user}">
+                    <c:if test="${empty saleMan}">
                         <div class="hcamera pab" id="uploadfm">
                             <img src="${configjscss }/images/imgs/hcamera.png" alt="">
                         </div>
@@ -339,10 +332,10 @@
             </div>
 
             <!-- pho sc-->
-            <c:if test="${not empty user}">
-            <div class="sfzwrap prel h130" style="background-image: url('${path }${user.sfzSc }');">
+            <c:if test="${not empty saleMan}">
+            <div class="sfzwrap prel h130" style="background-image: url('${path }${saleMan.sfzSc }');">
                 </c:if>
-                <c:if test="${empty user}">
+                <c:if test="${empty saleMan}">
                 <div class="sfzwrap prel h130" style="background-image: url('${configjscss }/images/imgs/uppic3.png');">
                     </c:if>
                     <div class="phoes" id="mode3" class="uploader-list">
@@ -352,7 +345,7 @@
                         <div style="display: none;">
                             <input type="file" id="choosesc"/>
                         </div>
-                        <c:if test="${empty user}">
+                        <c:if test="${empty saleMan}">
                             <div class="hcamera pab" id="uploadsc">
                                 <img src="${configjscss }/images/imgs/hcamera.png" alt="">
                             </div>
@@ -364,21 +357,21 @@
                 </div>
 
                 <div class="btn4">
-                    <c:if test="${empty user}">
+                    <c:if test="${empty saleMan}">
                         <a href="javascript:;" onclick="sub();" data-ajax="false" class="com_btn1 sl_tixian" <c:if
-                            test="${user.realnameStatus == -1}">style="background-color:#cccccc;"</c:if></a>确认</a>
+                            test="${saleMan.auditStatus == -1}">style="background-color:#cccccc;"</c:if></a>确认</a>
                     </c:if>
-                    <c:if test="${user.realnameStatus == 1}">
+                    <c:if test="${saleMan.auditStatus == 1}">
                         <a href="javascript:;" onclick="sub();" data-ajax="false" class="com_btn1 sl_tixian" <c:if
-                            test="${user.realnameStatus == 2}">style="background-color:#cccccc;"</c:if></a>审核未通过</a>
+                            test="${saleMan.auditStatus == 2}">style="background-color:#cccccc;"</c:if></a>审核未通过</a>
                     </c:if>
-                    <c:if test="${user.realnameStatus == -1}">
+                    <c:if test="${saleMan.auditStatus == -1}">
                         <a href="javascript:;" onclick="sub();" data-ajax="false" class="com_btn1 sl_tixian" <c:if
-                            test="${user.realnameStatus == -1}">style="background-color:#cccccc;"</c:if></a>申请中</a>
+                            test="${saleMan.auditStatus == -1}">style="background-color:#cccccc;"</c:if></a>申请中</a>
                     </c:if>
-                    <c:if test="${user.realnameStatus == 2}">
+                    <c:if test="${saleMan.auditStatus == 2}">
                         <a href="javascript:;" onclick="sub();" data-ajax="false" class="com_btn1 sl_tixian" <c:if
-                            test="${user.realnameStatus == 2}">style="background-color:#cccccc;"</c:if></a>已审核</a>
+                            test="${saleMan.auditStatus == 2}">style="background-color:#cccccc;"</c:if></a>已审核</a>
                     </c:if>
                 </div>
             </div>
@@ -453,7 +446,7 @@
                             $.ajax({
                                 cache: false,
                                 type: "POST",
-                                url: "${pathWeb}/user/upload/testUploadmore",
+                                url: "${pathWeb}/saleMan/upload/testUploadmore",
                                 data: data,
                                 async: false,
                                 error: function (request) {
@@ -527,7 +520,7 @@
                             $.ajax({
                                 cache: false,
                                 type: "POST",
-                                url: "${pathWeb}/user/upload/testUploadmore",
+                                url: "${pathWeb}/saleMan/upload/testUploadmore",
                                 data: data,
                                 async: false,
                                 error: function (request) {
