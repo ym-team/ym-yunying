@@ -1,7 +1,5 @@
 package com.hmn.ym.service.impl;
 
-import com.github.pagehelper.Page;
-import com.github.pagehelper.PageHelper;
 import com.hmn.ym.dao.entity.po.CategoryIndex;
 import com.hmn.ym.dao.mapper.CategoryIndexMapper;
 import com.hmn.ym.service.ICategoryIndexService;
@@ -9,13 +7,12 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import tk.mybatis.mapper.entity.Example;
 
 /**
-* @description 业务层
-* @author  xfz
-* @since
-*/
+ * @author xfz
+ * @description 业务层
+ * @since
+ */
 @Service
 public class CategoryIndexServiceImpl extends BaseServiceImpl<CategoryIndex, CategoryIndexMapper> implements ICategoryIndexService {
     @Autowired

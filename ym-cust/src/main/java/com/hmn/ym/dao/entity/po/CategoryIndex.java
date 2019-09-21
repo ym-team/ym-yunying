@@ -1,9 +1,13 @@
 package com.hmn.ym.dao.entity.po;
 
-import java.util.Date;
-import javax.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Table;
+import java.util.Date;
 
 @Getter
 @Setter

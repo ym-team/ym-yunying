@@ -3,8 +3,6 @@ package com.hmn.ym.dao.entity.vo;
 import com.hmn.ym.dao.entity.BaseEntity;
 import lombok.Data;
 
-import java.util.Date;
-
 /**
  * <p>
  *
