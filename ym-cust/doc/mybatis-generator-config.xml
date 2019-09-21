@@ -108,18 +108,6 @@
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
 
-        <table tableName="t_sys_admin" domainObjectName="Admin" mapperName="{0}Mapper">
-            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
-        </table>
-
-        <table tableName="t_sys_admin_role" domainObjectName="AdminRole" mapperName="{0}Mapper">
-            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
-        </table>
-
-        <table tableName="t_sys_role" domainObjectName="Role" mapperName="{0}Mapper">
-            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
-        </table>
-
         <table tableName="t_team" domainObjectName="Team" mapperName="{0}Mapper">
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>

@@ -14,43 +14,38 @@ import java.util.Date;
  * @since 2018-05-28
  */
 @Data
-public class DoctorVo extends BaseVo {
+public class UserVo extends BaseVo {
 
 
     /**
-     * 医生名称
-     */
-    private String name;
-
-    /**
-     * 职位
-     */
-    private String position;
-
-    /**
-     * 头像
-     */
-    private String headImg;
-
-    /**
-     * 联系电话
+     * 手机号码
      */
     private String phone;
 
     /**
-     * 医院Id
+     * 密码
      */
-    private Long hospitalId;
+    private String password;
 
     /**
-     * 备注
+     * 用户类型( 1：业务员  2：店家 3：消费者 )
      */
-    private String remark;
+    private Boolean type;
 
     /**
-     * 创建人Id
+     * 用户状态( 1：有效  2：失效 )
      */
-    private Long createId;
+    private Boolean status;
+
+    /**
+     * 邀请码
+     */
+    private String inviteCode;
+
+    /**
+     * 邀请用户Id
+     */
+    private Long parentId;
 
     /**
      * 创建时间
@@ -58,7 +53,7 @@ public class DoctorVo extends BaseVo {
     private Date createTime;
 
     /**
-     * 更新者Id
+     * 创建者Id
      */
     private Long updateId;
 

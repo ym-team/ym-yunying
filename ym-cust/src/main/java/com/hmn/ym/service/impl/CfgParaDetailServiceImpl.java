@@ -6,18 +6,16 @@ import com.hmn.ym.service.ICfgParaDetailService;
 import com.hmn.ym.utils.CachCfgParaUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
 import java.util.List;
 
 /**
- * @author oymw
- * @date
- * @desc
+ * @author xfz
+ * @description 业务层
+ * @since
  */
 @Service
-@Transactional
 public class CfgParaDetailServiceImpl extends BaseServiceImpl<CfgParaDetail, CfgParaDetailMapper> implements ICfgParaDetailService {
     @Autowired
     private CfgParaDetailMapper cfgParaDetailMapper;

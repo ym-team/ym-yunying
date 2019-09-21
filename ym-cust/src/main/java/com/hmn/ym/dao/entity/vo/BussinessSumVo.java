@@ -14,31 +14,26 @@ import java.util.Date;
  * @since 2018-05-28
  */
 @Data
-public class CfgCooperationRateVo extends BaseVo {
+public class BussinessSumVo extends BaseVo {
 
 
     /**
-     * 合作者用户ID 如医院id 店面id
+     * 业务员id
      */
-    private Long amortizationId;
+    private Long bussinessUserId;
 
     /**
      *
      */
-    private Long status;
+    private Long teamId;
 
     /**
-     * 医院提成比例
+     * 业务员月统计金额
      */
-    private Double rate;
+    private BigDecimal totalAmt;
 
     /**
-     * 提成类型 1医院 2店面
-     */
-    private Integer type;
-
-    /**
-     * 创建时间
+     *
      */
     private Date createTime;
 
@@ -48,17 +43,17 @@ public class CfgCooperationRateVo extends BaseVo {
     private Date updateTime;
 
     /**
-     * 备注信息
+     * 创建者
      */
-    private String remark;
+    private Long createId;
 
     /**
-     * 更新者
+     *
      */
     private Long updateId;
 
     /**
-     * 创建者
+     * 备注信息
      */
-    private Long createId;
+    private String remark;
 }

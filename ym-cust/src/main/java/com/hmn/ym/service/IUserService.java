@@ -2,8 +2,12 @@ package com.hmn.ym.service;
 
 import com.hmn.ym.dao.entity.po.User;
 
+/**
+ * @author xfz
+ * @description 业务层
+ * @since
+ */
 public interface IUserService extends BaseService<User> {
-
     /**
      * 保存
      *
