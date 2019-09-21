@@ -2,7 +2,7 @@ package com.hmn.ym.controller;
 
 import com.google.common.collect.Maps;
 import com.hmn.ym.common.Constants;
-import com.hmn.ym.dao.entities.po.User;
+import com.hmn.ym.dao.entity.po.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.context.request.RequestContextHolder;

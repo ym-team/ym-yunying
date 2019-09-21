@@ -1,6 +1,6 @@
 package com.hmn.ym.service;
 
-import com.hmn.ym.dao.entities.po.CfgParaDetail;
+import com.hmn.ym.dao.entity.po.CfgParaDetail;
 
 /**
  * @author

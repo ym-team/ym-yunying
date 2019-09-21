@@ -1,10 +1,10 @@
 package com.hmn.ym.service.shop.impl;
 
 import com.google.common.collect.Lists;
-import com.hmn.ym.dao.entities.po.Doctor;
-import com.hmn.ym.dao.entities.vo.BaseQueryVo;
-import com.hmn.ym.dao.entities.vo.DataTablePage;
-import com.hmn.ym.dao.entities.vo.shop.ShopVo;
+import com.hmn.ym.dao.entity.po.Doctor;
+import com.hmn.ym.dao.entity.vo.BaseQueryVo;
+import com.hmn.ym.dao.entity.vo.DataTablePage;
+import com.hmn.ym.dao.entity.vo.shop.ShopVo;
 import com.hmn.ym.dao.mapper.DoctorMapper;
 import com.hmn.ym.service.BaseServiceImpl;
 import com.hmn.ym.service.shop.IShopService;

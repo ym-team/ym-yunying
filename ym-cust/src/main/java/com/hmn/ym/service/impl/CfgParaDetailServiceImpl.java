@@ -1,6 +1,6 @@
 package com.hmn.ym.service.impl;
 
-import com.hmn.ym.dao.entities.po.CfgParaDetail;
+import com.hmn.ym.dao.entity.po.CfgParaDetail;
 import com.hmn.ym.dao.mapper.CfgParaDetailMapper;
 import com.hmn.ym.service.BaseServiceImpl;
 import com.hmn.ym.service.ICfgParaDetailService;

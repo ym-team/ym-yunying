@@ -1,6 +1,6 @@
 package com.hmn.ym.service.user.impl;
 
-import com.hmn.ym.dao.entities.po.User;
+import com.hmn.ym.dao.entity.po.User;
 import com.hmn.ym.dao.mapper.UserMapper;
 import com.hmn.ym.service.BaseServiceImpl;
 import com.hmn.ym.service.user.IUserService;

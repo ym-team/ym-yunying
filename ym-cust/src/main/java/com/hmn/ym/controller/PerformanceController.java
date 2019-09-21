@@ -1,5 +1,7 @@
 package com.hmn.ym.controller;
 
+import com.hmn.ym.service.shop.ISalesManService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +13,8 @@ import java.io.IOException;
 @Controller
 @RequestMapping("performance/")
 public class PerformanceController extends BaseController {
+    @Autowired
+    private ISalesManService salesManService;
 
     /**
      * performanceView

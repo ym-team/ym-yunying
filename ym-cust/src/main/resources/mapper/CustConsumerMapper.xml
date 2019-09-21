@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hmn.ym.dao.mapper.CustConsumerMapper">
+  <resultMap id="BaseResultMap" type="com.hmn.ym.dao.entity.po.CustConsumer">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="consu_name" jdbcType="VARCHAR" property="consuName" />
+    <result column="consu_phone" jdbcType="VARCHAR" property="consuPhone" />
+    <result column="shop_id" jdbcType="BIGINT" property="shopId" />
+    <result column="consu_age" jdbcType="INTEGER" property="consuAge" />
+    <result column="consu_confirm_item" jdbcType="VARCHAR" property="consuConfirmItem" />
+    <result column="consu_wantto_item" jdbcType="VARCHAR" property="consuWanttoItem" />
+    <result column="enjoy_policy" jdbcType="VARCHAR" property="enjoyPolicy" />
+    <result column="service_consult" jdbcType="VARCHAR" property="serviceConsult" />
+    <result column="consu_anaylise" jdbcType="VARCHAR" property="consuAnaylise" />
+    <result column="consu_work" jdbcType="VARCHAR" property="consuWork" />
+    <result column="consu_character" jdbcType="VARCHAR" property="consuCharacter" />
+    <result column="consu_income" jdbcType="VARCHAR" property="consuIncome" />
+    <result column="consu_value" jdbcType="VARCHAR" property="consuValue" />
+    <result column="consu_pre_count" jdbcType="VARCHAR" property="consuPreCount" />
+    <result column="consu_max_reject" jdbcType="VARCHAR" property="consuMaxReject" />
+    <result column="bussiness_user_id" jdbcType="BIGINT" property="bussinessUserId" />
+    <result column="consu_status" jdbcType="INTEGER" property="consuStatus" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="create_id" jdbcType="BIGINT" property="createId" />
+    <result column="update_id" jdbcType="BIGINT" property="updateId" />
+  </resultMap>
+</mapper>

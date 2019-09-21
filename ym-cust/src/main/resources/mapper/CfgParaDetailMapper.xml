@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hmn.ym.dao.mapper.CfgParaDetailMapper">
+    <resultMap id="BaseResultMap" type="com.hmn.ym.dao.entity.po.CfgParaDetail">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <result column="PK_ID" jdbcType="VARCHAR" property="pkId"/>
+        <result column="PARA_KEY" jdbcType="VARCHAR" property="paraKey"/>
+        <result column="PARA_VALUE" jdbcType="VARCHAR" property="paraValue"/>
+        <result column="PARA_CODE" jdbcType="VARCHAR" property="paraCode"/>
+        <result column="PARA_NAME" jdbcType="VARCHAR" property="paraName"/>
+        <result column="PARA_DESC" jdbcType="VARCHAR" property="paraDesc"/>
+        <result column="STATE" jdbcType="INTEGER" property="state"/>
+        <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="UP_TIME" jdbcType="TIMESTAMP" property="upTime"/>
+        <result column="REMARKS" jdbcType="VARCHAR" property="remarks"/>
+    </resultMap>
+
+    <sql id="baseColumns">
+		PK_ID,PARA_KEY
+		,
+		PARA_VALUE
+		,
+		PARA_CODE
+		,
+		PARA_NAME
+		,
+		PARA_DESC
+		,
+		STATE
+		,
+		CREATE_TIME
+		,
+		UP_TIME
+		,
+		REMARKS
+	</sql>
+
+    <select id="selectCfgParaDetailEntityList" resultMap="BaseResultMap">
+        select
+        <include refid="baseColumns"/>
+        from cfg_para_detail where 1=1 and state = 1
+    </select>
+</mapper>
