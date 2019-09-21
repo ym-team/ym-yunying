@@ -16,12 +16,6 @@ import java.util.Date;
 @Data
 public class CategoryVo extends BaseEntity {
 
-
-    /**
-     * 创建者用户id
-     */
-    private Long createUserId;
-
     /**
      * 类别名称
      */
@@ -36,14 +30,4 @@ public class CategoryVo extends BaseEntity {
      * 备注描述
      */
     private String remark;
-
-    /**
-     * 创建时间
-     */
-    private Date createTime;
-
-    /**
-     * 更新时间
-     */
-    private Date updateTime;
 }

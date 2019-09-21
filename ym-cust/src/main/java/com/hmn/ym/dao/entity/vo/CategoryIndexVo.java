@@ -3,8 +3,6 @@ package com.hmn.ym.dao.entity.vo;
 import com.hmn.ym.dao.entity.BaseEntity;
 import lombok.Data;
 
-import java.util.Date;
-
 /**
  * <p>
  *
@@ -15,13 +13,6 @@ import java.util.Date;
  */
 @Data
 public class CategoryIndexVo extends BaseEntity {
-
-
-    /**
-     *
-     */
-    private Long id;
-
     /**
      *
      */
@@ -46,21 +37,6 @@ public class CategoryIndexVo extends BaseEntity {
      * 描述
      */
     private String descriptor;
-
-    /**
-     * 创建时间
-     */
-    private Date createTime;
-
-    /**
-     * 更新时间
-     */
-    private Date updateTime;
-
-    /**
-     * 创建用户id
-     */
-    private Long userId;
 
     /**
      * 是否展示前端页面1展示；0不展示
