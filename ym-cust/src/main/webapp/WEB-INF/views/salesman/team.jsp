@@ -34,13 +34,8 @@
                         <ul>
                             <li>
                                 <dl>
-                                    <dt>级别</dt>
-                                    <dd>
-                                        <div class="jjd-w">
-                                            <div class="jjd-n" style="width: 0%;"></div>
-                                        </div>
-                                    </dd>
-                                    <dd>${saleMan.level}</dd>
+                                    <dt style="margin-left: 40px;">级别</dt>
+                                    <dd>&nbsp;<b>${saleMan.level}</b></dd>
                                 </dl>
                             </li>
                             <li>
@@ -50,7 +45,7 @@
                                             加入时间 <b><span><fmt:formatDate value="${saleMan.createTime}" pattern="yyyy-MM-dd"/> </span></b>
                                         </p>
                                         <p>
-                                            个人业绩 <b>100单</b>
+                                            个人业绩 <b>${saleMan.achievement}单</b>
                                         </p>
                                     </dt>
                                     <dd style="float: right; margin-top: 0.3rem;">

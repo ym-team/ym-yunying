@@ -1,6 +1,7 @@
 package com.hmn.ym.service;
 
 import com.hmn.ym.dao.entity.po.SaleMan;
+import com.hmn.ym.dao.entity.vo.SaleManVo;
 
 import java.util.List;
 
@@ -36,7 +37,7 @@ public interface ISaleManService extends BaseService<SaleMan> {
      *
      * @param userId
      */
-    List<SaleMan> getByParentId(Long userId);
+    List<SaleManVo> getByParentId(Long userId);
 }
 
 

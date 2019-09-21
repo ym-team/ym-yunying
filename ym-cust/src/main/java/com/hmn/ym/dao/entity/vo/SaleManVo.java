@@ -66,4 +66,8 @@ public class SaleManVo extends BaseEntity {
      * 个人提成比例分配
      */
     private Double rate;
+    /**
+     * 个人业绩
+     */
+    private Integer achievement;
 }

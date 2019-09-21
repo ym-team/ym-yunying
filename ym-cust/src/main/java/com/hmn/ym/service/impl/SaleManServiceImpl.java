@@ -1,7 +1,11 @@
 package com.hmn.ym.service.impl;
 
+import com.google.common.collect.Lists;
+import com.hmn.ym.dao.entity.po.ConsumeDtl;
 import com.hmn.ym.dao.entity.po.SaleMan;
 import com.hmn.ym.dao.entity.po.User;
+import com.hmn.ym.dao.entity.vo.SaleManVo;
+import com.hmn.ym.dao.mapper.ConsumeDtlMapper;
 import com.hmn.ym.dao.mapper.SaleManMapper;
 import com.hmn.ym.dao.mapper.UserMapper;
 import com.hmn.ym.service.ISaleManService;
@@ -25,6 +29,8 @@ public class SaleManServiceImpl extends BaseServiceImpl<SaleMan, SaleManMapper> 
     private SaleManMapper saleManMapper;
     @Autowired
     private UserMapper userMapper;
+    @Autowired
+    private ConsumeDtlMapper consumeDtlMapper;
 
     @Transactional
     @Override
@@ -57,15 +63,28 @@ public class SaleManServiceImpl extends BaseServiceImpl<SaleMan, SaleManMapper> 
 
 
     @Override
-    public List<SaleMan> getByParentId(Long userId) {
+    public List<SaleManVo> getByParentId(Long userId) {
         Example example = new Example(User.class);
         example.createCriteria().andEqualTo("parentId", userId);
         List<User> userList = userMapper.selectByExample(example);
 
         example = new Example(SaleMan.class);
         example.createCriteria().andIn("userId", userList.stream().map(User::getId).collect(Collectors.toList()));
+        List<SaleMan> saleManList = saleManMapper.selectByExample(example);
 
-        return saleManMapper.selectByExample(example);
+        List<SaleManVo> result = Lists.newArrayList();
+        for (SaleMan sm : saleManList) {
+            SaleManVo vo = new SaleManVo();
+            BeanUtils.copyProperties(sm, vo);
+
+            example = new Example(ConsumeDtl.class);
+            example.createCriteria().andEqualTo("bussinessUserId", sm.getUserId());
+            int total = consumeDtlMapper.selectCountByExample(example);
+            vo.setAchievement(total);
+
+            result.add(vo);
+        }
+        return result;
     }
 }
 
