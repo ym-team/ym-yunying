@@ -287,8 +287,7 @@
                 </c:if>
                 <c:if test="${saleMan.auditStatus == 2}">
                     <c:set value="${fn:length(saleMan.idCard)}" var="cardNumberLen"/>
-                    <input type="text" class="form-control" placeholder="身份证号" ${disabled} name="cardNum" id="cardNum"
-                           value="${fn:substring(saleMan.idCard,0,4)}*********${fn:substring(saleMan.idCard,14,cardNumberLen)}">
+                    <input type="text" class="form-control" placeholder="身份证号" ${disabled} name="cardNum" id="cardNum" value="${fn:substring(saleMan.idCard,0,4)}*********${fn:substring(saleMan.idCard,14,cardNumberLen)}">
                 </c:if>
                 <c:if test="${empty saleMan}">
                     <input type="text" class="form-control" placeholder="身份证号" name="idCard" id="idCard" value="">
@@ -350,8 +349,6 @@
                                 <img src="${configjscss }/images/imgs/hcamera.png" alt="">
                             </div>
                         </c:if>
-
-
                         <div class="sfztip pab">手持身份证照扫描上传</div>
                     </div>
                 </div>
@@ -380,14 +377,14 @@
             <jsp:include page="foot.do?footId=4"></jsp:include>
         </div>
 
-        <script>
+        <script type="text/javascript">
             var filechooser = document.getElementById("choose");
             var filechooserfm = document.getElementById("choosefm");
             var filechoosersc = document.getElementById("choosesc");
-            //    用于压缩图片的canvas
+            // 用于压缩图片的canvas
             var canvas = document.createElement("canvas");
             var ctx = canvas.getContext('2d');
-            //    瓦片canvas
+            // 瓦片canvas
             var tCanvas = document.createElement("canvas");
             var tctx = tCanvas.getContext("2d");
             var maxsize = 100 * 1024;
@@ -411,7 +408,7 @@
                     if (!/\/(?:jpeg|png|gif)/i.test(file.type)) return;
                     var reader = new FileReader();
                     var li = document.createElement("li");
-//          获取图片大小
+                    // 获取图片大小
                     var size = file.size / 1024 > 1024 ? (~~(10 * file.size / 1024 / 1024)) / 10 + "MB" : ~~(file.size / 1024) + "KB";
                     li.innerHTML = '<div class="progress"><span></span></div><div class="size">' + size + '</div>';
                     $(".img-list").append($(li));

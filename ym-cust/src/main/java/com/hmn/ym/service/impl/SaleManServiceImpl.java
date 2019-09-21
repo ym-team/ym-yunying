@@ -28,7 +28,6 @@ public class SaleManServiceImpl extends BaseServiceImpl<SaleMan, SaleManMapper> 
 
             saleManMapper.updateByPrimaryKeySelective(saleMan);
         } else {
-
             SaleMan saleMan = new SaleMan();
             BeanUtils.copyProperties(vo, saleMan);
 
