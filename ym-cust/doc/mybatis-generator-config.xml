@@ -72,6 +72,7 @@
         <!--mapper包路径-->
         <javaClientGenerator targetPackage="com.hmn.ym.dao.mapper" targetProject="src/main/java" type="XMLMAPPER"></javaClientGenerator>
 
+        <!--
         <table tableName="t_bussiness_sum" domainObjectName="BussinessSum" mapperName="{0}Mapper">
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
@@ -123,6 +124,15 @@
         <table tableName="cfg_para_detail" domainObjectName="CfgParaDetail" mapperName="{0}Mapper">
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
+        -->
+        <table tableName="t_category" domainObjectName="Category" mapperName="{0}Mapper">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+
+        <table tableName="t_category_index" domainObjectName="CategoryIndex" mapperName="{0}Mapper">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+
     </context>
 </generatorConfiguration>
 
