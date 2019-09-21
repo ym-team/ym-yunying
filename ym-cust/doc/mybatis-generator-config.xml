@@ -3,8 +3,7 @@
         PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
-    <!--<properties resource="application.properties"/>-->
-    <context id="Mysql" targetRuntime="com.hmn.ym.common.generator.mapper.TkMyBatis3SimpleImpl" defaultModelType="flat">
+    <context id="Mysql" targetRuntime="tk.mybatis.mapper.generator.TkMyBatis3SimpleImpl" defaultModelType="flat">
         <!-- 生成的Java文件的编码 -->
         <property name="javaFileEncoding" value="UTF-8"/>
         <!--处理sql中的`符号-->
@@ -14,13 +13,47 @@
         <property name="javaFormatter" value="org.mybatis.generator.api.dom.DefaultJavaFormatter"/>
         <!-- 格式化XML代码 -->
         <property name="xmlFormatter" value="org.mybatis.generator.api.dom.DefaultXmlFormatter"/>
-        <!-- 生成的pojo，将implements Serializable,为生成的Java模型类添加序列化接口-->
-        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
         <!--添加自定义的继承接口 Mapper-->
         <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
             <property name="mappers" value="tk.mybatis.mapper.common.Mapper"/>
+            <!-- 实现序列化接口 默认false -->
+            <property name="implementSerializableInteface" value="true"/>
+            <!-- setter方法链式调用（返回this） 默认false -->
+            <property name="setterMethodChainEnabled" value="true"/>
+            <!-- 启用Getter注解  默认false-->
+            <property name="needsGetter" value="true"/>
+            <!-- 启用Setter注解  默认false-->
+            <property name="needsSetter" value="true"/>
+            <!-- 启用lombok注解-->
+            <property name="lombok" value="Getter,Setter"/>
         </plugin>
-        <plugin type="com.hmn.ym.common.generator.model.IngoreSetterAndGetterPlugin"/>
+
+        <!--Service interface-->
+        <plugin type="tk.mybatis.mapper.generator.TemplateFilePlugin">
+            <property name="targetProject" value="src/main/java"/>
+            <property name="targetPackage" value="com.hmn.ym.service"/>
+            <property name="templatePath" value="template/Service.ftl"/>
+            <property name="mapperSuffix" value="Service"/>
+            <property name="fileName" value="I${tableClass.shortClassName}${mapperSuffix}.java"/>
+        </plugin>
+
+        <!--Service Impl-->
+        <plugin type="tk.mybatis.mapper.generator.TemplateFilePlugin">
+            <property name="targetProject" value="src/main/java"/>
+            <property name="targetPackage" value="com.hmn.ym.service.impl"/>
+            <property name="templatePath" value="template/ServiceImpl.ftl"/>
+            <property name="mapperSuffix" value="ServiceImpl"/>
+            <property name="fileName" value="${tableClass.shortClassName}${mapperSuffix}.java"/>
+        </plugin>
+
+        <!-- entity vo -->
+        <plugin type="tk.mybatis.mapper.generator.TemplateFilePlugin">
+            <property name="targetProject" value="src/main/java/"/>
+            <property name="targetPackage" value="com.hmn.ym.dao.entity.vo"/>
+            <property name="templatePath" value="template/vo.ftl"/>
+            <property name="mapperSuffix" value="Vo"/>
+            <property name="fileName" value="${tableClass.shortClassName}${mapperSuffix}.java"/>
+        </plugin>
 
         <!--数据源配置-->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"

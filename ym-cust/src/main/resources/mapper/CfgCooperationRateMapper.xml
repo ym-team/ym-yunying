@@ -9,7 +9,7 @@
     <result column="amortization_id" jdbcType="BIGINT" property="amortizationId" />
     <result column="status" jdbcType="BIGINT" property="status" />
     <result column="rate" jdbcType="DOUBLE" property="rate" />
-    <result column="type" jdbcType="BIGINT" property="type" />
+    <result column="type" jdbcType="TINYINT" property="type" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
     <result column="remark" jdbcType="VARCHAR" property="remark" />
