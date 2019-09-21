@@ -2,7 +2,9 @@ package com.hmn.ym.controller;
 
 import com.hmn.ym.common.Constants;
 import com.hmn.ym.dao.entity.po.User;
+import com.hmn.ym.service.ISaleManService;
 import com.hmn.ym.utils.SpringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Controller;
@@ -16,6 +18,8 @@ import java.io.IOException;
 @Controller
 @RequestMapping("user/")
 public class UserController extends BaseController {
+    @Autowired
+    private ISaleManService saleManService;
 
     @RequestMapping("userIndex.do")
     public String userIndex() {
