@@ -1,8 +1,9 @@
 package com.hmn.ym.dao.entity.vo;
 
-import com.see.dao.entity.vo.BaseVo;
+import com.hmn.ym.dao.entity.BaseEntity;
 import lombok.Data;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -14,9 +15,7 @@ import java.util.Date;
  * @since 2018-05-28
  */
 @Data
-public class BussinessSumVo extends BaseVo {
-
-
+public class BussinessSumVo extends BaseEntity {
     /**
      * 业务员id
      */
@@ -31,26 +30,6 @@ public class BussinessSumVo extends BaseVo {
      * 业务员月统计金额
      */
     private BigDecimal totalAmt;
-
-    /**
-     *
-     */
-    private Date createTime;
-
-    /**
-     *
-     */
-    private Date updateTime;
-
-    /**
-     * 创建者
-     */
-    private Long createId;
-
-    /**
-     *
-     */
-    private Long updateId;
 
     /**
      * 备注信息

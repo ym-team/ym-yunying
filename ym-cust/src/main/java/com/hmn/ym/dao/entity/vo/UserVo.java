@@ -1,9 +1,7 @@
 package com.hmn.ym.dao.entity.vo;
 
-import com.see.dao.entity.vo.BaseVo;
+import com.hmn.ym.dao.entity.BaseEntity;
 import lombok.Data;
-
-import java.util.Date;
 
 /**
  * <p>
@@ -14,9 +12,7 @@ import java.util.Date;
  * @since 2018-05-28
  */
 @Data
-public class UserVo extends BaseVo {
-
-
+public class UserVo extends BaseEntity {
     /**
      * 手机号码
      */
@@ -46,19 +42,4 @@ public class UserVo extends BaseVo {
      * 邀请用户Id
      */
     private Long parentId;
-
-    /**
-     * 创建时间
-     */
-    private Date createTime;
-
-    /**
-     * 创建者Id
-     */
-    private Long updateId;
-
-    /**
-     * 更新时间
-     */
-    private Date updateTime;
 }

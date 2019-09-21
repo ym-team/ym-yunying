@@ -1,9 +1,7 @@
 package com.hmn.ym.dao.entity.vo;
 
-import com.see.dao.entity.vo.BaseVo;
+import com.hmn.ym.dao.entity.BaseEntity;
 import lombok.Data;
-
-import java.util.Date;
 
 /**
  * <p>
@@ -14,9 +12,7 @@ import java.util.Date;
  * @since 2018-05-28
  */
 @Data
-public class CfgCooperationRateVo extends BaseVo {
-
-
+public class CfgCooperationRateVo extends BaseEntity {
     /**
      * 合作者用户ID 如医院id 店面id
      */
@@ -38,27 +34,7 @@ public class CfgCooperationRateVo extends BaseVo {
     private Integer type;
 
     /**
-     * 创建时间
-     */
-    private Date createTime;
-
-    /**
-     *
-     */
-    private Date updateTime;
-
-    /**
      * 备注信息
      */
     private String remark;
-
-    /**
-     * 更新者
-     */
-    private Long updateId;
-
-    /**
-     * 创建者
-     */
-    private Long createId;
 }

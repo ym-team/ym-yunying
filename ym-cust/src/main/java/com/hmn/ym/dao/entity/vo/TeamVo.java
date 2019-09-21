@@ -1,6 +1,6 @@
 package com.hmn.ym.dao.entity.vo;
 
-import com.see.dao.entity.vo.BaseVo;
+import com.hmn.ym.dao.entity.BaseEntity;
 import lombok.Data;
 
 import java.util.Date;
@@ -14,9 +14,7 @@ import java.util.Date;
  * @since 2018-05-28
  */
 @Data
-public class TeamVo extends BaseVo {
-
-
+public class TeamVo extends BaseEntity {
     /**
      * 用户表id
      */
@@ -26,16 +24,6 @@ public class TeamVo extends BaseVo {
      *
      */
     private Long parentId;
-
-    /**
-     *
-     */
-    private Date createTime;
-
-    /**
-     *
-     */
-    private Date updateTime;
 
     /**
      * 备注

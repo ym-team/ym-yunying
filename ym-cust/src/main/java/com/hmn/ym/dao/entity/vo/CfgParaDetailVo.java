@@ -1,6 +1,6 @@
 package com.hmn.ym.dao.entity.vo;
 
-import com.see.dao.entity.vo.BaseVo;
+import com.hmn.ym.dao.entity.BaseEntity;
 import lombok.Data;
 
 import java.util.Date;
@@ -14,9 +14,7 @@ import java.util.Date;
  * @since 2018-05-28
  */
 @Data
-public class CfgParaDetailVo extends BaseVo {
-
-
+public class CfgParaDetailVo extends BaseEntity {
     /**
      * 主键ID
      */

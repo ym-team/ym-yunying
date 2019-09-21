@@ -1,6 +1,6 @@
 package com.hmn.ym.dao.entity.vo;
 
-import com.see.dao.entity.vo.BaseVo;
+import com.hmn.ym.dao.entity.BaseEntity;
 import lombok.Data;
 
 import java.util.Date;
@@ -14,8 +14,7 @@ import java.util.Date;
  * @since 2018-05-28
  */
 @Data
-public class CustConsumerVo extends BaseVo {
-
+public class CustConsumerVo extends BaseEntity {
 
     /**
      * 顾客姓名
@@ -106,24 +105,4 @@ public class CustConsumerVo extends BaseVo {
      * 备注
      */
     private String remark;
-
-    /**
-     * 更新时间
-     */
-    private Date updateTime;
-
-    /**
-     * 创建时间
-     */
-    private Date createTime;
-
-    /**
-     * 创建者
-     */
-    private Long createId;
-
-    /**
-     * 更新者
-     */
-    private Long updateId;
 }

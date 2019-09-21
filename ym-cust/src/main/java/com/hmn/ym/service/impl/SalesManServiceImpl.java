@@ -1,34 +1,14 @@
 package com.hmn.ym.service.impl;
 
-import com.google.common.collect.Lists;
 import com.hmn.ym.dao.entity.po.Doctor;
-import com.hmn.ym.dao.entity.vo.BaseQueryVo;
-import com.hmn.ym.dao.entity.vo.DataTablePage;
-import com.hmn.ym.dao.entity.vo.SalesManVo;
 import com.hmn.ym.dao.mapper.DoctorMapper;
 import com.hmn.ym.service.ISalesManService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class SalesManServiceImpl extends BaseServiceImpl<Doctor, DoctorMapper> implements ISalesManService {
     @Autowired
     private DoctorMapper doctorMapper;
 
-    @Override
-    public DataTablePage<SalesManVo> page(BaseQueryVo vo) {
-        List<SalesManVo> list = Lists.newArrayList();
-        for (int i = 0; i < 10; i++) {
-            SalesManVo dVo = new SalesManVo();
-            dVo.setId(i);
-            dVo.setName("江西美容店");
-            dVo.setAddress("江西省刘阳街道330号");
-            dVo.setPhone("13800138000");
-            dVo.setJob("销售");
-            list.add(dVo);
-        }
-        return new DataTablePage<SalesManVo>(vo.getDraw(), 10, list);
-    }
 }

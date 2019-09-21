@@ -1,9 +1,9 @@
 package com.hmn.ym.dao.entity.vo;
 
-import com.see.dao.entity.vo.BaseVo;
+import com.hmn.ym.dao.entity.BaseEntity;
 import lombok.Data;
 
-import java.util.Date;
+import java.math.BigDecimal;
 
 /**
  * <p>
@@ -14,8 +14,7 @@ import java.util.Date;
  * @since 2018-05-28
  */
 @Data
-public class ConsumeDtlVo extends BaseVo {
-
+public class ConsumeDtlVo extends BaseEntity {
 
     /**
      * 项目名称
@@ -58,24 +57,9 @@ public class ConsumeDtlVo extends BaseVo {
     private String attrUrl;
 
     /**
-     * 创建时间
-     */
-    private Date createTime;
-
-    /**
-     * 更新时间
-     */
-    private Date updateTime;
-
-    /**
      * 备注信息
      */
     private String remark;
-
-    /**
-     * 更新人
-     */
-    private Long updateId;
 
     /**
      * 状态：1有效；0无效
@@ -91,9 +75,4 @@ public class ConsumeDtlVo extends BaseVo {
      * 不通过理由
      */
     private String auditReason;
-
-    /**
-     * 创建者id
-     */
-    private Long createId;
 }

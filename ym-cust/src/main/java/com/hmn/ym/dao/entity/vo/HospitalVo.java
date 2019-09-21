@@ -1,6 +1,6 @@
 package com.hmn.ym.dao.entity.vo;
 
-import com.see.dao.entity.vo.BaseVo;
+import com.hmn.ym.dao.entity.BaseEntity;
 import lombok.Data;
 
 import java.util.Date;
@@ -14,9 +14,7 @@ import java.util.Date;
  * @since 2018-05-28
  */
 @Data
-public class HospitalVo extends BaseVo {
-
-
+public class HospitalVo extends BaseEntity {
     /**
      * 医院名称
      */
@@ -46,24 +44,4 @@ public class HospitalVo extends BaseVo {
      * 联系人
      */
     private String contactor;
-
-    /**
-     * 更新者id
-     */
-    private Long updateId;
-
-    /**
-     * 更新时间
-     */
-    private Date updateTime;
-
-    /**
-     * 创建者Id
-     */
-    private Long createId;
-
-    /**
-     * 创建时间
-     */
-    private Date createTime;
 }

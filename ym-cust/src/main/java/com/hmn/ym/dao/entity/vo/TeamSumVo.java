@@ -1,8 +1,9 @@
 package com.hmn.ym.dao.entity.vo;
 
-import com.see.dao.entity.vo.BaseVo;
+import com.hmn.ym.dao.entity.BaseEntity;
 import lombok.Data;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -14,9 +15,7 @@ import java.util.Date;
  * @since 2018-05-28
  */
 @Data
-public class TeamSumVo extends BaseVo {
-
-
+public class TeamSumVo extends BaseEntity {
     /**
      * 团队id
      */

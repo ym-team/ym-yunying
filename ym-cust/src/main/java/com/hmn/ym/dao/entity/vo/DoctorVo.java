@@ -1,9 +1,7 @@
 package com.hmn.ym.dao.entity.vo;
 
-import com.see.dao.entity.vo.BaseVo;
+import com.hmn.ym.dao.entity.BaseEntity;
 import lombok.Data;
-
-import java.util.Date;
 
 /**
  * <p>
@@ -14,9 +12,7 @@ import java.util.Date;
  * @since 2018-05-28
  */
 @Data
-public class DoctorVo extends BaseVo {
-
-
+public class DoctorVo extends BaseEntity {
     /**
      * 医生名称
      */
@@ -46,24 +42,4 @@ public class DoctorVo extends BaseVo {
      * 备注
      */
     private String remark;
-
-    /**
-     * 创建人Id
-     */
-    private Long createId;
-
-    /**
-     * 创建时间
-     */
-    private Date createTime;
-
-    /**
-     * 更新者Id
-     */
-    private Long updateId;
-
-    /**
-     * 更新时间
-     */
-    private Date updateTime;
 }
