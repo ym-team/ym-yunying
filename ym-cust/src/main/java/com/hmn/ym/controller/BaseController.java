@@ -3,6 +3,7 @@ package com.hmn.ym.controller;
 import com.google.common.collect.Maps;
 import com.hmn.ym.common.Constants;
 import com.hmn.ym.dao.entity.po.User;
+import com.hmn.ym.utils.des.DesEncrypt;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -123,5 +124,19 @@ public class BaseController {
             return user.getId();
         }
         return null;
+    }
+
+    public String getSmsCode(HttpServletRequest request) {
+        DesEncrypt desEncrypt = new DesEncrypt();
+        String smsCode = null;
+        Cookie[] cookie = request.getCookies();
+        for (int i = 0; i < cookie.length; i++) {
+            Cookie cook = cookie[i];
+            if (cook.getName().equalsIgnoreCase("smsRand")) {
+                smsCode = desEncrypt.decrypt(cook.getValue());
+                break;
+            }
+        }
+        return smsCode;
     }
 }

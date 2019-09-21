@@ -2,24 +2,23 @@ package com.hmn.ym.controller;
 
 import cn.hutool.captcha.CaptchaUtil;
 import cn.hutool.captcha.CircleCaptcha;
-import com.google.common.collect.Maps;
 import com.hmn.ym.common.Constants;
 import com.hmn.ym.common.annotation.NotNeedSecurity;
 import com.hmn.ym.dao.entity.po.User;
+import com.hmn.ym.dao.entity.vo.FindPasswordVo;
 import com.hmn.ym.dao.entity.vo.RegisterVo;
 import com.hmn.ym.service.IUserService;
+import com.hmn.ym.utils.Assert;
 import com.hmn.ym.utils.Const;
-import com.hmn.ym.utils.des.DesEncrypt;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Date;
 import java.util.Map;
 
 /**
@@ -60,20 +59,8 @@ public class RegisterController extends BaseController {
             model.addAttribute("message", "手机号格式错误");
             return "register";
         }
-        String phoneNum = param.get("userPhone");
-        Map<String, String> params = Maps.newHashMap();
-        params.put("userPhone", phoneNum);
-        DesEncrypt desEncrypt = new DesEncrypt();
-        String smsCode = null;
-        Cookie[] cookie = request.getCookies();
-        for (int i = 0; i < cookie.length; i++) {
-            Cookie cook = cookie[i];
-            if (cook.getName().equalsIgnoreCase("smsRand")) { // 获取键
-                smsCode = desEncrypt.decrypt(cook.getValue().toString()); // 获取值
-                break;
-            }
-        }
-        if ("".equals(smsCode) || null == smsCode) {
+        String smsCode = this.getSmsCode(request);
+        if (StringUtils.isBlank(smsCode)) {
             model.addAttribute("message", "验证码过期");
             return "register";
         }
@@ -89,26 +76,10 @@ public class RegisterController extends BaseController {
         return "register2";
     }
 
-
-    /**
-     * 用户注册
-     */
     @RequestMapping("register.do")
     @NotNeedSecurity
     public String register(RegisterVo vo, HttpServletRequest request) {
-        //添加用户
-        User user = new User();
-        user.setPhone(vo.getUserPhone());
-        user.setPassword(vo.getUserPassword());
-        user.setType(1);
-        user.setInviteCode(vo.getInviteUserid());
-        User parent = userService.getByInviteCode(vo.getInviteUserid());
-        if (parent != null) {
-            user.setParentId(parent.getId());
-        }
-        user.setCreateTime(new Date());
-        user.setUpdateTime(new Date());
-        userService.save(user);
+        User user = userService.register(vo);
         //设置seesion
         request.getSession().setAttribute(Constants.ADMIN_USER_SESSION, user);
 
@@ -134,5 +105,31 @@ public class RegisterController extends BaseController {
             e.printStackTrace();
         }
         req.getSession().setAttribute(CAPTCHA_SESSION, captcha.getCode().toUpperCase());
+    }
+
+    @NotNeedSecurity
+    @RequestMapping(value = "toFindPassword.do")
+    public String toFindPassword(Model model) {
+        model.addAttribute("publickey", Const.DES_PUBLIC_ENCRYPT_KEY);
+
+        return "findPassword";
+    }
+
+    @NotNeedSecurity
+    @RequestMapping(value = "resetPassword.do")
+    public String resetPassword(FindPasswordVo vo, HttpServletRequest request, Model model) {
+        try {
+            Assert.isNotBlank(vo.getUserPhone(), "手机号码必填");
+            Assert.isNotBlank(vo.getCaptcha(), "验证码必填");
+            String smsCode = this.getSmsCode(request);
+            Assert.isNotBlank(smsCode, "短信验证码已过期");
+            Assert.isTrue(smsCode.equals(vo.getSmsCode()), "短信验证码错误");
+
+            userService.resetPassword(vo);
+        } catch (Exception e) {
+            model.addAttribute("message", e.getMessage());
+            return "redirect:/toFindPassword.do";
+        }
+        return "redirect:/login.do";
     }
 }

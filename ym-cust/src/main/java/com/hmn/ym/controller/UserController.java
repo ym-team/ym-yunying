@@ -1,5 +1,6 @@
 package com.hmn.ym.controller;
 
+import com.hmn.ym.common.annotation.NotNeedSecurity;
 import com.hmn.ym.dao.entity.po.SaleMan;
 import com.hmn.ym.dao.entity.po.User;
 import com.hmn.ym.service.ISaleManService;
