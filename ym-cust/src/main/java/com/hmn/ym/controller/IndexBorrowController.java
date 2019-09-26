@@ -24,7 +24,7 @@ import tk.mybatis.mapper.entity.Example;
 @Slf4j
 @Controller
 @RequestMapping("borrow/")
-public class IndexBorrowController {
+public class IndexBorrowController { 
 
 
 	@Autowired
