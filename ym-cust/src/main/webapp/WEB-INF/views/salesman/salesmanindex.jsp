@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>首页</title>
+<title>业务员</title>
 <meta http-equiv="Expires" content="-1">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Cache-Control" content="no-cache">
@@ -301,7 +301,7 @@
 	</div>
 
 
-	<jsp:include page="/foot.do?footId=1"></jsp:include>
+	<jsp:include page="/foot.do?footId=2"></jsp:include>
 
 
 
