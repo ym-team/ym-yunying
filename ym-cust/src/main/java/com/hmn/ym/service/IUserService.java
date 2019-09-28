@@ -21,8 +21,9 @@ public interface IUserService extends BaseService<User> {
      * 保存
      *
      * @param phone
+     * @param parentId
      */
-    Long addUserByPhone(String phone);
+    Long addUserByPhone(String phone, Long parentId);
 
     /**
      * 重置密码

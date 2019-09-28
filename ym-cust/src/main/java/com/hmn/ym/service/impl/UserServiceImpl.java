@@ -43,13 +43,14 @@ public class UserServiceImpl extends BaseServiceImpl<User, UserMapper> implement
 
     @Transactional
     @Override
-    public Long addUserByPhone(String phone) {
+    public Long addUserByPhone(String phone, Long parentId) {
         this.exit(phone);
 
         User user = new User();
         user.setPhone(phone);
         user.setPassword(PasswordUtils.getInitPassword());
         user.setType(2);
+        user.setParentId(parentId);
         user.setCreateTime(new Date());
         user.setUpdateTime(new Date());
         userMapper.insertSelective(user);
