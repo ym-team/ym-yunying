@@ -1,5 +1,7 @@
 package com.hmn.ym.controller;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import com.hmn.ym.dao.entity.po.CustShop;
 import com.hmn.ym.dao.entity.po.User;
 import com.hmn.ym.service.IShopService;
@@ -101,7 +103,9 @@ public class StoreController extends BaseController {
     	Example example = new Example(CustShop.class);
     	Criteria createCriteria = example.createCriteria();
     	createCriteria.andEqualTo("bussinessUserId", userId);
-    	List<CustShop> selectByExample = this.shopService.selectByExample(userId);
+    	String parameter = request.getParameter("pageNum");
+    	PageHelper.startPage(Integer.valueOf(parameter), 10);
+    	Page<CustShop> selectByExample =(Page<CustShop>) this.shopService.selectByExample(example);
         return selectByExample;
     }
     
