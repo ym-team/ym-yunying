@@ -13,49 +13,36 @@ public class IngoreSetterAndGetterPlugin extends PluginAdapter {
 
     @Override
     public boolean validate(List<String> warnings) {
-
         return true;
     }
 
     @Override
-    public boolean modelBaseRecordClassGenerated(TopLevelClass topLevelClass,
-                                                 IntrospectedTable introspectedTable) {
+    public boolean modelBaseRecordClassGenerated(TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
         topLevelClass.addJavaDocLine("import lombok.Getter;");
-       topLevelClass.addJavaDocLine("import lombok.Setter;");
-        //topLevelClass.addJavaDocLine("import lombok.Data;");
-        // topLevelClass.addJavaDocLine("import io.swagger.annotations.ApiModelProperty;");
-        //topLevelClass.addJavaDocLine("import io.swagger.annotations.ApiModel;");
+        topLevelClass.addJavaDocLine("import lombok.Setter;");
         //该代码表示在生成class的时候，向topLevelClass添加一个@Setter和@Getter注解
-       topLevelClass.addAnnotation("@Getter@Setter");
-        // topLevelClass.addAnnotation("@Data");
-        // topLevelClass.addJavaDocLine("@ApiModel(value =\""+ introspectedTable.getFullyQualifiedTable() + "\")");
-        return super.modelBaseRecordClassGenerated(topLevelClass,
-                introspectedTable);
+        topLevelClass.addAnnotation("@Getter@Setter");
+        return super.modelBaseRecordClassGenerated(topLevelClass, introspectedTable);
     }
 
-    //该方法在生成每一个属性的getter方法时候调用，如果我们不想生成getter，直接返回false即可；
+    /**
+     * 该方法在生成每一个属性的getter方法时候调用，如果我们不想生成getter，直接返回false即可；
+     */
     @Override
-    public boolean modelGetterMethodGenerated(Method method,
-                                              TopLevelClass topLevelClass, IntrospectedColumn introspectedColumn,
-                                              IntrospectedTable introspectedTable,
-                                              ModelClassType modelClassType) {
+    public boolean modelGetterMethodGenerated(Method method, TopLevelClass topLevelClass, IntrospectedColumn introspectedColumn, IntrospectedTable introspectedTable, ModelClassType modelClassType) {
         return false;
     }
 
-    //该方法在生成每一个属性的setter方法时候调用，如果我们不想生成setter，直接返回false即可；
+    /**
+     * 该方法在生成每一个属性的setter方法时候调用，如果我们不想生成setter，直接返回false即可；
+     */
     @Override
-    public boolean modelSetterMethodGenerated(Method method,
-                                              TopLevelClass topLevelClass, IntrospectedColumn introspectedColumn,
-                                              IntrospectedTable introspectedTable,
-                                              ModelClassType modelClassType) {
+    public boolean modelSetterMethodGenerated(Method method, TopLevelClass topLevelClass, IntrospectedColumn introspectedColumn, IntrospectedTable introspectedTable, ModelClassType modelClassType) {
         return false;
     }
 
-
     @Override
-    public boolean modelFieldGenerated(Field field, TopLevelClass topLevelClass,
-                                       IntrospectedColumn introspectedColumn, IntrospectedTable introspectedTable,
-                                       ModelClassType modelClassType) {
+    public boolean modelFieldGenerated(Field field, TopLevelClass topLevelClass, IntrospectedColumn introspectedColumn, IntrospectedTable introspectedTable, ModelClassType modelClassType) {
         String remark = introspectedColumn.getRemarks();
         //field.addJavaDocLine("/**111 " + remark + " */");
         //field.addJavaDocLine("@ApiModelProperty(\""+remark+"\")");
@@ -64,6 +51,4 @@ public class IngoreSetterAndGetterPlugin extends PluginAdapter {
         }
         return true;
     }
-
-
 }
