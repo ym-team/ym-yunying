@@ -20,6 +20,10 @@ public class CfgParaUtils {
     public static final String SIGN_NAME = "signName";
 
     /**
+     * 短信签名
+     */
+    public static final String SERVER_URL = "serverUrl";
+    /**
      * 短信模板code
      */
     public static final String TEMPLATE_CODE = "templateCode";
