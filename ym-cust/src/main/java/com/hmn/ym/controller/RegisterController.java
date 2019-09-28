@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 import java.util.Map;
 
 /**
@@ -101,8 +100,8 @@ public class RegisterController extends BaseController {
         // 将图像输出到Servlet输出流中。
         try {
             captcha.write(resp.getOutputStream());
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            logger.error("获取验证码异常." + e.getMessage(), e);
         }
         req.getSession().setAttribute(CAPTCHA_SESSION, captcha.getCode().toUpperCase());
     }
