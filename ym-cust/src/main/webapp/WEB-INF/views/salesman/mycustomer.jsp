@@ -24,13 +24,16 @@
 		</h3>
 	</header>
 		<div class="xq_con">
+		
+			
+		<c:forEach items="${listCustShop}" var="custShop">
 			<div class="jtag">
 				<div class="taglist" id="borrowContent1">
 					<div class="jlc-morelist">
 						<div class="jlc-mlcon clearfix">
 							<ol>
 								<li><span><img alt="" src="${configjscss }/images/toux.png"></span></li>
-								<li><p>张三</p></li>
+								<li><p>${custShop.shopName }</p></li>
 							</ol>
 							<ul>
 								<li><dl>
@@ -58,86 +61,9 @@
 					</div>
 				</div>
 			</div>
+			</c:forEach>
+			
 
-			<div class="jtag">
-				<div class="taglist" id="borrowContent1">
-					<div class="jlc-morelist">
-						<div class="jlc-mlcon clearfix">
-							<ol>
-								<li><span>
-								<img alt="" src="${configjscss }/images/toux.png">
-								</span></li>
-								<li><p>李四</p></li>
-							</ol>
-							<ul>
-								<li><dl>
-										<dt>级别</dt>
-										<dd>
-											<div class="jjd-w">
-												<div class="jjd-n" style="width: 0%;"></div>
-											</div>
-										</dd>
-										<dd>美业老师</dd>
-									</dl></li>
-								<li><dl>
-										<dt>
-											<p>
-												加入时间 <b><span>2019-08-06</span></b>
-											</p>
-											<p>
-												个人业绩 <b>100单</b>
-											</p>
-										</dt>
-										<dd style="float: right; margin-top: 0.3rem;">
-											<div class="jnbtn">
-												<a data-ajax="false" href="">查看</a>
-											</div>
-										</dd>
-									</dl></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="jtag">
-				<div class="taglist" id="borrowContent1">
-					<div class="jlc-morelist">
-						<div class="jlc-mlcon clearfix">
-							<ol>
-								<li><span><img alt="" src="${configjscss }/images/toux.png"></span></li>
-								<li><p>王五</p></li>
-							</ol>
-							<ul>
-								<li><dl>
-										<dt>级别</dt>
-										<dd>
-											<div class="jjd-w">
-												<div class="jjd-n" style="width: 0%;"></div>
-											</div>
-										</dd>
-										<dd>美业老师</dd>
-									</dl></li>
-								<li><dl>
-										<dt>
-											<p>
-												加入时间 <b><span>2019-08-06</span></b>
-											</p>
-											<p>
-												个人业绩 <b>100单</b>
-											</p>
-										</dt>
-										<dd style="float: right; margin-top: 0.3rem;">
-											<div class="jnbtn">
-												<a data-ajax="false" href="">查看</a>
-											</div>
-										</dd>
-									</dl></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
 		</div>
 </body>
 </html>

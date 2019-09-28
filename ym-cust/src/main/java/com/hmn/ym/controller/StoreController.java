@@ -103,10 +103,10 @@ public class StoreController extends BaseController {
     	Example example = new Example(CustShop.class);
     	Criteria createCriteria = example.createCriteria();
     	createCriteria.andEqualTo("bussinessUserId", userId);
-    	String parameter = request.getParameter("pageNum");
-    	PageHelper.startPage(Integer.valueOf(parameter), 10);
-    	Page<CustShop> selectByExample =(Page<CustShop>) this.shopService.selectByExample(example);
-        return selectByExample;
+    	//String parameter = request.getParameter("pageNum");
+    	//PageHelper.startPage(Integer.valueOf(parameter), 10);
+    	///Page<CustShop> selectByExample =(Page<CustShop>) this.shopService.selectByExample(example);
+    	return this.shopService.selectByExample(example);
     }
     
     
