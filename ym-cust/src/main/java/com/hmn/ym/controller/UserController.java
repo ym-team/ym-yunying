@@ -43,7 +43,7 @@ public class UserController extends BaseController {
         User user = this.getUser(request);
         model.addAttribute("inviteCode", user.getInviteCode());
         model.addAttribute("pathUrl", CachCfgParaUtil.getCfgCache(CfgParaUtils.SERVER_URL));
-        return "user/userCode";
+        return "user/usercode";
     }
 
     /**
