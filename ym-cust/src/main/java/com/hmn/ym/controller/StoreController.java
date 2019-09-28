@@ -6,6 +6,9 @@ import com.hmn.ym.service.IShopService;
 import com.hmn.ym.service.IUserService;
 
 import lombok.extern.slf4j.Slf4j;
+import tk.mybatis.mapper.entity.Example;
+import tk.mybatis.mapper.entity.Example.Criteria;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 
 /**
@@ -65,8 +69,6 @@ public class StoreController extends BaseController {
     @RequestMapping(value = "saveEnter.do")
     public void saveEnter(HttpServletRequest request, HttpServletResponse response) {
         log.info("业务员邀请店门入驻");
-
-//    	shopService.insert(t)
     }
 
 
@@ -74,13 +76,7 @@ public class StoreController extends BaseController {
     public String storeRegister(HttpServletRequest request, HttpServletResponse response) throws IOException {
     	log.info("新增店家");
         Long userId = super.getUserId(request);
-        User user = new User();
-        user.setPhone(request.getParameter("shopPhone"));
-        user.setType(2);//1：业务员  2：店家 3：消费者
-        user.setStatus(1);
-        user.setParentId(userId);
-        int insert = this.userService.insert(user);
-        
+        Long userIdNew = this.userService.addUserByPhone(request.getParameter("shopPhone"), userId);
         
         CustShop custShop = new CustShop();
         custShop.setShopName(request.getParameter("shopName"));
@@ -88,12 +84,28 @@ public class StoreController extends BaseController {
         custShop.setShopUserName(request.getParameter("shopUserName"));
         custShop.setShopIdCard(request.getParameter("shopIdCard"));
         custShop.setShopPhone(request.getParameter("shopPhone"));
-        custShop.setBussinessUserId(user.getId());
+        custShop.setBussinessUserId(userId);
+        custShop.setUserId(Long.valueOf(userIdNew));
+        custShop.setShopStatus(1);
+        custShop.setShopXieyiStatus(1);
         this.shopService.insert(custShop);
        
         return "redirect:/borrow/index.do";
     }
-
+    
+    
+    @RequestMapping(value = "storeList.do")
+    @ResponseBody
+    public List<CustShop> storeList(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    	Long userId = super.getUserId(request);
+    	Example example = new Example(CustShop.class);
+    	Criteria createCriteria = example.createCriteria();
+    	createCriteria.andEqualTo("bussinessUserId", userId);
+    	List<CustShop> selectByExample = this.shopService.selectByExample(userId);
+        return selectByExample;
+    }
+    
+    
 
     @RequestMapping(value = "storeLogin.do")
     public String storeLogin(HttpServletRequest request, HttpServletResponse response) throws IOException {
