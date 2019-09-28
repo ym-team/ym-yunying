@@ -49,7 +49,7 @@
 	function loadPage() {
 		pageNum++;
 		data.pageNum = pageNum;
-		openAjax('${pathWeb}/business/store/storeList.do', data,
+		openAjax('${pathWeb}/business/custshop/storeList.do', data,
 				generateCallback);
 	}
 
@@ -97,7 +97,7 @@
 	}
 	
 	function queryDtl(obj){
-		openPage("${pathWeb }/business/store/queryCustShopDtlById?id="+obj);
+		openPage("${pathWeb }/business/custshop/queryCustShopDtlById?id="+obj);
 	}
 </script>
 </html>
