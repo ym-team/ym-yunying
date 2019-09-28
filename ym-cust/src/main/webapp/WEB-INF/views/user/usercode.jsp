@@ -12,6 +12,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <%@include file="../taglibs.jsp" %>
+    <script type="text/javascript" src="${configjscss}/js/jquery.qrcode.min.js"></script>
 </head>
 <body>
 <div class="ui-page ui-page-theme-a ui-page-active" data-role="page">
@@ -24,12 +25,12 @@
     <div class="hd-nrk" style="background: #fff; padding-bottom: 3rem;">
         <div class="yqtg-dak">
             <span>使用微信扫一扫下面您的专属二维码，或点击右上角设置 发送给朋友或分享到朋友圈，好友点击注册即可邀请：</span>
-            <p>
-                <img id="shareImg" src="${configjscss }/images/qcode.png">
+            <p id="sharePId" style="text-align: center;">
+                <%--<img id="shareImg" src="${configjscss }/images/qcode.png">--%>
             </p>
         </div>
         <div class="wxts-n">
-            <i>温馨提示：${pathWeb1 }</i><br/>
+            <i>温馨提示：</i><br/>
             1. 使用过程中遇到问题，请联系客服1234567
         </div>
     </div>
@@ -37,17 +38,10 @@
 </div>
 
 <script type="text/javascript">
-    $.ajax({
-        type: "POST",
-        url: "${pathWeb}/user/createImg.do",
-        data: {},
-        success: function (data) {
-            var invite_id = $("#invite_id").text();
-            if (data.code == '200') {
-                //	$("#shareImg").attr("src", data.msg);
-            }
-        }
-    });
+    $(function () {
+        var url = '${pathUrl}' + "/toRegister?u=${inviteCode}";
+        jQuery('#sharePId').qrcode(url);
+    })
 </script>
 </body>
 </html>
