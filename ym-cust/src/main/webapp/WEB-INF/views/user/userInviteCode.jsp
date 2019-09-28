@@ -22,7 +22,7 @@
             <span onclick="history.go(-1)"></span>我的二维码<em></em>
         </h3>
     </header>
-    <div class="hd-nrk" style="background: #fff; padding-bottom: 3rem;">
+    <div class="hd-nrk" style="background: #fff; padding-bottom: 6rem;">
         <div class="yqtg-dak">
             <span>使用微信扫一扫下面您的专属二维码，或点击右上角设置 发送给朋友或分享到朋友圈，好友点击注册即可邀请：</span>
             <p id="sharePId" style="text-align: center;">
