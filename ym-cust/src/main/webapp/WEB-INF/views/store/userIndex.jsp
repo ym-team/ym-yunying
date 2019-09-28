@@ -37,7 +37,7 @@
 							</div> <span>邀请顾客</span>
 					</a></li>
 					<li><a rel="external"
-						href="${pathWeb }/store/performanceList.do" class="zc_pic">
+						href="${pathWeb }/business/custshop/custshopperformance.do" class="zc_pic">
 							<div class="pic">
 								<img src="${configjscss }/images/yj.png">
 							</div> <span>我的业绩</span>

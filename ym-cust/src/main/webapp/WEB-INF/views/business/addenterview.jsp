@@ -19,7 +19,7 @@
 <div class="ui-page ui-page-theme-a ui-page-active" data-role="page">
 	<header class="jwytz-header">
 		<h3>
-			<span onclick="history.go(-1)"></span>店面信息<em></em>
+			<span onclick="history.go(-1)"></span>店面入驻<em></em>
 		</h3>
 	</header>
 
@@ -76,11 +76,11 @@
 			
 			
 		<a style="margin-bottom: 5rem;" href="javascript:sub()"
-			class="com_btn1 sl_tixian">确认</a>
+			class="com_btn1 sl_tixian">确1认</a>
 			
 			
 	</div>
-	<jsp:include page="/h5/foot.do?footId=4"></jsp:include>
+	<jsp:include page="/foot.do?footId=3"></jsp:include>
 </div>
 </body>
 <script type="text/javascript">

@@ -53,7 +53,7 @@
 							</div> <span>我的业绩</span>
 					</a></li>
 					<li><a rel="external"
-						href="${pathWeb }/performance/myCustomerView.do">
+						href="${pathWeb }/business/custshop/queryCustomerListView.do">
 							<div class="pic">
 								<img src="${configjscss }/images/gk.png">
 							</div> <span>我的店家</span>
@@ -76,7 +76,7 @@
 							<div class="pic">
 								<img src="${configjscss }/images/tc.png">
 							</div> <span>退出</span>
-					</a></li>
+					</a></li> 
 					
 					<li><a rel="external"
 						href="${pathWeb }/user/materialsView.do" class="zc_pic">

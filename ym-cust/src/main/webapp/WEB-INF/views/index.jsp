@@ -90,42 +90,12 @@
 			<div class="jtag">
 					<div class="taglist" id="borrowContent0">
 
-
-
-
-
-
-
 						<div class="jlc-morelist">
 							<div class="jlc-mlcon clearfix">
-								<ol>
 									<li><span><img src="${configjscss }/images/1.jpg" /></span></li>
-									<li><p>日利率11</p></li>
-								</ol>
-								<ul>
-									<li><dl>
-											<dt>
-												<p>
-													每期还款 <b>111￥</b>
-												</p>
-												<p>
-													含日利息 <b>1￥</b>
-												</p>
-											</dt>
-										</dl></li>
-								</ul>
+									<li><p>1222fdsafdsa</p></li>
 							</div>
 						</div>
-						 
-
-
-
-
-
-
-
-
-
 
 						<%-- <div class="jlc-mlcon clearfix">
 							<ul>

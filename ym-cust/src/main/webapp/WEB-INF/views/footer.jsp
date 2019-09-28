@@ -7,7 +7,7 @@
 <ul>
 	<li <c:if test="${ footId == 1 }"> class="current"</c:if> ><a rel="external" href="${pathWeb }/ym/borrow/index.do"><i></i><span>首页</span></a></li>
 	<li  <c:if test="${ footId == 2 }"> class="current"</c:if>><a rel="external" href="${pathWeb }/ym/performance/salesmanindex.do"><i class="one3"></i><span>业务员</span></a></li>
-	<li  <c:if test="${ footId == 3 }"> class="current"</c:if>><a rel="external" href="${pathWeb }/ym/business/store/StoreEnterView.do"><i class="one1"></i><span>店门邀请</span></a></li>
+	<li  <c:if test="${ footId == 3 }"> class="current"</c:if>><a rel="external" href="${pathWeb }/ym/business/custshop/StoreEnterView.do"><i class="one1"></i><span>店门邀请</span></a></li>
 	<li  <c:if test="${ footId == 4 }"> class="current"</c:if>><a rel="external" href="${pathWeb }/ym/user/userIndex.do"><i class="one2"></i><span>我的</span></a></li>
 </ul>
 </div>
