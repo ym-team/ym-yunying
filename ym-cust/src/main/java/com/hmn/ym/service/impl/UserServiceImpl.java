@@ -5,6 +5,7 @@ import com.hmn.ym.dao.entity.vo.FindPasswordVo;
 import com.hmn.ym.dao.entity.vo.RegisterVo;
 import com.hmn.ym.dao.mapper.UserMapper;
 import com.hmn.ym.service.IUserService;
+import com.hmn.ym.utils.InviteCodeGenerator;
 import com.hmn.ym.utils.PasswordUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,7 +28,7 @@ public class UserServiceImpl extends BaseServiceImpl<User, UserMapper> implement
         user.setPhone(vo.getUserPhone());
         user.setPassword(vo.getUserPassword());
         user.setType(1);
-        user.setInviteCode(vo.getInviteUserid());
+        user.setInviteCode(this.getInviteCode());
         User parent = this.getByInviteCode(vo.getInviteUserid());
         if (parent != null) {
             user.setParentId(parent.getId());
@@ -100,5 +101,15 @@ public class UserServiceImpl extends BaseServiceImpl<User, UserMapper> implement
         if (role != null) {
             throw new RuntimeException("该用户手机号已经存在.");
         }
+    }
+
+    public String getInviteCode() {
+        String inviteCode = InviteCodeGenerator.inviteCode();
+        User user = this.getByInviteCode(inviteCode);
+        if (user != null) {
+            logger.info("重新获取 inviteCode=" + inviteCode);
+            this.getInviteCode();
+        }
+        return inviteCode;
     }
 }
