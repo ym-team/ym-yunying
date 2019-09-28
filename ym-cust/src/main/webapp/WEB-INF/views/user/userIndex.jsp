@@ -56,7 +56,7 @@
 						href="${pathWeb }/performance/myCustomerView.do">
 							<div class="pic">
 								<img src="${configjscss }/images/gk.png">
-							</div> <span>我的顾客</span>
+							</div> <span>我的店家</span>
 					</a></li>
 					<li><a rel="external"
 						href="${pathWeb }/performance/myCustView.do">
