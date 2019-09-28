@@ -41,7 +41,7 @@ public class SaleMan {
     private String phone;
 
     /**
-     * 认证状态(1：认证通过  2：未认证  3：认证不通过
+     * 认证状态(1：认证通过  2：未认证  3：认证不通过 4：待审核)
      */
     @Column(name = "audit_status")
     private Integer auditStatus;
