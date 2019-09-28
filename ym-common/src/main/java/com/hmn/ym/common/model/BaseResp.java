@@ -2,13 +2,15 @@ package com.hmn.ym.common.model;
 
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * 公共响应
  *
  * @author xufz
  */
 @Data
-public class BaseResp extends BaseModel {
+public class BaseResp implements Serializable {
     private static final long serialVersionUID = 1L;
     // 响应状态
     private int code;
