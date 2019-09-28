@@ -56,10 +56,6 @@ public class UserController extends BaseController {
 
     /**
      * 根据用户邀请链接生成二维码
-     *
-     * @param request
-     * @param response
-     * @param model
      */
     @RequestMapping("createImg.do")
     public void createImg(HttpServletRequest request, HttpServletResponse response, Model model) {
@@ -89,11 +85,7 @@ public class UserController extends BaseController {
 
 
     /**
-     * @param filepath        base64
-     * @param suffix          后缀文件
-     * @param fileImagePrType 文件类型
-     * @return
-     * @throws Exception
+     * 文件上传
      */
     @RequestMapping("uploadFiles")
     @ResponseBody
@@ -119,5 +111,4 @@ public class UserController extends BaseController {
         }
         return url;
     }
-
 }
