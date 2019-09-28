@@ -75,7 +75,7 @@
 			onclick="sub();" class="com_btn1 sl_tixian">确认</a> -->
 			
 			
-		<a style="margin-bottom: 5rem;" href="${pathWeb }/business/store/StoreRegister.do"
+		<a style="margin-bottom: 5rem;" href="javascript:sub()"
 			class="com_btn1 sl_tixian">确认</a>
 			
 			
@@ -100,7 +100,7 @@
 		  $.ajax({
 				cache : false,
 				type : "POST",
-				url : "${pathWeb }/business/store/saveEnter.do",
+				url : "${pathWeb }/business/store/StoreRegister.do",
 				data : data,
 				async : false,
 				error : function(request) {
