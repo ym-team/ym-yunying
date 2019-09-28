@@ -33,7 +33,7 @@ public class User {
     private Integer type;
 
     /**
-     * 用户状态( 1：有效  2：失效 )
+     * 用户状态( 1：有效（默认）  2：失效 )
      */
     private Integer status;
 
