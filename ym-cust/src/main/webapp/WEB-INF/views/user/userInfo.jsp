@@ -262,36 +262,27 @@
             <span onclick="history.go(-1)"></span>我的身份<em></em>
         </h3>
     </header>
-    <c:if test="${saleMan.auditStatus=='1'}">
+    <c:if test="${saleMan.auditStatus=='1' || saleMan.auditStatus=='4'}">
         <c:set value="disabled" var="disabled"/>
     </c:if>
     <div class="wd_con sl_wd_con">
         <ul class="sl_czfs">
             <li class="sl_ji sl_ji1">
-                <c:if test="${saleMan.auditStatus == 1}">
+                <c:if test="${saleMan.auditStatus == 2 || saleMan.auditStatus == 3}">
                     <input type="text" class="form-control" placeholder="真实姓名" name="realName" id="realName" value="${saleMan.realName}">
                 </c:if>
-                <c:if test="${saleMan.auditStatus == 2 || saleMan.auditStatus == 3}">
+                <c:if test="${saleMan.auditStatus == 1 || saleMan.auditStatus == 4}">
                     <input type="text" class="form-control" placeholder="真实姓名" ${disabled} name="realName" id="realName" value="${fn:substring(saleMan.realName, 0, 1) }****">
                 </c:if>
             </li>
             <li class="sl_ji sl_ji1">
-                <c:if test="${saleMan.auditStatus == 1}">
-                    <c:set value="${fn:length(saleMan.idCard)}" var="cardNumberLen"/>
+                <c:if test="${saleMan.auditStatus == 2 || saleMan.auditStatus == 3}">
                     <input type="text" class="form-control" placeholder="身份证号" name="idCard" id="idCard" value="${saleMan.idCard}">
                 </c:if>
-                <c:if test="${saleMan.auditStatus == -1}">
+                <c:if test="${saleMan.auditStatus == 1 || saleMan.auditStatus == 4}">
                     <c:set value="${fn:length(saleMan.idCard)}" var="cardNumberLen"/>
                     <input type="text" class="form-control" placeholder="身份证号" ${disabled} name="idCard" id="idCard"
                            value="${fn:substring(saleMan.idCard,0,4)}*********${fn:substring(saleMan.idCard,14,cardNumberLen)}">
-                </c:if>
-                <c:if test="${saleMan.auditStatus == 2}">
-                    <c:set value="${fn:length(saleMan.idCard)}" var="cardNumberLen"/>
-                    <input type="text" class="form-control" placeholder="身份证号" ${disabled} name="cardNum" id="cardNum"
-                           value="${fn:substring(saleMan.idCard,0,4)}*********${fn:substring(saleMan.idCard,14,cardNumberLen)}">
-                </c:if>
-                <c:if test="${empty saleMan}">
-                    <input type="text" class="form-control" placeholder="身份证号" name="idCard" id="idCard" value="">
                 </c:if>
             </li>
         </ul>
@@ -310,34 +301,22 @@
         </div>
 
         <!-- pho fm -->
-        <c:if test="${not empty saleMan}">
         <div class="sfzwrap prel" style="background-image: url('${path }${saleMan.sfzFm }');">
-            </c:if>
-            <c:if test="${empty saleMan}">
             <div class="sfzwrap prel" style="background-image: url('${configjscss }/images/imgs/uppic2.png');">
-                </c:if>
                 <div class="phoes" id="mode2" class="uploader-list">
                     <ul class="img-listfm"></ul>
                     <input type="file" id="choosefm"/>
                     <input type="hidden" id="sfzfm" name="sfzfm"/>
-
-                    <c:if test="${empty saleMan}">
-                        <div class="hcamera pab" id="uploadfm">
-                            <img src="${configjscss }/images/imgs/hcamera.png" alt="">
-                        </div>
-                    </c:if>
-
+                    <div class="hcamera pab" id="uploadfm">
+                        <img src="${configjscss }/images/imgs/hcamera.png" alt="">
+                    </div>
                     <div class="sfztip pab">身份证反面照扫描上传</div>
                 </div>
             </div>
 
             <!-- pho sc-->
-            <c:if test="${not empty saleMan}">
             <div class="sfzwrap prel h130" style="background-image: url('${path }${saleMan.sfzSc }');">
-                </c:if>
-                <c:if test="${empty saleMan}">
                 <div class="sfzwrap prel h130" style="background-image: url('${configjscss }/images/imgs/uppic3.png');">
-                    </c:if>
                     <div class="phoes" id="mode3" class="uploader-list">
                         <input type="hidden" id="sfz_sc"/>
                         <input type="hidden" id="sfzsc" name="sfzsc"/>
@@ -345,32 +324,20 @@
                         <div style="display: none;">
                             <input type="file" id="choosesc"/>
                         </div>
-                        <c:if test="${empty saleMan}">
-                            <div class="hcamera pab" id="uploadsc">
-                                <img src="${configjscss }/images/imgs/hcamera.png" alt="">
-                            </div>
-                        </c:if>
+                        <div class="hcamera pab" id="uploadsc">
+                            <img src="${configjscss }/images/imgs/hcamera.png" alt="">
+                        </div>
                         <div class="sfztip pab">手持身份证照扫描上传</div>
                     </div>
                 </div>
 
                 <div class="btn4">
-                    <c:if test="${empty saleMan}">
-                        <a href="javascript:;" onclick="sub();" data-ajax="false" class="com_btn1 sl_tixian" <c:if
-                            test="${saleMan.auditStatus == -1}">style="background-color:#cccccc;"</c:if></a>确认</a>
-                    </c:if>
-                    <c:if test="${saleMan.auditStatus == 1}">
-                        <a href="javascript:;" onclick="sub();" data-ajax="false" class="com_btn1 sl_tixian" <c:if
-                            test="${saleMan.auditStatus == 2}">style="background-color:#cccccc;"</c:if></a>审核未通过</a>
-                    </c:if>
-                    <c:if test="${saleMan.auditStatus == -1}">
-                        <a href="javascript:;" onclick="sub();" data-ajax="false" class="com_btn1 sl_tixian" <c:if
-                            test="${saleMan.auditStatus == -1}">style="background-color:#cccccc;"</c:if></a>申请中</a>
-                    </c:if>
-                    <c:if test="${saleMan.auditStatus == 2}">
-                        <a href="javascript:;" onclick="sub();" data-ajax="false" class="com_btn1 sl_tixian" <c:if
-                            test="${saleMan.auditStatus == 2}">style="background-color:#cccccc;"</c:if></a>已审核</a>
-                    </c:if>
+                    <a href="javascript:;" onclick="sub();" data-audit-status="${saleMan.auditStatus}" data-ajax="false" class="com_btn1 sl_tixian">
+                        <c:if test="${saleMan.auditStatus == 1}">认证通过</c:if>
+                        <c:if test="${saleMan.auditStatus == 2}">提交</c:if>
+                        <c:if test="${saleMan.auditStatus == 3}">认证不通过</c:if>
+                        <c:if test="${saleMan.auditStatus == 4}">待审核</c:if>
+                    </a>
                 </div>
             </div>
             <br>
@@ -378,26 +345,24 @@
             <jsp:include page="foot.do?footId=4"></jsp:include>
         </div>
 
-        <script type="text/javascript">
+        <script>
             var filechooser = document.getElementById("choose");
             var filechooserfm = document.getElementById("choosefm");
             var filechoosersc = document.getElementById("choosesc");
-            // 用于压缩图片的canvas
+            //    用于压缩图片的canvas
             var canvas = document.createElement("canvas");
             var ctx = canvas.getContext('2d');
-            // 瓦片canvas
+            //    瓦片canvas
             var tCanvas = document.createElement("canvas");
             var tctx = tCanvas.getContext("2d");
             var maxsize = 100 * 1024;
             $("#upload").on("click", function () {
                 filechooser.click();
-            })
-                .on("touchstart", function () {
-                    $(this).addClass("touch")
-                })
-                .on("touchend", function () {
-                    $(this).removeClass("touch")
-                });
+            }).on("touchstart", function () {
+                $(this).addClass("touch")
+            }).on("touchend", function () {
+                $(this).removeClass("touch")
+            });
             filechooser.onchange = function () {
                 if (!this.files.length) return;
                 var files = Array.prototype.slice.call(this.files);
@@ -409,7 +374,7 @@
                     if (!/\/(?:jpeg|png|gif)/i.test(file.type)) return;
                     var reader = new FileReader();
                     var li = document.createElement("li");
-                    // 获取图片大小
+//          获取图片大小
                     var size = file.size / 1024 > 1024 ? (~~(10 * file.size / 1024 / 1024)) / 10 + "MB" : ~~(file.size / 1024) + "KB";
                     li.innerHTML = '<div class="progress"><span></span></div><div class="size">' + size + '</div>';
                     $(".img-list").append($(li));
@@ -444,7 +409,7 @@
                             $.ajax({
                                 cache: false,
                                 type: "POST",
-                                url: "${pathWeb}/user/uploadFiles",
+                                url: "${pathWeb}/user/upload/testUploadmore",
                                 data: data,
                                 async: false,
                                 error: function (request) {
@@ -484,7 +449,7 @@
                     if (!/\/(?:jpeg|png|gif)/i.test(file.type)) return;
                     var reader = new FileReader();
                     var li = document.createElement("li");
-                    // 获取图片大小
+//	          获取图片大小
                     var size = file.size / 1024 > 1024 ? (~~(10 * file.size / 1024 / 1024)) / 10 + "MB" : ~~(file.size / 1024) + "KB";
                     li.innerHTML = '<div class="progress"><span></span></div><div class="size">' + size + '</div>';
                     $(".img-listfm").append($(li));
@@ -499,7 +464,7 @@
                             upload(result, file.type, $(li));
                             return;
                         }
-                        // 图片加载完毕之后进行压缩，然后上传
+//	      图片加载完毕之后进行压缩，然后上传
                         if (img.complete) {
                             callback();
                         } else {
@@ -518,7 +483,7 @@
                             $.ajax({
                                 cache: false,
                                 type: "POST",
-                                url: "${pathWeb}/user/uploadFiles",
+                                url: "${pathWeb}/user/upload/testUploadmore",
                                 data: data,
                                 async: false,
                                 error: function (request) {
@@ -592,7 +557,7 @@
                             $.ajax({
                                 cache: false,
                                 type: "POST",
-                                url: "${pathWeb}/user/uploadFiles",
+                                url: "${pathWeb}/user/upload/testUploadmore",
                                 data: data,
                                 async: false,
                                 error: function (request) {
@@ -670,7 +635,7 @@
                 var xhr = new XMLHttpRequest();
                 var formdata = getFormData();
                 formdata.append('imagefile', blob);
-                //xhr.open('post', '/cupload');
+                xhr.open('post', '/cupload');
                 xhr.onreadystatechange = function () {
                     if (xhr.readyState == 4 && xhr.status == 200) {
                         var jsonData = JSON.parse(xhr.responseText);
