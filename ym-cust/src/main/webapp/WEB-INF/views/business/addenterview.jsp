@@ -42,7 +42,7 @@
 			<li class="sl_ji">
 				<p>联系人</p>
 				<div class="position-rel">
-					<input type="number" class="form-control" style="width: 9rem;" id="shopUserName" name="shopUserName"
+					<input type="text" class="form-control" style="width: 9rem;" id="shopUserName" name="shopUserName"
 						placeholder="请输入联系人姓名">
 				</div>
 			</li>
@@ -75,7 +75,7 @@
 			onclick="sub();" class="com_btn1 sl_tixian">确认</a> -->
 			
 			
-		<a style="margin-bottom: 5rem;" href="${pathWeb }/store/StoreRegister.do"
+		<a style="margin-bottom: 5rem;" href="${pathWeb }/business/store/StoreRegister.do"
 			class="com_btn1 sl_tixian">确认</a>
 			
 			

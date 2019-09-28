@@ -65,7 +65,7 @@ public class StoreController extends BaseController {
     @RequestMapping(value = "StoreRegister.do")
     public String storeRegister(HttpServletRequest request, HttpServletResponse response) throws IOException {
         System.out.println("入驻成功");
-        return "redirect:/index.do";
+        return "redirect:/borrow/index.do";
     }
 
 

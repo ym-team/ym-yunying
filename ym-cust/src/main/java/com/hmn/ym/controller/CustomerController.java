@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.alibaba.fastjson.JSON;
 import com.hmn.ym.common.model.BaseResp;
 import com.hmn.ym.dao.entity.po.CustConsumer;
+import com.hmn.ym.dao.entity.po.User;
 import com.hmn.ym.dao.entity.vo.CustConsumerVo;
 import com.hmn.ym.service.ICustConsumerService;
+import com.hmn.ym.service.IUserService;
 import com.hmn.ym.utils.RespUtil;
 
 import cn.hutool.core.bean.BeanUtil;
@@ -27,6 +29,9 @@ import java.io.IOException;
 public class CustomerController extends BaseController {
 	
     protected final Logger logger = LoggerFactory.getLogger(this.getClass());
+    
+    @Autowired
+    private IUserService userService;
 	
 	@Autowired
 	private ICustConsumerService custConsumerService;
@@ -39,20 +44,27 @@ public class CustomerController extends BaseController {
     
     @ResponseBody
     @RequestMapping(value = "add.do")
-    public ResponseEntity<BaseResp> add(CustConsumerVo custConsumerVo) throws IOException {
+    public ResponseEntity<BaseResp> add(CustConsumerVo custConsumerVo,HttpServletRequest request) throws IOException {
     	CustConsumer custConsumer = new CustConsumer();
     	BeanUtil.copyProperties(custConsumerVo, custConsumer);
     	logger.info("aaa:"+ JSON.toJSONString(custConsumer));
+    	
+    	Long userId = super.getUserId(request);
+    	custConsumer.setShopId(userId);
+    	
+    	
     	/**
     	 * shop_id
 
 			bussiness_user_id
 			
-			consu_status
+			
 			
 			还需要设置最少这三个
     	 * 
     	 * */
+    	User selectByPrimaryKey = this.userService.selectByPrimaryKey(userId);
+    	custConsumer.setBussinessUserId(selectByPrimaryKey.getParentId());
     	this.custConsumerService.save(custConsumer);
         return RespUtil.success();
     }
