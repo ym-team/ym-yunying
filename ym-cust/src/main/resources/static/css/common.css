@@ -127,7 +127,7 @@ ul:after{ content:''; display:block;height:0;clear:both;overflow:hidden;}
 	background-size:0.85rem 0.85rem;
 }
 .footer li.current a i.one1{
-	background: url(../images/icon_footer5.png) no-repeat center center;
+	background: url(../images/icon_footer3.png) no-repeat center center;
 	background-size: 0.85rem 0.85rem;
 }
 .footer li.current a i.one2{
@@ -135,7 +135,7 @@ ul:after{ content:''; display:block;height:0;clear:both;overflow:hidden;}
 	background-size: 0.85rem 0.85rem;
 }
 .footer li.current a i.one3{
-	background: url(../images/icon_footer7.png) no-repeat center center;
+	background: url(../images/icon_footer2.png) no-repeat center center;
 	background-size: 0.85rem 0.85rem;
 }
 /* 公用footer */
