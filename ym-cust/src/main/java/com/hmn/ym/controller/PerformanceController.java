@@ -1,8 +1,17 @@
 package com.hmn.ym.controller;
 
+import com.hmn.ym.dao.entity.po.CustConsumer;
+import com.hmn.ym.dao.entity.po.CustShop;
 import com.hmn.ym.dao.entity.po.User;
 import com.hmn.ym.dao.entity.vo.SaleManVo;
+import com.hmn.ym.service.ICustConsumerService;
 import com.hmn.ym.service.ISaleManService;
+import com.hmn.ym.service.IShopService;
+import com.hmn.ym.service.IUserService;
+
+import tk.mybatis.mapper.entity.Example;
+import tk.mybatis.mapper.entity.Example.Criteria;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +28,14 @@ import java.util.List;
 public class PerformanceController extends BaseController {
     @Autowired
     private ISaleManService saleManService;
+    
+    @Autowired
+    private IShopService shopService;
+    @Autowired
+    IUserService userService;
+    
+    @Autowired
+    ICustConsumerService custConsumerService;
 
     /**
      * performanceView
@@ -41,15 +58,38 @@ public class PerformanceController extends BaseController {
 
         return "/salesman/team";
     }
-
+    
+    
     @GetMapping("myCustView.do")
-    public String myCustView(HttpServletRequest request, HttpServletResponse response) {
-
+    public String myCustView(HttpServletRequest request, HttpServletResponse response,Model model) {
+    	//Long userId = super.getUserId(request);
+    	User user = super.getUser(request);
+    	
+    	Example example = new Example(CustShop.class);
+    	Criteria createCriteria = example.createCriteria();
+    	if(user.getType() ==1 ){
+        	createCriteria.andEqualTo("bussinessUserId", user.getId());
+    	}else if(user.getType() ==2){
+    		createCriteria.andEqualTo("shopId", user.getId());
+    	}
+    	//List<CustShop> listCustShop = this.shopService.selectByExample(example);
+    	List<CustConsumer> selectByExample = this.custConsumerService.selectByExample(example);
+    	model.addAttribute("listCustConsumer", selectByExample);
         return "/salesman/mycust";
+    }
+    
+    
+
+    @GetMapping("consumerDetail.do")
+    public String consumerDetail(HttpServletRequest request, HttpServletResponse response,Model model) {
+    	String id = request.getParameter("id");
+    	CustConsumer selectByPrimaryKey = this.custConsumerService.selectByPrimaryKey(id);
+    	model.addAttribute("custConsumer", selectByPrimaryKey);
+        return "/customer/customerView";
     }
 
     @GetMapping("myCustomerView.do")
-    public String myCustomerView(HttpServletRequest request, HttpServletResponse response) {
+    public String myCustomerView(HttpServletRequest request, HttpServletResponse response,Model model) {
 
         return "/salesman/mycustomer";
     }
