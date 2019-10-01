@@ -126,7 +126,6 @@
 		<a style="margin-bottom: 5rem;" href="javascript:sub()"
 			class="com_btn1 sl_tixian">确认</a>
 	</div>
-    <jsp:include page="/h5/foot.do?footId=4"></jsp:include>
 </div>
 </body>
 <script type="text/javascript">
@@ -146,7 +145,7 @@
             success: function (data) {
                 if (data.code == "200") {
                     //window.location.reload();
-                	 openPage("${pathWeb }/customer/list.do");
+                	 openPage("${pathWeb }/performance/myCustView.do");
                 }
             }
         });

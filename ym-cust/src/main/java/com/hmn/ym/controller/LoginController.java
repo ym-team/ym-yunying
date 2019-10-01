@@ -78,6 +78,6 @@ public class LoginController extends BaseController {
             request.getSession().removeAttribute((String) attribute.nextElement());
         }
         request.getSession(false).invalidate();
-        return "redirect:/borrow/index.do";
+        return "redirect:/login.do";
     }
 }
