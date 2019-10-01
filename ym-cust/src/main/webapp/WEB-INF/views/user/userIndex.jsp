@@ -29,7 +29,7 @@
 			
 			<div class="sl_cz9">
 				<a rel="external" data-ajax="false" href="${pathWeb }/index.do" class="com_btn5 ">立即邀请</a> <a
-					rel="external" data-ajax="false" href="${pathWeb }/backMoney/backMoneyListView" class="com_btn5 col">我的服务</a>
+					rel="external" data-ajax="false" href=" ${pathWeb }/appointMent/list.do" class="com_btn5 col">预约列表</a>
 			</div>
 			
 			<div class="list_con">
