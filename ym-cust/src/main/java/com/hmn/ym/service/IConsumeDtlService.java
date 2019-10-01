@@ -21,6 +21,13 @@ public interface IConsumeDtlService extends BaseService<ConsumeDtl> {
      * @param id
      */
     void delete(Integer id);
+
+    /**
+     * 获取数据
+     *
+     * @param appointmentId
+     */
+    ConsumeDtl getByAppointmentId(Long appointmentId);
 }
 
 

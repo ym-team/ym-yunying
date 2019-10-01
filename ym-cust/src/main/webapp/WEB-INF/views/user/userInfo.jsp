@@ -265,15 +265,16 @@
     <input type="hidden" name="saleManId" id="saleManId" value="${saleMan.id}">
     <c:if test="${saleMan.auditStatus=='1' || saleMan.auditStatus=='4'}">
         <c:set value="disabled" var="disabled"/>
+        <c:set value="readonly" var="readonly"/>
     </c:if>
     <div class="wd_con sl_wd_con">
         <ul class="sl_czfs">
             <li class="sl_ji sl_ji1">
                 <c:if test="${saleMan.auditStatus == 2 || saleMan.auditStatus == 3}">
-                    <input type="text" class="form-control" placeholder="真实姓名" name="realName" id="realName" value="${saleMan.realName}">
+                    <input type="text" class="form-control"  placeholder="真实姓名" name="realName" id="realName" value="${saleMan.realName}">
                 </c:if>
                 <c:if test="${saleMan.auditStatus == 1 || saleMan.auditStatus == 4}">
-                    <input type="text" class="form-control" placeholder="真实姓名" ${disabled} name="realName" id="realName" value="${fn:substring(saleMan.realName, 0, 1) }****">
+                    <input type="text" class="form-control" placeholder="真实姓名" ${readonly} name="realName" id="realName" value="${fn:substring(saleMan.realName, 0, 1) }****">
                 </c:if>
             </li>
             <li class="sl_ji sl_ji1">
@@ -282,7 +283,7 @@
                 </c:if>
                 <c:if test="${saleMan.auditStatus == 1 || saleMan.auditStatus == 4}">
                     <c:set value="${fn:length(saleMan.idCard)}" var="cardNumberLen"/>
-                    <input type="text" class="form-control" placeholder="身份证号" ${disabled} name="idCard" id="idCard"
+                    <input type="text" class="form-control" placeholder="身份证号" ${readonly} name="idCard" id="idCard"
                            value="${fn:substring(saleMan.idCard,0,4)}*********${fn:substring(saleMan.idCard,14,cardNumberLen)}">
                 </c:if>
             </li>
