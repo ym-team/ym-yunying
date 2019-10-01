@@ -122,6 +122,9 @@
         </ul>
         </form>
     </div>
+	<div class="btn4">
+		<a style="margin-bottom: 5rem;" href="javascript:sub()"
+			class="com_btn1 sl_tixian">确认</a>
 	</div>
     <jsp:include page="/h5/foot.do?footId=4"></jsp:include>
 </div>

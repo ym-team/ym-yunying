@@ -100,7 +100,7 @@
 		  $.ajax({
 				cache : false,
 				type : "POST",
-				url : "${pathWeb }/business/store/StoreRegister.do",
+				url : "${pathWeb }/business/custshop/StoreRegister.do",
 				data : data,
 				async : false,
 				error : function(request) {
@@ -108,7 +108,8 @@
 				},
 				success : function(data) {
 					if(data.code == "200"){
-						window.location.reload();
+						alert(data.msg);
+						openPage("${pathWeb }/business/custshop/queryCustomerListView.do");
 					}
 				}
 			});

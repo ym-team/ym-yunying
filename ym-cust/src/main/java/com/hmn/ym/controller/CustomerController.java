@@ -24,6 +24,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+
 @Controller
 @RequestMapping("/customer/")
 public class CustomerController extends BaseController {
@@ -35,34 +36,25 @@ public class CustomerController extends BaseController {
 	
 	@Autowired
 	private ICustConsumerService custConsumerService;
+	
+	
+	private static final String customeradd="/customer/customerAddView";
 
-    @GetMapping("toAdd.do")
-    public String toAdd() {
-        return "/customer/customerView";
+    @GetMapping("toCustomerAddView.do")
+    public String toCustomerAddView() {
+    	logger.info("邀请填写消费者");
+        return customeradd;
     }
     
     
     @ResponseBody
-    @RequestMapping(value = "add.do")
-    public ResponseEntity<BaseResp> add(CustConsumerVo custConsumerVo,HttpServletRequest request) throws IOException {
+    @RequestMapping(value = "toCustomerAdd.do")
+    public ResponseEntity<BaseResp> toCustomerAdd(CustConsumerVo custConsumerVo,HttpServletRequest request) throws IOException {
     	CustConsumer custConsumer = new CustConsumer();
     	BeanUtil.copyProperties(custConsumerVo, custConsumer);
     	logger.info("aaa:"+ JSON.toJSONString(custConsumer));
-    	
     	Long userId = super.getUserId(request);
     	custConsumer.setShopId(userId);
-    	
-    	
-    	/**
-    	 * shop_id
-
-			bussiness_user_id
-			
-			
-			
-			还需要设置最少这三个
-    	 * 
-    	 * */
     	User selectByPrimaryKey = this.userService.selectByPrimaryKey(userId);
     	custConsumer.setBussinessUserId(selectByPrimaryKey.getParentId());
     	this.custConsumerService.save(custConsumer);

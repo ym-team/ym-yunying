@@ -1,28 +1,30 @@
 package com.hmn.ym.controller;
 
-import com.github.pagehelper.Page;
-import com.github.pagehelper.PageHelper;
-import com.hmn.ym.dao.entity.po.CustShop;
-import com.hmn.ym.dao.entity.po.User;
-import com.hmn.ym.service.IShopService;
-import com.hmn.ym.service.IUserService;
+import java.io.IOException;
+import java.util.Date;
+import java.util.List;
 
-import lombok.extern.slf4j.Slf4j;
-import tk.mybatis.mapper.entity.Example;
-import tk.mybatis.mapper.entity.Example.Criteria;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.util.List;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+import com.hmn.ym.dao.entity.po.CustShop;
+import com.hmn.ym.service.IShopService;
+import com.hmn.ym.service.IUserService;
+import com.hmn.ym.utils.SpringUtils;
+import com.hmn.ym.utils.result.JsonResult;
+
+import lombok.extern.slf4j.Slf4j;
+import tk.mybatis.mapper.entity.Example;
+import tk.mybatis.mapper.entity.Example.Criteria;
 
 
 /**
@@ -61,6 +63,10 @@ public class CustShopController extends BaseController {
     private static final String performance= "/custshop/performance";
     
     
+    /**
+     * 店家我的页面
+     */
+    private static final String custshopuserindex = "/custshop/custshopuserindex";
     
     @Autowired
     private IShopService shopService;
@@ -111,7 +117,7 @@ public class CustShopController extends BaseController {
 
 
     @RequestMapping(value = "StoreRegister.do")
-    public String storeRegister(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public void storeRegister(HttpServletRequest request, HttpServletResponse response) throws IOException {
     	log.info("新增店家");
         Long userId = super.getUserId(request);
         Long userIdNew = this.userService.addUserByPhone(request.getParameter("shopPhone"), userId);
@@ -126,9 +132,10 @@ public class CustShopController extends BaseController {
         custShop.setUserId(Long.valueOf(userIdNew));
         custShop.setShopStatus(1);
         custShop.setShopXieyiStatus(1);
+        custShop.setCreateTime(new Date());
         this.shopService.insert(custShop);
-       
-        return "redirect:/borrow/index.do";
+        SpringUtils.renderJsonResult(response, JsonResult.SUCCESS, "操作成功");
+//        return custshoplist;
     }
     
     /**
@@ -143,6 +150,7 @@ public class CustShopController extends BaseController {
     public List<CustShop> storeList(HttpServletRequest request, HttpServletResponse response) throws IOException {
     	Long userId = super.getUserId(request);
     	Example example = new Example(CustShop.class);
+    	example.orderBy("createTime").desc();
     	Criteria createCriteria = example.createCriteria();
     	createCriteria.andEqualTo("bussinessUserId", userId);
     	String parameter = request.getParameter("pageNum");
@@ -182,8 +190,8 @@ public class CustShopController extends BaseController {
      */
     @RequestMapping(value = "storeLogin.do")
     public String storeLogin(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        log.info("店家登录");
-        return "/store/userIndex";
+        log.info("店家登录成功后进入我的页面");
+        return custshopuserindex;
     }
 
 

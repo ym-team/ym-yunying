@@ -56,7 +56,6 @@
 	 
 	function generateCallback(data) {
 		var jsonResult = data;
-		debugger;
 		var accountHtml = '';
 		if (jsonResult.length > 0) {
 			$.each(jsonResult,
