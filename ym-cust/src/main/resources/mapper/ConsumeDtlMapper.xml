@@ -23,4 +23,35 @@
     <result column="audit_reason" jdbcType="VARCHAR" property="auditReason" />
     <result column="create_id" jdbcType="BIGINT" property="createId" />
   </resultMap>
+  
+  
+  
+  
+  
+  
+  	<select id="queryMyMoneyByThisMonth" parameterType="java.lang.Long"
+		resultType="java.lang.Double">
+SELECT IFNULL(SUM(sum_fee),0) FROM t_consume_dtl 
+		WHERE  bussiness_user_id #{userId} AND audit_status = 2  
+		GROUP BY MONTH(CURDATE()) ORDER BY MONTH(CURDATE()) DESC 
+	</select>
+	
+	
+	  
+  	<select id="myTeamMoney" 
+		resultType="java.lang.Double">
+SELECT IFNULL(SUM(sum_fee),0) FROM t_consume_dtl 
+		WHERE  
+		bussiness_user_id in 
+		
+		<foreach collection="listUserId" item="userids" open="(" separator="," close=")">
+        #{userids}
+    </foreach>
+		
+		AND audit_status = 2  
+		GROUP BY MONTH(CURDATE()) ORDER BY MONTH(CURDATE()) DESC 
+	</select>
+	
+	
+	
 </mapper>

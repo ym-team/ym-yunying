@@ -1,5 +1,7 @@
 package com.hmn.ym.service;
 
+import java.util.List;
+
 import com.hmn.ym.dao.entity.po.ConsumeDtl;
 
 /**
@@ -21,6 +23,11 @@ public interface IConsumeDtlService extends BaseService<ConsumeDtl> {
      * @param id
      */
     void delete(Integer id);
+    
+    
+    public double queryMyMoneyByThisMonth(long userId) ;
+
+	double myTeamMoney(List<Long> listUserId2);
 }
 
 
