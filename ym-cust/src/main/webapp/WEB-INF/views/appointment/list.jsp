@@ -51,7 +51,7 @@
 																
 								<li><dl>
 										<dt>预约医院:</dt>
-										<dt>${custAppointment.consuConfirmItem }</dt><br/>
+										<dt>${custAppointment.consuYuYueHospital }</dt><br/>
 									</dl>
 								</li>
 								

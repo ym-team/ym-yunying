@@ -42,7 +42,26 @@
                     <input type="text" id="consuPhone" readonly="readonly" name="consuPhone" style="width: 9rem;" class="form-control" placeholder="${custConsumer.consuPhone }" value="${custConsumer.consuPhone }">
                 </div>
             </li>
-
+			<li class="sl_ji">
+                    <p>预约美容院</p>
+                    <div class="position-rel">
+                    	<input type="hidden" id="consuYuYueHospital" name="consuYuYueHospital">
+                        <input type="text" id="consuYuYueHospitalName" name="consuYuYueHospitalName" style="width: 9rem;" class="form-control"  placeholder="请选中">
+                        <div class="bank_xljt">
+                        	<img class="jt_xz" width="20" src="${configjscss }/images/jtx.png" alt="">
+                        </div>
+                        <div id="${not empty disabled ? disabled : 'chose_bank' }" class="bank_xljt1"></div>
+                    </div>
+                    <div class="bank_xl" style="display: none">
+                        <ul>
+                        	<c:forEach var="item" items="${listHospital}">
+								<li class="hotBank-list sl_rji">
+                              		<a href="javascript:" id="${item.id}" class="hotBank-list-ico2" title="${item.name}">${item.name}</a>
+                            	</li>
+							</c:forEach>
+                        </ul>
+                    </div>
+                </li>
             <li class="sl_ji">
                 <p>客人年龄</p>
                 <div class="position-rel">
@@ -62,37 +81,33 @@
                 </div>
             </li>
             
-                        <li class="sl_ji" style="line-height:inherit">
-                <p>预约医院</p>
-                <div class="position-rel">
-                    <select id="appointmentHospital"  name="appointmentHospital" style="width: 9rem;" class="form-control" >
-                    
-                    	 <c:forEach items="${listHospital}" var="hospital" varStatus="index">
-  								<option value ="${hospital.id }">${hospital.name}</option>
-  						</c:forEach>
-  						
-					</select>
-
-
-                </div>
-            </li>
+            
+            
+            
+            
+            
+            
+            
+            
+             
+                
+                
+                 
             
                  
                   <li class="sl_ji" style="line-height:inherit">
                 <p>预约时间</p>
                 <div class="position-rel">
-                    <input type="text" id="appointmentTime"  name="appointmentTime" style="width: 9rem;" class="form-control" placeholder="预约时间">
+                    <input type="text" id="appointmentTime"  name="appointmentTime" style="width: 9rem;" class="form-control" placeholder="预约时间"  onclick="WdatePicker({isShowClear:false,readOnly:true})">
                 </div>
             </li>
             
      		<li class="sl_ji" style="line-height:inherit">
                 <p>接待员</p>
                 <div class="position-rel">
-                    <input type="text" id="jieDaiYuan" readonly="readonly" name="jieDaiYuan" style="width: 9rem;" class="form-control" placeholder="接待员">
+                    <input type="text" id="jieDaiYuan" name="jieDaiYuan" style="width: 9rem;" class="form-control" placeholder="接待员">
                 </div>
             </li>
-            
-         
         </ul>
         </form>
     </div>
@@ -104,6 +119,23 @@
     <jsp:include page="/h5/foot.do?footId=4"></jsp:include>
 </div>
 </body>
+<script type="text/javascript">
+$(function(){
+    $(".hotBank-list-ico2").bind('click',function(){
+        $('#consuYuYueHospitalName').val($(this).attr('title'));
+        $('#consuYuYueHospital').val($(this).attr('id'));
+       
+        $('.bank_xl').hide();
+        $("#chose_bank").parent('div').find('img').addClass('jt_xz');
+    });
+    $("#chose_bank").click(function(){
+        $('.bank_xl').show();
+        $("#chose_bank").parent('div').find('img').removeClass('jt_xz');
+    });
+})
+  
+</script>
+
 <script type="text/javascript">
     function sub() {
     	
@@ -128,6 +160,18 @@
                 }
             }
         });
+    }
+</script>
+
+<script>
+    if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+        var msViewportStyle = document.createElement('style')
+        msViewportStyle.appendChild(
+                document.createTextNode(
+                        '@-ms-viewport{width:auto!important}'
+                )
+        )
+        document.querySelector('head').appendChild(msViewportStyle)
     }
 </script>
 </html>

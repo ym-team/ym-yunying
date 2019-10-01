@@ -71,10 +71,10 @@ public class PerformanceController extends BaseController {
         Criteria createCriteria = example.createCriteria();
         if (user.getType() == 1) {
             createCriteria.andEqualTo("bussinessUserId", user.getId());
-            view = "/salesman/mycust";
+            view = "/salesman/mycust";//业务员查看
         } else if (user.getType() == 2) {
             createCriteria.andEqualTo("shopId", user.getId());
-            view ="/customer/mycustList";
+            view ="/customer/mycustList";//店面查看
         }
         //List<CustShop> listCustShop = this.shopService.selectByExample(example);
         List<CustConsumer> selectByExample = this.custConsumerService.selectByExample(example);
