@@ -66,14 +66,14 @@ public class PerformanceController extends BaseController {
         //Long userId = super.getUserId(request);
         User user = super.getUser(request);
         String view = "";
-        Example example = new Example(CustShop.class);
+        Example example = new Example(CustConsumer.class);
         Criteria createCriteria = example.createCriteria();
         if (user.getType() == 1) {
             createCriteria.andEqualTo("bussinessUserId", user.getId());
             view = "/salesman/mycust";
         } else if (user.getType() == 2) {
             createCriteria.andEqualTo("shopId", user.getId());
-            view ="/customer/mycustList.jsp";
+            view ="/customer/mycustList";
         }
         //List<CustShop> listCustShop = this.shopService.selectByExample(example);
         List<CustConsumer> selectByExample = this.custConsumerService.selectByExample(example);
