@@ -67,6 +67,7 @@ public class PerformanceController extends BaseController {
         User user = super.getUser(request);
         String view = "";
         Example example = new Example(CustConsumer.class);
+        example.orderBy("createTime").desc();
         Criteria createCriteria = example.createCriteria();
         if (user.getType() == 1) {
             createCriteria.andEqualTo("bussinessUserId", user.getId());
