@@ -4,6 +4,7 @@ import com.google.common.collect.Lists;
 import com.hmn.ym.dao.entity.po.ConsumeDtl;
 import com.hmn.ym.dao.entity.po.SaleMan;
 import com.hmn.ym.dao.entity.po.User;
+import com.hmn.ym.dao.entity.vo.RealNameAuthVo;
 import com.hmn.ym.dao.entity.vo.SaleManVo;
 import com.hmn.ym.dao.mapper.ConsumeDtlMapper;
 import com.hmn.ym.dao.mapper.SaleManMapper;
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import tk.mybatis.mapper.entity.Example;
 
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -88,6 +90,20 @@ public class SaleManServiceImpl extends BaseServiceImpl<SaleMan, SaleManMapper> 
             result.add(vo);
         }
         return result;
+    }
+
+    @Override
+    public void realNameAuth(RealNameAuthVo vo) {
+        SaleMan saleMan = new SaleMan();
+        saleMan.setId(vo.getSaleManId());
+        saleMan.setRealName(vo.getRealName());
+        saleMan.setIdCard(vo.getCardNum());
+        saleMan.setSfzZm(vo.getSfzzm());
+        saleMan.setSfzFm(vo.getSfzfm());
+        saleMan.setSfzSc(vo.getSfzsc());
+        saleMan.setAuditStatus(4);
+        saleMan.setUpdateTime(new Date());
+        saleManMapper.updateByPrimaryKeySelective(saleMan);
     }
 }
 

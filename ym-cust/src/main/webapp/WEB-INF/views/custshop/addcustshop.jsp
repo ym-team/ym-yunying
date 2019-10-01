@@ -75,10 +75,8 @@
 			onclick="sub();" class="com_btn1 sl_tixian">确认</a> -->
 			
 			
-		<a style="margin-bottom: 5rem;" href="javascript:sub()"
+		<a style="margin-bottom: 3rem;" href="javascript:sub()"
 			class="com_btn1 sl_tixian">确认</a>
-			
-			
 	</div>
 	<jsp:include page="/foot.do?footId=3"></jsp:include>
 </div>
