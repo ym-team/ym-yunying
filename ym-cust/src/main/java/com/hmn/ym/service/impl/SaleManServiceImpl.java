@@ -9,6 +9,7 @@ import com.hmn.ym.dao.mapper.ConsumeDtlMapper;
 import com.hmn.ym.dao.mapper.SaleManMapper;
 import com.hmn.ym.dao.mapper.UserMapper;
 import com.hmn.ym.service.ISaleManService;
+import com.xiaoleilu.hutool.util.CollectionUtil;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -67,7 +68,9 @@ public class SaleManServiceImpl extends BaseServiceImpl<SaleMan, SaleManMapper> 
         Example example = new Example(User.class);
         example.createCriteria().andEqualTo("parentId", userId);
         List<User> userList = userMapper.selectByExample(example);
-
+        if (CollectionUtil.isEmpty(userList)) {
+            return Lists.newArrayList();
+        }
         example = new Example(SaleMan.class);
         example.createCriteria().andIn("userId", userList.stream().map(User::getId).collect(Collectors.toList()));
         List<SaleMan> saleManList = saleManMapper.selectByExample(example);

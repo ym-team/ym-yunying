@@ -65,18 +65,20 @@ public class PerformanceController extends BaseController {
     public String myCustView(HttpServletRequest request, HttpServletResponse response, Model model) {
         //Long userId = super.getUserId(request);
         User user = super.getUser(request);
-
-        Example example = new Example(CustShop.class);
+        String view = "";
+        Example example = new Example(CustConsumer.class);
         Criteria createCriteria = example.createCriteria();
         if (user.getType() == 1) {
             createCriteria.andEqualTo("bussinessUserId", user.getId());
+            view = "/salesman/mycust";
         } else if (user.getType() == 2) {
             createCriteria.andEqualTo("shopId", user.getId());
+            view ="/customer/mycustList";
         }
         //List<CustShop> listCustShop = this.shopService.selectByExample(example);
         List<CustConsumer> selectByExample = this.custConsumerService.selectByExample(example);
         model.addAttribute("listCustConsumer", selectByExample);
-        return "/salesman/mycust";
+        return view;
     }
 
 
