@@ -75,7 +75,7 @@
 										
 																														<dd style="float: right; margin-top: 0.3rem;">
 											<div class="jnbtn">
-												<a data-ajax="false" href="${pathWeb }/consumeDtl/detail.do?id=${custAppointment.id }&shopId=${custAppointment.shopId}">上传医美数据</a>
+												<a data-ajax="false" href="${pathWeb }/consumeDtl/detail.do?id=${custAppointment.id }&shopId=${custAppointment.shopId}&consuYuYueHospital=${custAppointment.consuYuYueHospital}">上传医美数据</a>
 											</div>
 										</dd>
 										
