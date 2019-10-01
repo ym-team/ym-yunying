@@ -368,7 +368,6 @@
             contentType: false,
             processData: false,
             success: function (data) {
-                $("#sfzzm_show").css("background-image:", "url(${pathWeb}/" + data.data + ")");
                 $("#sfzzm_show").attr("style", "background-image:url(${pathWeb}/" + data.data + ")");
                 $("#sfzzm").val(data.data);
             }
@@ -391,7 +390,6 @@
             contentType: false,
             processData: false,
             success: function (data) {
-                $("#sfzfm_show").css("background-image:", "url(${pathWeb}/" + data.data + ")");
                 $("#sfzfm_show").attr("style", "background-image:url(${pathWeb}/" + data.data + ")");
                 $("#sfzfm").val(data.data);
             }
@@ -416,7 +414,6 @@
             contentType: false,
             processData: false,
             success: function (data) {
-                $("#sfzsc_show").css("background-image:", "url(${pathWeb}/" + data.data + ")");
                 $("#sfzsc_show").attr("style", "background-image:url(${pathWeb}/" + data.data + ")");
                 $("#sfzsc").val(data.data);
             }

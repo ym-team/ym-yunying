@@ -390,7 +390,6 @@
             contentType: false,
             processData: false,
             success: function (data) {
-                $("#attrUrl_show").css("background-image:", "url(${pathWeb}/" + data.data + ")");
                 $("#attrUrl_show").attr("style", "background-image:url(${pathWeb}/" + data.data + ")");
                 $("#attrUrl").val(data.data);
             }
