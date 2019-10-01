@@ -10,6 +10,9 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import tk.mybatis.mapper.entity.Example;
+
+import java.util.Date;
 
 /**
  * @author xfz
@@ -40,17 +43,24 @@ public class ConsumeDtlServiceImpl extends BaseServiceImpl<ConsumeDtl, ConsumeDt
     @Transactional
     @Override
     public void save(ConsumeDtl vo) {
-        if (vo.getId() != null) {
-            ConsumeDtl consumeDtl = new ConsumeDtl();
-            BeanUtils.copyProperties(vo, consumeDtl);
+        ConsumeDtl dtl = this.getByAppointmentId(vo.getAppointmentId());
+        if (dtl != null) {
+            ConsumeDtl update = new ConsumeDtl();
+            BeanUtils.copyProperties(vo, update);
+            update.setUpdateTime(new Date());
 
-            consumeDtlMapper.updateByPrimaryKeySelective(consumeDtl);
+            consumeDtlMapper.updateByPrimaryKeySelective(update);
         } else {
+            ConsumeDtl insert = new ConsumeDtl();
+            BeanUtils.copyProperties(vo, insert);
+            insert.setAuditStatus(1);
+            insert.setStatus(1);
+            insert.setCreateId(vo.getBussinessUserId());
+            insert.setCreateTime(new Date());
+            insert.setUpdateId(vo.getBussinessUserId());
+            insert.setUpdateTime(new Date());
 
-            ConsumeDtl consumeDtl = new ConsumeDtl();
-            BeanUtils.copyProperties(vo, consumeDtl);
-
-            consumeDtlMapper.insertSelective(consumeDtl);
+            consumeDtlMapper.insertSelective(insert);
         }
     }
 
@@ -64,6 +74,12 @@ public class ConsumeDtlServiceImpl extends BaseServiceImpl<ConsumeDtl, ConsumeDt
 
 
 
+    @Override
+    public ConsumeDtl getByAppointmentId(Long appointmentId) {
+        Example example = new Example(ConsumeDtl.class);
+        example.createCriteria().andEqualTo("appointmentId", appointmentId);
+        return consumeDtlMapper.selectOneByExample(example);
+    }
 }
 
 

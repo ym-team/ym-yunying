@@ -28,6 +28,13 @@ public interface IConsumeDtlService extends BaseService<ConsumeDtl> {
     public double queryMyMoneyByThisMonth(long userId) ;
 
 	double myTeamMoney(List<Long> listUserId2);
+
+    /**
+     * 获取数据
+     *
+     * @param appointmentId
+     */
+    ConsumeDtl getByAppointmentId(Long appointmentId);
 }
 
 

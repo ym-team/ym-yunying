@@ -9,6 +9,7 @@
     <result column="project_name" jdbcType="VARCHAR" property="projectName" />
     <result column="sum_fee" jdbcType="DECIMAL" property="sumFee" />
     <result column="materials_fee" jdbcType="DECIMAL" property="materialsFee" />
+    <result column="appointment_id" jdbcType="BIGINT" property="appointmentId" />
     <result column="consumer_id" jdbcType="BIGINT" property="consumerId" />
     <result column="hospital_id" jdbcType="BIGINT" property="hospitalId" />
     <result column="shop_id" jdbcType="BIGINT" property="shopId" />
