@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"> 
-<title>我的-客户</title>
+<title>我的-预约客户</title>
 <meta http-equiv="Expires" content="-1">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Cache-Control" content="no-cache">
@@ -22,37 +22,54 @@
 		<div class="xq_con">
 			<header class="jwytz-header">
 		<h3>
-			<span onclick="history.go(-1)"></span>我的客户<em></em>
+			<span onclick="history.go(-1)"></span>我的预约客户<em></em>
 		</h3>
 	</header>
 	
-	 <c:forEach items="${listCustConsumer}" var="custConsumer" varStatus="index">
+	 <c:forEach items="${listCustAppointment}" var="custAppointment" varStatus="index">
 			<div class="jtag">
 				<div class="taglist" id="borrowContent1">
 					<div class="jlc-morelist">
 						<div class="jlc-mlcon clearfix">
 							<ol>
 								<li><span>${index.count }</span></li>
-								<li><p>${custConsumer.consuName }</p></li>
+								<li><p>${custAppointment.consuName }</p></li>
 							</ol>
 							<ul>
 								<li><dl>
 										<dt>年龄:</dt>
-										<dt>${custConsumer.consuAge }</dt><br/>
+										<dt>${custAppointment.consuPhone }</dt><br/>
 									</dl>
 								</li>
 								
 								<li><dl>
 										<dt>确定项目:</dt>
-										<dt>${custConsumer.consuConfirmItem }</dt><br/>
+										<dt>${custAppointment.consuConfirmItem }</dt><br/>
 									</dl>
 								</li>
+								
+																
+								<li><dl>
+										<dt>预约医院:</dt>
+										<dt>${custAppointment.consuConfirmItem }</dt><br/>
+									</dl>
+								</li>
+								
+								
+								<li><dl>
+										<dt>接待员:</dt>
+										<dt>${custAppointment.jieDaiYuan }</dt><br/>
+									</dl>
+								</li>
+								
+								
+								
 								<li>
 								
 									<dl>
 										<dt>
 											<p>
-												创建时间: <b><span>${custConsumer.createTime }</span></b>
+												预约时间: <b><span> <fmt:formatDate value="${custAppointment.appointmentTime}" pattern="yyyy-MM-dd" /> </span></b>
 											</p>
 										</dt><br/>
 										
@@ -63,32 +80,6 @@
 									</li>
 									
 									
-																	<li>
-								
-									<dl>
-										<dt>
-											<p>
-												年收入: <b><span>${custConsumer.consuIncome }</span></b>
-											</p>
-										</dt><br/>
-										
-										<dd style="float: right; margin-top: 0.3rem;">
-											<div class="jnbtn">
-												<a data-ajax="false" href="${pathWeb }/performance/consumerDetail.do?id=${custConsumer.id }">查看</a>
-											</div>
-										</dd>
-										
-										
-																				<dd style="float: right; margin-top: 0.3rem;">
-											<div class="jnbtn">
-												<a data-ajax="false" href="${pathWeb }/appointMent/detail.do?id=${custConsumer.id }&shopId=${custConsumer.shopId}">预约</a>
-											</div>
-										</dd>
-									</dl>
-									
-									
-									
-									</li>
 									
 									
 
