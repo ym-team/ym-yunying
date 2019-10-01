@@ -33,7 +33,7 @@ public class ConsumeDtlServiceImpl extends BaseServiceImpl<ConsumeDtl, ConsumeDt
             consumeDtlMapper.updateByPrimaryKeySelective(update);
         } else {
             ConsumeDtl insert = new ConsumeDtl();
-            BeanUtils.copyProperties(vo, dtl);
+            BeanUtils.copyProperties(vo, insert);
             insert.setAuditStatus(1);
             insert.setStatus(1);
             insert.setCreateId(vo.getBussinessUserId());

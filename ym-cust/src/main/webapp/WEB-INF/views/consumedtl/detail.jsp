@@ -342,10 +342,10 @@
                 <c:if test="${dtl.auditStatus == 2}">审核通过</c:if>
             </a>
         </c:if>
-        <c:if test="${dtl.auditStatus == 0 || dtl.auditStatus == 3}">
+        <c:if test="${dtl==null || dtl.auditStatus == 0 || dtl.auditStatus == 3}">
             <a style="margin-bottom: 5rem;" href="javascript:void(0)" data-audit-status="${dtl.auditStatus}" data-ajax="false" onclick="sub();" class="com_btn1 sl_tixian">
                 <c:if test="${dtl.auditStatus == 3}">未通过</c:if>
-                <c:if test="${dtl.auditStatus == 0}">提交</c:if>
+                <c:if test="${dtl==null || dtl.auditStatus == 0}">提交</c:if>
             </a>
         </c:if>
     </div>
