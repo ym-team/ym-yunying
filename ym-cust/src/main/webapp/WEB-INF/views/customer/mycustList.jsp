@@ -4,6 +4,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"> 
+<!-- 店家查看 -->
 <title>我的-客户</title>
 <meta http-equiv="Expires" content="-1">
 <meta http-equiv="Pragma" content="no-cache">
@@ -25,97 +26,57 @@
 			<span onclick="history.go(-1)"></span>我的客户<em></em>
 		</h3>
 	</header>
-			<div class="jtag">
+	
+	
+	 <c:forEach items="${listCustConsumer}" var="custConsumer" varStatus="index">
+		<div class="jtag">
 				<div class="taglist" id="borrowContent1">
 					<div class="jlc-morelist">
+					
 						<div class="jlc-mlcon clearfix">
 							<ol>
-								<li><span>1</span></li>
-								<li><p>张三</p></li>
+								<li><span>${index.count }</span></li>
+								<li><p>${custConsumer.consuName }</p></li>
 							</ol>
 							<ul>
 								<li><dl>
-										<dt>级别</dt>
-										<dd>
-											<div class="jjd-w">
-												<div class="jjd-n" style="width: 0%;"></div>
-											</div>
-										</dd>
-										<dd>美业老师</dd>
+										<dt>确定项目</dt>
+										<dd style="float: right; ">${custConsumer.consuConfirmItem}</dd>
 									</dl></li>
 								<li>
 								
 									<dl>
 										<dt>
 											<p>
-												加入时间 <b><span>2019-08-06</span></b>
+												创建时间 <b><span>
+												<fmt:formatDate value="${custConsumer.createTime}" pattern="yyyy-MM-dd" />
+												</span></b>
 											</p>
 											<p>
-												个人业绩 <b>100单</b>
-											</p>
-											
-											<p>
-												已反馈
+												<p>
+												年收入 <b><span>${custConsumer.consuIncome}
 											</p>
 										</dt>
 										<dd style="float: right; margin-top: 0.3rem;">
 											<div class="jnbtn">
-												<a data-ajax="false" href="${pathWeb }/customer/detail.do">查看</a>
+												<a data-ajax="false" href="${pathWeb }/customer/customerDetail.do?id=${custConsumer.id}">查看</a>
 											</div>
 										</dd>
 									</dl>
-									
 									</li>
 							</ul>
 						</div>
 					</div>
 				</div>
-			</div>
+			</div>	 
+	 </c:forEach>
+	
+	
+			
 
-			<div class="jtag">
-				<div class="taglist" id="borrowContent1">
-					<div class="jlc-morelist">
-						<div class="jlc-mlcon clearfix">
-							<ol>
-								<li><span>2</span></li>
-								<li><p>李四</p></li>
-							</ol>
-							<ul>
-								<li><dl>
-										<dt>级别</dt>
-										<dd>
-											<div class="jjd-w">
-												<div class="jjd-n" style="width: 0%;"></div>
-											</div>
-										</dd>
-										<dd>美业老师</dd>
-									</dl></li>
-								<li><dl>
-										<dt>
-											<p>
-												加入时间 <b><span>2019-08-06</span></b>
-											</p>
-											<p>
-												个人业绩 <b>100单</b>
-											</p>
-											<p>
-												已完成
-											</p>
-											
-										</dt>
-										<dd style="float: right; margin-top: 0.3rem;">
-											<div class="jnbtn">
-												<a data-ajax="false" href="${pathWeb }/customer/detail.do">查看</a>
-											</div>
-										</dd>
-									</dl></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
+			 
 
-			<div class="jtag">
+			<%-- <div class="jtag">
 				<div class="taglist" id="borrowContent1">
 					<div class="jlc-morelist">
 						<div class="jlc-mlcon clearfix">
@@ -155,6 +116,9 @@
 						</div>
 					</div>
 				</div>
+			</div> --%>
+			<div class="wdlc-nrk">
+				<div class="wdlc-lisat" style="display: block;" id="accountContent"></div>
 			</div>
 		</div>
 </body>

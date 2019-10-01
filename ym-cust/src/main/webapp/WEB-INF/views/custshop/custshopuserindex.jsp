@@ -43,7 +43,7 @@
 							</div> <span>我的业绩</span>
 					</a></li>
 					<li>
-						<a rel="external" href="${pathWeb }/customer/list.do">
+						<a rel="external" href="${pathWeb }/performance/myCustView.do">
 							<div class="pic">
 								<img src="${configjscss }/images/gk.png">
 							</div> <span>我的顾客</span>
