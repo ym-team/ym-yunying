@@ -26,7 +26,53 @@
 		</h3>
 	</header>
 	
-	 <c:forEach items="${listCustConsumer}" var="custConsumer" varStatus="index">
+	
+	
+	<c:forEach items="${listCustConsumer}" var="custConsumer" varStatus="index">
+		<div class="jtag">
+				<div class="taglist" id="borrowContent1">
+					<div class="jlc-morelist">
+					
+						<div class="jlc-mlcon clearfix">
+							<ol>
+								<li><span>${index.count }</span></li>
+								<li><p>${custConsumer.consuName }</p></li>
+							</ol>
+							<ul>
+								<li><dl>
+										<dt>确定项目</dt>
+										<dd style="float: right; ">${custConsumer.consuConfirmItem}</dd>
+									</dl></li>
+								<li>
+									<dl>
+										<dt>
+											<p>
+												创建时间 <b><span>
+												<fmt:formatDate value="${custConsumer.createTime}" pattern="yyyy-MM-dd" />
+												</span></b>
+											</p>
+											<p>
+												<p>
+												年收入 <b><span>${custConsumer.consuIncome}
+											</p>
+										</dt>
+										<dd style="float: right; margin-top: 0.3rem;">
+											<div class="jnbtn">
+												<a data-ajax="false" href="${pathWeb }/appointMent/detail.do?id=${custConsumer.id }&shopId=${custConsumer.shopId}">预约</a>
+											</div>
+										</dd>
+									</dl>
+									</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>	 
+	 </c:forEach>
+	
+	
+	
+	<%--  <c:forEach items="${listCustConsumer}" var="custConsumer" varStatus="index">
 			<div class="jtag">
 				<div class="taglist" id="borrowContent1">
 					<div class="jlc-morelist">
@@ -97,7 +143,7 @@
 					</div>
 				</div>
 			</div>
- </c:forEach>
+ </c:forEach> --%>
 	
 		</div>
 </body>

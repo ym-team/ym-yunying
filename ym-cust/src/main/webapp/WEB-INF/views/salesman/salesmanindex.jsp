@@ -112,12 +112,17 @@
 		<div class="jtag">
 		
 		<div class="taglist" id="borrowContent1" >
-<div class="jlc-morelist">
-					<h3>这个是顾客咨询的项目信息</h3>
+		
+		
+		
+		<c:forEach items="${listCustConsumer}" var="custConsumer" varStatus="index">
+		
+				<div class="jlc-morelist">
+					<h3>${custConsumer.consuConfirmItem }</h3>
 					<div class="jlc-mlcon clearfix">
 						<ol>
-							<li><span>1990</span></li>
-							<li><p>xxx店铺老板</p></li>
+							<li><span>${custConsumer.consuValue }￥</span></li>
+							<li><p>${custConsumer.remark }</p></li>
 						</ol>
 						<ul>
 							<li>
@@ -135,10 +140,10 @@
 								<dl>
 									<dt>
 										<p>
-											联系人 <b>张三</b>
+											联系人 <b>${custConsumer.consuName }</b>
 										</p>
 										<p>
-											联系电话 <b>18028081307</b>
+											联系电话 <b>${custConsumer.consuPhone }</b>
 										</p>
 									</dt>
 									<dd style="float: right; margin-top: 0.3rem;">
@@ -151,7 +156,8 @@
 						</ul>
 					</div>
 				</div>
-				<div class="jlc-morelist">
+				</c:forEach>
+				<!-- <div class="jlc-morelist">
 					<h3>这个是顾客咨询的项目信息</h3>
 					<div class="jlc-mlcon clearfix">
 						<ol>
@@ -189,7 +195,7 @@
 							</li>
 						</ul>
 					</div>
-				</div>
+				</div> -->
 			</div>
 		
 			<div class="taglist" id="borrowContent2" style="display: none">
@@ -302,9 +308,6 @@
 
 
 	<jsp:include page="/foot.do?footId=2"></jsp:include>
-
-
-
 
 	<script type="text/javascript">
 		$(document).ready(function() {

@@ -95,14 +95,14 @@
                  
             
                  
-                  <li class="sl_ji" style="line-height:inherit">
+                  <li class="sl_ji">
                 <p>预约时间</p>
                 <div class="position-rel">
                     <input type="text" id="appointmentTime"  name="appointmentTime" style="width: 9rem;" class="form-control" placeholder="预约时间"  onclick="WdatePicker({isShowClear:false,readOnly:true})">
                 </div>
             </li>
             
-     		<li class="sl_ji" style="line-height:inherit">
+     		<li class="sl_ji">
                 <p>接待员</p>
                 <div class="position-rel">
                     <input type="text" id="jieDaiYuan" name="jieDaiYuan" style="width: 9rem;" class="form-control" placeholder="接待员">
@@ -112,7 +112,9 @@
         </form>
     </div>
     
-        
+        <div class="btn4">
+        <a style="margin-bottom: 1.6rem;" href="javascript:void(0)" onclick="sub();" class="com_btn1 sl_tixian">确认</a>
+    </div>
 
     <jsp:include page="/foot.do?footId=4"></jsp:include>
 </div>
