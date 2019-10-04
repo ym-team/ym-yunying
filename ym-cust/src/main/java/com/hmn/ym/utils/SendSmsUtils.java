@@ -10,12 +10,15 @@ import com.aliyuncs.exceptions.ServerException;
 import com.aliyuncs.http.MethodType;
 import com.aliyuncs.profile.DefaultProfile;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+@Slf4j
 public class SendSmsUtils {
 
     private static final String REGEX = "^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(17[013678])|(18[0,5-9]))\\d{8}$";
@@ -32,6 +35,7 @@ public class SendSmsUtils {
         /**
          * 是否开启短信发送模式
          */
+        log.info("是否开启发送短信模式 200开启状态：{}",CachCfgParaUtil.getCfgCache(CfgParaUtils.SEND_CODE));
         if (CfgParaUtils.SEND_CODE_VALUE.equals(CachCfgParaUtil.getCfgCache(
                 CfgParaUtils.SEND_CODE))) {
             sendSmsAliy(phone, code);
@@ -46,13 +50,12 @@ public class SendSmsUtils {
         String TemplateCode = CachCfgParaUtil.getCfgCache(CfgParaUtils.TEMPLATE_CODE);
         String accessKeyId = CachCfgParaUtil.getCfgCache(CfgParaUtils.ACCESS_KEY_ID);//"LTAIk8xzqJlt2WQD"
         String accessSecret = CachCfgParaUtil.getCfgCache(CfgParaUtils.ACCESS_SECRET);//"pSty99crj3Ui1NznhdNtNY3lmcnH2X"
-        String version = CachCfgParaUtil.getCfgCache(CfgParaUtils.VERSION);
         DefaultProfile profile = DefaultProfile.getProfile("", accessKeyId, accessSecret);
         IAcsClient client = new DefaultAcsClient(profile);
         CommonRequest request = new CommonRequest();
         request.setMethod(MethodType.POST);
         request.setDomain("dysmsapi.aliyuncs.com");
-        request.setVersion(version);
+        request.setVersion("2017-05-25");
         request.setAction("SendSms");
         request.putQueryParameter("RegionId", "default");
         request.putQueryParameter("PhoneNumbers", phone);
