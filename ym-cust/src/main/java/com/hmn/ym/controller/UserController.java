@@ -1,27 +1,36 @@
 package com.hmn.ym.controller;
 
+import com.hmn.ym.common.model.BaseResp;
 import com.hmn.ym.dao.entity.po.SaleMan;
 import com.hmn.ym.dao.entity.po.User;
+import com.hmn.ym.dao.entity.vo.RealNameAuthVo;
 import com.hmn.ym.service.ISaleManService;
-import com.hmn.ym.utils.Base64Utils;
 import com.hmn.ym.utils.CachCfgParaUtil;
 import com.hmn.ym.utils.CfgParaUtils;
-import com.hmn.ym.utils.upload.UploadUtils;
+import com.hmn.ym.utils.FileUtil;
+import com.hmn.ym.utils.RespUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.File;
-import java.util.UUID;
 
 @Controller
 @RequestMapping("user/")
 public class UserController extends BaseController {
     @Autowired
     private ISaleManService saleManService;
+
+    @Value("${file.local.path}")
+    private String localFilePath;
+
+    @Value("${file.local.prefix}")
+    public String localFilePrefix;
 
     @RequestMapping("userIndex.do")
     public String userIndex() {
@@ -46,31 +55,19 @@ public class UserController extends BaseController {
         return "user/userInviteCode";
     }
 
-    /**
-     * 文件上传
-     */
-    @RequestMapping("uploadFiles")
-    @ResponseBody
-    public String uploadFiles(HttpServletRequest request, String filepath, String suffix, String fileImagePrType) throws Exception {
-        String url = "";
-        suffix = suffix.substring(suffix.lastIndexOf("/") + 1);
+    @RequestMapping("/realNameAuth.do")
+    public ResponseEntity<BaseResp> realNameAuth(RealNameAuthVo vo) {
+        saleManService.realNameAuth(vo);
+        return RespUtil.success();
+    }
 
-        /** 构建图片保存的目录 **/
-        String filePathDir = UploadUtils.getRelatedPath();
-        /** 得到图片保存目录的真实路径 **/
-        String fileRealPathDir = UploadUtils.getRealPath();
+    @RequestMapping("/imageUpload")
+    public ResponseEntity<BaseResp> imageUpload(@RequestParam("fileName") MultipartFile file) {
+        //上传
+        String imagePath = FileUtil.upload(file, localFilePath);
 
-        // String fileRealPathDir = fileRealPathDir(request);
-        /**使用UUID生成文件名称**/
-        String fileImageName = UUID.randomUUID().toString() + fileImagePrType + "." + suffix;// 构建文件名称
-        /** 拼成完整的文件保存路径加文件 **/
-        String fileUrl = fileRealPathDir + File.separator + fileImageName;
-        Base64Utils utils = Base64Utils.getInstance();
-        System.out.println(fileUrl + "====文件路径");
-        boolean bln = utils.base64ToFile(filepath, new File(fileUrl));
-        if (bln) {
-            url = filePathDir + "/" + fileImageName;
-        }
-        return url;
+        String path = localFilePrefix + imagePath;
+
+        return RespUtil.success(path.replaceAll("\\\\", "/"));
     }
 }

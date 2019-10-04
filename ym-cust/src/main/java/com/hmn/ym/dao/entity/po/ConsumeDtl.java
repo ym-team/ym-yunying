@@ -34,6 +34,12 @@ public class ConsumeDtl {
     private BigDecimal materialsFee;
 
     /**
+     * 预约Id 表t_cust_appointment-id
+     */
+    @Column(name = "appointment_id")
+    private Long appointmentId;
+
+    /**
      * t_cust_consumer表中的主键ID
      */
     @Column(name = "consumer_id")
@@ -57,6 +63,9 @@ public class ConsumeDtl {
     @Column(name = "bussiness_user_id")
     private Long bussinessUserId;
 
+    /**
+     * 费用凭证图片附件地址，多张用逗号隔开
+     */
     @Column(name = "attr_url")
     private String attrUrl;
 

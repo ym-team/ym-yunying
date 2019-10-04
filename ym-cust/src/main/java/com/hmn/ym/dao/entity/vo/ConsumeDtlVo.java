@@ -5,14 +5,6 @@ import lombok.Data;
 
 import java.math.BigDecimal;
 
-/**
- * <p>
- *
- * </p>
- *
- * @author xfz
- * @since 2018-05-28
- */
 @Data
 public class ConsumeDtlVo extends BaseEntity {
 
@@ -30,6 +22,11 @@ public class ConsumeDtlVo extends BaseEntity {
      * 材料费
      */
     private BigDecimal materialsFee;
+
+    /**
+     * 预约Id 表t_cust_appointment-id
+     */
+    private Long appointmentId;
 
     /**
      * t_cust_consumer表中的主键ID
@@ -52,7 +49,7 @@ public class ConsumeDtlVo extends BaseEntity {
     private Long bussinessUserId;
 
     /**
-     *
+     * 费用凭证图片附件地址，多张用逗号隔开
      */
     private String attrUrl;
 
@@ -60,6 +57,7 @@ public class ConsumeDtlVo extends BaseEntity {
      * 备注信息
      */
     private String remark;
+
 
     /**
      * 状态：1有效；0无效

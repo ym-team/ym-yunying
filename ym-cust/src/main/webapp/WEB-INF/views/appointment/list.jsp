@@ -73,6 +73,12 @@
 											</p>
 										</dt><br/>
 										
+																														<dd style="float: right; margin-top: 0.3rem;">
+											<div class="jnbtn">
+												<a data-ajax="false" href="${pathWeb }/consumeDtl/detail.do?id=${custAppointment.id }&consuId=${custAppointment.consuId }&shopId=${custAppointment.shopId}&consuYuYueHospital=${custAppointment.consuYuYueHospital}">上传医美数据</a>
+											</div>
+										</dd>
+										
 									</dl>
 									
 									

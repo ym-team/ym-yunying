@@ -41,7 +41,7 @@ public final class InviteCodeGenerator {
      * @param length    长度
      *                      
      */
-    private static long getRandom(int length) {
+    public static long getRandom(int length) {
         long min = 1, max = 9;
         for (int i = 1; i < length; i++) {
             min *= 10;

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hmn.ym.dao.mapper.CustAppointmentMapper">
+  <resultMap id="BaseResultMap" type="com.hmn.ym.dao.entity.po.CustAppointment">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="consu_id" jdbcType="VARCHAR" property="consuId" />
+    <result column="consu_name" jdbcType="VARCHAR" property="consuName" />
+    <result column="consu_phone" jdbcType="VARCHAR" property="consuPhone" />
+    <result column="shop_id" jdbcType="BIGINT" property="shopId" />
+    <result column="bussiness_user_id" jdbcType="BIGINT" property="bussinessUserId" />
+    <result column="consu_confirm_item" jdbcType="VARCHAR" property="consuConfirmItem" />
+    <result column="consu_yu_yue_hospital" jdbcType="VARCHAR" property="consuYuYueHospital" />
+    <result column="appointment_time" jdbcType="TIMESTAMP" property="appointmentTime" />
+    <result column="jie_dai_yuan" jdbcType="VARCHAR" property="jieDaiYuan" />
+    <result column="consu_status" jdbcType="INTEGER" property="consuStatus" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="create_id" jdbcType="BIGINT" property="createId" />
+    <result column="update_id" jdbcType="BIGINT" property="updateId" />
+  </resultMap>
+</mapper>
