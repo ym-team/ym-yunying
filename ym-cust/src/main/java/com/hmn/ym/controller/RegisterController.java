@@ -77,7 +77,12 @@ public class RegisterController extends BaseController {
 
     @RequestMapping("register.do")
     @NotNeedSecurity
-    public String register(RegisterVo vo, HttpServletRequest request) {
+    public String register(RegisterVo vo, HttpServletRequest request, Model model) {
+        User inviteUser = userService.getByInviteCode(vo.getInviteUserid());
+        if (inviteUser == null) {
+            model.addAttribute("message", "邀请码不存在.");
+            return "register2";
+        }
         User user = userService.register(vo);
         //设置seesion
         request.getSession().setAttribute(Constants.ADMIN_USER_SESSION, user);
