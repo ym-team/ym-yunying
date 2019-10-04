@@ -1,9 +1,11 @@
 package com.hmn.ym.service.impl;
 
+import com.hmn.ym.dao.entity.po.SaleMan;
 import com.hmn.ym.dao.entity.po.User;
 import com.hmn.ym.dao.entity.vo.FindPasswordVo;
 import com.hmn.ym.dao.entity.vo.RegisterVo;
 import com.hmn.ym.dao.mapper.UserMapper;
+import com.hmn.ym.service.ISaleManService;
 import com.hmn.ym.service.IUserService;
 import com.hmn.ym.utils.InviteCodeGenerator;
 import com.hmn.ym.utils.PasswordUtils;
@@ -18,6 +20,8 @@ import java.util.Date;
 public class UserServiceImpl extends BaseServiceImpl<User, UserMapper> implements IUserService {
     @Autowired
     private UserMapper userMapper;
+    @Autowired
+    private ISaleManService saleManService;
 
     @Transactional
     @Override
@@ -36,8 +40,16 @@ public class UserServiceImpl extends BaseServiceImpl<User, UserMapper> implement
         user.setPassword(PasswordUtils.getPassword(user.getPassword()));
         user.setCreateTime(new Date());
         user.setUpdateTime(new Date());
-
         userMapper.insertSelective(user);
+
+        SaleMan saleMan = new SaleMan();
+        saleMan.setUserId(user.getId());
+        saleMan.setPhone(user.getPhone());
+        saleMan.setAuditStatus(2);
+        saleMan.setCreateTime(new Date());
+        saleMan.setUpdateId(user.getId());
+        saleMan.setUpdateTime(new Date());
+        saleManService.save(saleMan);
 
         return user;
     }
