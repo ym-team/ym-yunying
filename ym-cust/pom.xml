@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.hmn.ym</groupId>
     <artifactId>ym-cust</artifactId>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
     <name>ym-cust</name>
     <description>客户模块</description>
     <version>${ym.version}</version>
