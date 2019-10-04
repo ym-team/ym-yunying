@@ -65,7 +65,7 @@
 							</div> <span>我的客户</span>
 					</a></li>
 					<li><a rel="external"
-						href="${pathWeb }/user/userCode.do" class="zc_pic">
+						href="${pathWeb }/inviteCode/userInviteCode.do" class="zc_pic">
 							<div class="pic">
 								<img src="${configjscss }/images/ewm.png">
 							</div> <span>我的二维码</span>
