@@ -28,8 +28,7 @@ public class ConsumeDtlServiceImpl extends BaseServiceImpl<ConsumeDtl, ConsumeDt
     
 	@Override
 	public double myTeamMoney(List<Long> listUserId2) {
-		this.consumeDtlMapper.myTeamMoney(listUserId2);
-		return 0;
+		return this.consumeDtlMapper.myTeamMoney(listUserId2);
 	}
     
     @Override
@@ -80,6 +79,36 @@ public class ConsumeDtlServiceImpl extends BaseServiceImpl<ConsumeDtl, ConsumeDt
         example.createCriteria().andEqualTo("appointmentId", appointmentId);
         return consumeDtlMapper.selectOneByExample(example);
     }
+
+	@Override
+	public double queryMyOrderByThisMonth(Long userId) {
+		return consumeDtlMapper.queryMyOrderByThisMonth(userId);
+	}
+
+	@Override
+	public double myTeamOrder(List<Long> listUserId) {
+		return this.consumeDtlMapper.myTeamOrder(listUserId);
+	}
+
+	@Override
+	public double myAddShop(Long userId) {
+		return this.consumeDtlMapper.myAddShop(userId);
+	}
+
+	@Override
+	public double myTeamAddShop(List<Long> listUserId2) {
+		return this.consumeDtlMapper.myTeamAddShop(listUserId2);
+	}
+
+	@Override
+	public double myAppointMentCustmer(Long userId) {
+		return this.consumeDtlMapper.myAppointMentCustmer(userId);
+	}
+
+	@Override
+	public double myTeamAppointMentCustmer(List<Long> listUserId2) {
+		return this.consumeDtlMapper.myTeamAppointMentCustmer(listUserId2);
+	}
 }
 
 

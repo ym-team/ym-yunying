@@ -68,6 +68,36 @@ public class MyMoneyController extends BaseController {
     
     
     
+    @GetMapping("myOrder.do")
+    public void myOrder(HttpServletRequest request, HttpServletResponse response, Model model) {
+        String id = request.getParameter("id");
+        Long userId = super.getUserId(request);
+        double queryMyOrderByThisMonth = this.consumeDtlService.queryMyOrderByThisMonth(userId);
+        System.out.println("queryMyMoneyByThisMonth:"+queryMyOrderByThisMonth);
+    }
+    
+    
+    
+    @GetMapping("myAddShop.do")
+    public void myAddShop(HttpServletRequest request, HttpServletResponse response, Model model) {
+        String id = request.getParameter("id");
+        Long userId = super.getUserId(request);
+        double queryMyOrderByThisMonth = this.consumeDtlService.myAddShop(userId);
+        System.out.println("queryMyMoneyByThisMonth:"+queryMyOrderByThisMonth);
+    }
+    
+    
+    @GetMapping("myAppointMentCustmer.do")
+    public void myAppointMentCustmer(HttpServletRequest request, HttpServletResponse response, Model model) {
+        String id = request.getParameter("id");
+        Long userId = super.getUserId(request);
+        double queryMyOrderByThisMonth = this.consumeDtlService.myAppointMentCustmer(userId);
+        System.out.println("queryMyMoneyByThisMonth:"+queryMyOrderByThisMonth);
+    }
+    
+    
+    
+    
     @GetMapping("myTeamMoney.do")
     public void myTeamMoney(HttpServletRequest request, HttpServletResponse response, Model model) {
         String id = request.getParameter("id");
@@ -93,6 +123,93 @@ public class MyMoneyController extends BaseController {
         
         double myTeamMoney = this.consumeDtlService.myTeamMoney(listUserId2);
     }
+    
+    
+    
+    @GetMapping("myTeamOrder.do")
+    public void myTeamOrder(HttpServletRequest request, HttpServletResponse response, Model model) {
+        String id = request.getParameter("id");
+        Long userId = super.getUserId(request);
+        
+        Example example = new Example(User.class);
+        Criteria createCriteria = example.createCriteria();
+        createCriteria.andEqualTo("parentId", userId);
+        List<User> selectByExample = this.userService.selectByExample(example);
+        
+        List<Long> listUserId = selectByExample.parallelStream().map(User::getParentId).collect(Collectors.toList());
+        
+        Example example2 = new Example(User.class);
+        Criteria createCriteria2 = example2.createCriteria();
+        createCriteria2.andIn("parentId", listUserId);
+        List<User> selectByExample2 = this.userService.selectByExample(example2);
+        
+        
+        List<Long> listUserId2 = selectByExample2.parallelStream().map(User::getParentId).collect(Collectors.toList());
+        
+        listUserId.add(userId);
+        listUserId2.addAll(listUserId);
+        
+        double myTeamMoney = this.consumeDtlService.myTeamOrder(listUserId2);
+    }
+    
+    
+    
+    @GetMapping("myTeamAddShop.do")
+    public void myTeamAddShop(HttpServletRequest request, HttpServletResponse response, Model model) {
+        String id = request.getParameter("id");
+        Long userId = super.getUserId(request);
+        
+        Example example = new Example(User.class);
+        Criteria createCriteria = example.createCriteria();
+        createCriteria.andEqualTo("parentId", userId);
+        List<User> selectByExample = this.userService.selectByExample(example);
+        
+        List<Long> listUserId = selectByExample.parallelStream().map(User::getParentId).collect(Collectors.toList());
+        
+        Example example2 = new Example(User.class);
+        Criteria createCriteria2 = example2.createCriteria();
+        createCriteria2.andIn("parentId", listUserId);
+        List<User> selectByExample2 = this.userService.selectByExample(example2);
+        
+        
+        List<Long> listUserId2 = selectByExample2.parallelStream().map(User::getParentId).collect(Collectors.toList());
+        
+        listUserId.add(userId);
+        listUserId2.addAll(listUserId);
+        
+        double myTeamMoney = this.consumeDtlService.myTeamAddShop(listUserId2);
+    }
+    
+    
+    
+    
+    
+    @GetMapping("myTeamAppointMentCustmer.do")
+    public void myTeamAppointMentCustmer(HttpServletRequest request, HttpServletResponse response, Model model) {
+        String id = request.getParameter("id");
+        Long userId = super.getUserId(request);
+        
+        Example example = new Example(User.class);
+        Criteria createCriteria = example.createCriteria();
+        createCriteria.andEqualTo("parentId", userId);
+        List<User> selectByExample = this.userService.selectByExample(example);
+        
+        List<Long> listUserId = selectByExample.parallelStream().map(User::getParentId).collect(Collectors.toList());
+        
+        Example example2 = new Example(User.class);
+        Criteria createCriteria2 = example2.createCriteria();
+        createCriteria2.andIn("parentId", listUserId);
+        List<User> selectByExample2 = this.userService.selectByExample(example2);
+        
+        
+        List<Long> listUserId2 = selectByExample2.parallelStream().map(User::getParentId).collect(Collectors.toList());
+        
+        listUserId.add(userId);
+        listUserId2.addAll(listUserId);
+        
+        double myTeamMoney = this.consumeDtlService.myTeamAppointMentCustmer(listUserId2);
+    }
+    
     
     
     

@@ -35,6 +35,19 @@ public interface IConsumeDtlService extends BaseService<ConsumeDtl> {
      * @param appointmentId
      */
     ConsumeDtl getByAppointmentId(Long appointmentId);
+
+    
+	double queryMyOrderByThisMonth(Long userId);
+
+	double myTeamOrder(List<Long> listUserId);
+
+	double myAddShop(Long userId);
+
+	double myTeamAddShop(List<Long> listUserId2);
+
+	double myAppointMentCustmer(Long userId);
+
+	double myTeamAppointMentCustmer(List<Long> listUserId2);
 }
 
 
