@@ -54,7 +54,7 @@
 											</p>
 											<p>
 												<p>
-												年收入 <b><span>${custConsumer.consuIncome}
+												消费价值观 <b><span>${custConsumer.consuValue}
 											</p>
 										</dt>
 										<dd style="float: right; margin-top: 0.3rem;">

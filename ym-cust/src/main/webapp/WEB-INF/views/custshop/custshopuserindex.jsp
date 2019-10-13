@@ -51,7 +51,7 @@
 					</li>
 				 					
 					<li><a rel="external"
-						href="${pathWeb }/index.do" class="zc_pic">
+						href="${pathWeb }/logout.do" class="zc_pic">
 							<div class="pic">
 								<img src="${configjscss }/images/tc.png">
 							</div> <span>退出</span>

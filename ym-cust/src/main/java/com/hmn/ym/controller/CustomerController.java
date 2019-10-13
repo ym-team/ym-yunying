@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -23,6 +24,7 @@ import cn.hutool.core.bean.BeanUtil;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Date;
 
 
 @Controller
@@ -57,6 +59,7 @@ public class CustomerController extends BaseController {
     	custConsumer.setShopId(userId);
     	User selectByPrimaryKey = this.userService.selectByPrimaryKey(userId);
     	custConsumer.setBussinessUserId(selectByPrimaryKey.getParentId());
+    	custConsumer.setCreateTime(new Date());
     	this.custConsumerService.save(custConsumer);
         return RespUtil.success();
     }
@@ -66,6 +69,21 @@ public class CustomerController extends BaseController {
         return "/customer/mycustList";
     }
 
+    /**
+     * 店面查看顾客信息
+     * @param request
+     * @param response
+     * @return
+     * @throws IOException
+     */
+    @RequestMapping(value = "customerDetail.do")
+    public String customerDetail(HttpServletRequest request, HttpServletResponse response, Model model) throws IOException {
+        logger.info("查看消费者详情");
+        String id = request.getParameter("id");
+        CustConsumer selectByPrimaryKey = this.custConsumerService.selectByPrimaryKey(id);
+        model.addAttribute("custConsumer", selectByPrimaryKey);
+    	return "/customer/customDetail";
+    }
 
     @RequestMapping(value = "detail.do")
     public String detail(HttpServletRequest request, HttpServletResponse response) throws IOException {

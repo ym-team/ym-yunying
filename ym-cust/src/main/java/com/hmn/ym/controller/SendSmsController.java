@@ -38,7 +38,7 @@ public class SendSmsController extends BaseController {
         String content = "您的验证码是：" + code + "。请不要把验证码泄露给其他人。";
         System.out.println("==============验证码是：" + content);
         if (CfgParaUtils.SEND_CODE_VALUE.equals(CachCfgParaUtil.getCfgCache(CfgParaUtils.SEND_CODE))) {
-            // SendSmsUtils.sendSms(phoneNum, code);
+             SendSmsUtils.sendSms(phoneNum, code);
         }
         SpringUtils.renderJsonResult(response, JsonResult.SUCCESS, "手机认证短信发送成功");
     }

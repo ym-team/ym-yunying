@@ -31,7 +31,7 @@
 				<ul>
 					 
 					<li><a rel="external"
-						href="${pathWeb }/customer/toAdd.do">
+						href="${pathWeb }/customer/toCustomerAddView.do">
 							<div class="pic">
 								<img src="${configjscss }/images/wdtd.png">
 							</div> <span>邀请顾客</span>

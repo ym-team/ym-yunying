@@ -47,13 +47,14 @@ public class UserController extends BaseController {
         return "user/userInfo";
     }
 
-    @RequestMapping(value = "userCode.do")
-    public String userCode(HttpServletRequest request, Model model) {
-        User user = this.getUser(request);
-        model.addAttribute("inviteCode", user.getInviteCode());
-        model.addAttribute("pathUrl", CachCfgParaUtil.getCfgCache(CfgParaUtils.SERVER_URL));
-        return "user/userInviteCode";
-    }
+	/*
+	 * @RequestMapping(value = "userCode.do") public String
+	 * userCode(HttpServletRequest request, Model model) { User user =
+	 * this.getUser(request); model.addAttribute("inviteCode",
+	 * user.getInviteCode()); model.addAttribute("pathUrl",
+	 * CachCfgParaUtil.getCfgCache(CfgParaUtils.SERVER_URL)); return
+	 * "user/userInviteCode"; }
+	 */
 
     @RequestMapping("/realNameAuth.do")
     public ResponseEntity<BaseResp> realNameAuth(RealNameAuthVo vo) {

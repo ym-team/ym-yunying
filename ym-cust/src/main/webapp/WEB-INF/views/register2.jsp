@@ -34,7 +34,18 @@
                 </li>
                 <li style="border: none;">
                     <i><img src="${configjscss }/images/yqm.png"></i>
-                    <span><input id="inviteUserid" name="inviteUserid" value="${inviteUserid}" type="text" placeholder="邀请码（必填项）"></span>
+                     
+                    <span>
+                    
+                    <c:if test="${not empty inviteUserid}">
+                     <input id="inviteUserid" name="inviteUserid" value="${inviteUserid}" readonly="readonly" type="text" placeholder="邀请码（必填项）">
+                     </c:if>
+                     <c:if test="${empty inviteUserid}">
+                     <input id="inviteUserid" name="inviteUserid" value="${inviteUserid}" type="text" placeholder="邀请码（必填项）">
+                     </c:if>
+                    
+                    
+                    </span>
                 </li>
             </ul>
             <div class="btn">
