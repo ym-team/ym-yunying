@@ -282,7 +282,7 @@
                 <li class="sl_ji">
                     <p>项目名称</p>
                     <div class="position-rel">
-                        <input type="text" id="projectName" ${readonly} name="projectName" class="form-control" placeholder="项目名称" value="${dtl.projectName }">
+                        <input type="text" id="projectName" readonly name="projectName" class="form-control" placeholder="项目名称" value="${param.consuConfirmItem}">
                     </div>
                 </li>
                 <li class="sl_ji">
