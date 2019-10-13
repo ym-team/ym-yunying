@@ -44,7 +44,7 @@ public class PerformanceController extends BaseController {
      */
     @GetMapping("performanceView.do")
     public String performanceView(HttpServletRequest request, HttpServletResponse response) {
-
+    	
         return "/salesman/performance";
     }
 

@@ -9,19 +9,19 @@ import tk.mybatis.mapper.common.Mapper;
 
 public interface ConsumeDtlMapper extends Mapper<ConsumeDtl> {
 
-	double queryMyMoneyByThisMonth(@Param("userId")long userId);
+	Double queryMyMoneyByThisMonth(@Param("userId")long userId);
 
-	double myTeamMoney(@Param("listUserId") List<Long> listUserId2);
+	Double myTeamMoney(@Param("listUserId") List<Long> listUserId2);
 
-	double queryMyOrderByThisMonth(@Param("userId")long userId);
+	Double queryMyOrderByThisMonth(@Param("userId")long userId);
 	
-	double myTeamOrder(@Param("listUserId") List<Long> listUserId2);
+	Double myTeamOrder(@Param("listUserId") List<Long> listUserId2);
 
-	double myAddShop(@Param("userId")long userId);
+	Double myAddShop(@Param("userId")long userId);
 
-	double myTeamAddShop(@Param("listUserId") List<Long> listUserId2);
+	Double myTeamAddShop(@Param("listUserId") List<Long> listUserId2);
 
-	double myAppointMentCustmer(@Param("userId")long userId);
+	Double myAppointMentCustmer(@Param("userId")long userId);
 
-	double myTeamAppointMentCustmer(@Param("listUserId") List<Long> listUserId2);
+	Double myTeamAppointMentCustmer(@Param("listUserId") List<Long> listUserId2);
 }
