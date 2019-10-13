@@ -80,13 +80,25 @@ public class RegisterController extends BaseController {
     public String register(RegisterVo vo, HttpServletRequest request, Model model) {
         User inviteUser = userService.getByInviteCode(vo.getInviteUserid());
         if (inviteUser == null) {
+            model.addAttribute("userAccount", vo.getUserAccount());
+            model.addAttribute("userPhone", vo.getUserPhone());
+            model.addAttribute("publickey", vo.getPublickey());
             model.addAttribute("message", "邀请码不存在.");
             return "register2";
         }
-        User user = userService.register(vo);
-        //设置seesion
-        request.getSession().setAttribute(Constants.ADMIN_USER_SESSION, user);
-
+        try {
+            User user = userService.register(vo);
+            //设置seesion
+            request.getSession().setAttribute(Constants.ADMIN_USER_SESSION, user);
+        } catch (Exception e) {
+            logger.error("用户注册异常." + e.getMessage(), e);
+            model.addAttribute("userAccount", vo.getUserAccount());
+            model.addAttribute("userPhone", vo.getUserPhone());
+            model.addAttribute("publickey", vo.getPublickey());
+            model.addAttribute("inviteUserid", vo.getInviteUserid());
+            model.addAttribute("message", e.getMessage());
+            return "register2";
+        }
         return "redirect:/user/userIndex.do";
     }
 
