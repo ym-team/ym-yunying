@@ -25,9 +25,9 @@ public interface IConsumeDtlService extends BaseService<ConsumeDtl> {
     void delete(Integer id);
     
     
-    public double queryMyMoneyByThisMonth(long userId) ;
+    public Double queryMyMoneyByThisMonth(long userId) ;
 
-	double myTeamMoney(List<Long> listUserId2);
+    Double myTeamMoney(List<Long> listUserId2);
 
     /**
      * 获取数据
@@ -37,17 +37,17 @@ public interface IConsumeDtlService extends BaseService<ConsumeDtl> {
     ConsumeDtl getByAppointmentId(Long appointmentId);
 
     
-	double queryMyOrderByThisMonth(Long userId);
+    Double queryMyOrderByThisMonth(Long userId);
 
-	double myTeamOrder(List<Long> listUserId);
+    Double myTeamOrder(List<Long> listUserId);
 
-	double myAddShop(Long userId);
+    Double myAddShop(Long userId);
 
-	double myTeamAddShop(List<Long> listUserId2);
+    Double myTeamAddShop(List<Long> listUserId2);
 
-	double myAppointMentCustmer(Long userId);
+    Double myAppointMentCustmer(Long userId);
 
-	double myTeamAppointMentCustmer(List<Long> listUserId2);
+    Double myTeamAppointMentCustmer(List<Long> listUserId2);
 }
 
 

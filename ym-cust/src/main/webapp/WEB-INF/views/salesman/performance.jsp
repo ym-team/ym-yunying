@@ -27,16 +27,61 @@
 				<img class="sl_zhzl5" src="${configjscss }/images/wdzh_07.png" alt=""> <img
 					src="${configjscss }/images/wdzh_06.png" alt="">
 				<ul class="sl_kyye">
-					<li>我的业绩<span><fmt:formatNumber value="100000" pattern="#,##0.00" />元</span>
+					<li>我的业绩<span id="MyMoney"><fmt:formatNumber value="" pattern="#,##0.00" />元</span>
 					</li>
 					</li>
-					<li>本月成交量<span>100单</span>
+					<li>本月成交量<span id="myOrderCount"></span>
 					</li>
-					<li>本月工资 <span><fmt:formatNumber value="20000" pattern="#,##0.00" />元</span>
+					<li>本月工资 <span><fmt:formatNumber value="0" pattern="#,##0.00" />元</span>
 					</li>
 				</ul>
 			</div>
 		</div>
 	</div>
+	
+	
+		<script type="text/javascript">
+		$(document).ready(function() {
+			
+	        $.ajax({
+	            cache: false,
+	            type: "GET",
+	            url: "${pathWeb }/myMoney/myMoney.do",
+	            data: {},
+	            async: false,
+	            error: function (request) {
+	                alert("系统繁忙，请稍后重试");
+	            },
+	            success: function (data) {
+	                if (data.code == "200") {
+	                    //window.location.reload();
+	                	 //openPage("${pathWeb }/appointMent/list.do");
+	                	 $("#MyMoney").text(data.data+"元");
+	                }
+	            }
+	        });
+	        
+	        $.ajax({
+	            cache: false,
+	            type: "GET",
+	            url: "${pathWeb }/myMoney/myOrder.do",
+	            data: {},
+	            async: false,
+	            error: function (request) {
+	                alert("系统繁忙，请稍后重试");
+	            },
+	            success: function (data) {
+	                if (data.code == "200") {
+	                    //window.location.reload();
+	                	// openPage("${pathWeb }/appointMent/list.do");
+	               	 $("#myOrderCount").text(data.data+"单");
+	                }
+	            }
+	        });
+	
+		});
+	</script>
+	
+	
 </body>
 </html>

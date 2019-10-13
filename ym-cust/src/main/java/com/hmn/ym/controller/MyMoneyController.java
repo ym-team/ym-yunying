@@ -56,24 +56,30 @@ public class MyMoneyController extends BaseController {
 	
 	@Autowired
 	IUserService userService;
+	
 
 
     @GetMapping("myMoney.do")
-    public void myMoney(HttpServletRequest request, HttpServletResponse response, Model model) {
+    @ResponseBody
+    public ResponseEntity<BaseResp> myMoney(HttpServletRequest request, HttpServletResponse response) {
         String id = request.getParameter("id");
         Long userId = super.getUserId(request);
-        double queryMyMoneyByThisMonth = this.consumeDtlService.queryMyMoneyByThisMonth(userId);
-        System.out.println("queryMyMoneyByThisMonth:"+queryMyMoneyByThisMonth);
+        Double queryMyMoneyByThisMonth = this.consumeDtlService.queryMyMoneyByThisMonth(userId);
+        queryMyMoneyByThisMonth = queryMyMoneyByThisMonth == null ? 0 : queryMyMoneyByThisMonth;
+        return RespUtil.success(queryMyMoneyByThisMonth);
+        
     }
     
     
     
     @GetMapping("myOrder.do")
-    public void myOrder(HttpServletRequest request, HttpServletResponse response, Model model) {
+    @ResponseBody
+    public ResponseEntity<BaseResp> myOrder(HttpServletRequest request, HttpServletResponse response) {
         String id = request.getParameter("id");
         Long userId = super.getUserId(request);
-        double queryMyOrderByThisMonth = this.consumeDtlService.queryMyOrderByThisMonth(userId);
-        System.out.println("queryMyMoneyByThisMonth:"+queryMyOrderByThisMonth);
+        Double queryMyOrderByThisMonth = this.consumeDtlService.queryMyOrderByThisMonth(userId);
+        queryMyOrderByThisMonth = queryMyOrderByThisMonth == null ? 0 : queryMyOrderByThisMonth;
+        return RespUtil.success(queryMyOrderByThisMonth);
     }
     
     
@@ -82,7 +88,8 @@ public class MyMoneyController extends BaseController {
     public void myAddShop(HttpServletRequest request, HttpServletResponse response, Model model) {
         String id = request.getParameter("id");
         Long userId = super.getUserId(request);
-        double queryMyOrderByThisMonth = this.consumeDtlService.myAddShop(userId);
+        Double queryMyOrderByThisMonth = this.consumeDtlService.myAddShop(userId) ;
+        queryMyOrderByThisMonth = queryMyOrderByThisMonth == null ? 0 : queryMyOrderByThisMonth;
         System.out.println("queryMyMoneyByThisMonth:"+queryMyOrderByThisMonth);
     }
     
