@@ -9,7 +9,7 @@ import java.util.Date;
 public class FileUtil {
     private static final FastDateFormat ymd = FastDateFormat.getInstance("yyyyMMdd");
     private static final FastDateFormat ymdhms = FastDateFormat.getInstance("yyyyMMddHHmmssSSS");
-    private static final String start_path = "\\upload\\";
+    private static final String start_path = File.separator + "upload" + File.separator;
 
     /**
      * @param mFile    文件
@@ -25,7 +25,7 @@ public class FileUtil {
                 saveFile.mkdirs();
             }
             //文件名称
-            String filePath = savePath + "\\" + FileUtil.getFileName(mFile);
+            String filePath = savePath + File.separator + FileUtil.generatorFileName(mFile.getOriginalFilename());
             //保存文件
             mFile.transferTo(new File(rootPath + filePath));
             return filePath;
@@ -35,41 +35,24 @@ public class FileUtil {
         return null;
     }
 
+
+    /**
+     * 生成文件名称
+     *
+     * @param fileName
+     * @return
+     */
+    private static String generatorFileName(String fileName) {
+        return ymdhms.format(new Date()) + InviteCodeGenerator.getRandom(5) + FileUtil.getSuffixName(fileName);
+    }
+
     /**
      * 获取文件后缀名
      *
-     * @param file
+     * @param fileName
      * @return
      */
-    private static String getSuffixName(MultipartFile file) {
-        String fileName = file.getOriginalFilename();
+    private static String getSuffixName(String fileName) {
         return fileName.substring(fileName.lastIndexOf("."));
-    }
-
-    public static String getSaveRootPath() {
-        String rootPath = "";
-        try {
-            String root = System.getProperty("user.dir");
-            File file = new File(root, "\\src\\main\\webapp\\upload");
-            if (!file.exists()) {
-                file.mkdirs();
-            }
-            rootPath = file.getPath();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return rootPath;
-    }
-
-    public static boolean isImg(MultipartFile file) {
-        String fileType = file.getContentType();
-        if (fileType.equals("image/jpeg") || fileType.equals("image/png") || fileType.equals("image/jpeg")) {
-            return true;
-        }
-        return false;
-    }
-
-    public static String getFileName(MultipartFile file) {
-        return ymdhms.format(new Date()) + InviteCodeGenerator.getRandom(5) + FileUtil.getSuffixName(file);
     }
 }
