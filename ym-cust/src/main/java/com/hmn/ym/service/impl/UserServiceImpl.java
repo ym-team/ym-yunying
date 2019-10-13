@@ -46,7 +46,7 @@ public class UserServiceImpl extends BaseServiceImpl<User, UserMapper> implement
         saleMan.setUserId(user.getId());
         saleMan.setPhone(user.getPhone());
         saleMan.setAuditStatus(2);
-        saleMan.setLevel("美业导师");
+        saleMan.setLevel("美业学员");
         saleMan.setCreateTime(new Date());
         saleMan.setUpdateId(user.getId());
         saleMan.setUpdateTime(new Date());
