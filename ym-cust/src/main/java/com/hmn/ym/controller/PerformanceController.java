@@ -1,13 +1,14 @@
 package com.hmn.ym.controller;
 
+import com.google.common.collect.Lists;
 import com.hmn.ym.dao.entity.po.CustConsumer;
-import com.hmn.ym.dao.entity.po.CustShop;
 import com.hmn.ym.dao.entity.po.User;
 import com.hmn.ym.dao.entity.vo.SaleManVo;
 import com.hmn.ym.service.ICustConsumerService;
 import com.hmn.ym.service.ISaleManService;
 import com.hmn.ym.service.IShopService;
 import com.hmn.ym.service.IUserService;
+import com.xiaoleilu.hutool.util.CollectionUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -44,18 +45,23 @@ public class PerformanceController extends BaseController {
      */
     @GetMapping("performanceView.do")
     public String performanceView(HttpServletRequest request, HttpServletResponse response) {
-    	
+
         return "/salesman/performance";
     }
 
     @GetMapping("teamView.do")
-    public String teamView(HttpServletRequest request, HttpServletResponse response, Model model) {
+    public String teamView(HttpServletRequest request, Model model) {
+        List<SaleManVo> resultList = Lists.newArrayList();
         User user = this.getUser(request);
         List<SaleManVo> saleMans = saleManService.getByParentId(user.getId());
         for (SaleManVo vo : saleMans) {
-            saleMans.addAll(saleManService.getByParentId(vo.getUserId()));
+            resultList.add(vo);
+            List<SaleManVo> inviteUserList = saleManService.getByParentId(vo.getUserId());
+            if (CollectionUtil.isNotEmpty(inviteUserList)) {
+                resultList.addAll(inviteUserList);
+            }
         }
-        model.addAttribute("saleMans", saleMans);
+        model.addAttribute("saleMans", resultList);
 
         return "/salesman/team";
     }
@@ -74,7 +80,7 @@ public class PerformanceController extends BaseController {
             view = "/salesman/mycust";//业务员查看
         } else if (user.getType() == 2) {
             createCriteria.andEqualTo("shopId", user.getId());
-            view ="/customer/mycustList";//店面查看
+            view = "/customer/mycustList";//店面查看
         }
         //List<CustShop> listCustShop = this.shopService.selectByExample(example);
         List<CustConsumer> selectByExample = this.custConsumerService.selectByExample(example);

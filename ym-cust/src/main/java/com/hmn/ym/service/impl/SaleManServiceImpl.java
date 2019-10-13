@@ -83,7 +83,7 @@ public class SaleManServiceImpl extends BaseServiceImpl<SaleMan, SaleManMapper> 
             BeanUtils.copyProperties(sm, vo);
 
             example = new Example(ConsumeDtl.class);
-            example.createCriteria().andEqualTo("bussinessUserId", sm.getUserId());
+            example.createCriteria().andEqualTo("bussinessUserId", sm.getUserId()).andEqualTo("auditStatus", 2);
             int total = consumeDtlMapper.selectCountByExample(example);
             vo.setAchievement(total);
 

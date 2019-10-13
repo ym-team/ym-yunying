@@ -23,43 +23,49 @@
     </header>
     <div class="xq_con">
         <c:forEach items="${saleMans}" var="saleMan">
-        <div class="jtag">
-            <div class="taglist">
-                <div class="jlc-morelist">
-                    <div class="jlc-mlcon clearfix">
-                        <ol>
-                            <li><span><img alt="" src="${configjscss }/images/toux.png"></span></li>
-                            <li><p>${saleMan.realName}</p></li>
-                        </ol>
-                        <ul>
-                            <li>
-                                <dl>
-                                    <dt style="margin-left: 40px;">级别</dt>
-                                    <dd>&nbsp;<b>${saleMan.level}</b></dd>
-                                </dl>
-                            </li>
-                            <li>
-                                <dl>
-                                    <dt>
-                                        <p>
-                                            加入时间 <b><span><fmt:formatDate value="${saleMan.createTime}" pattern="yyyy-MM-dd"/> </span></b>
-                                        </p>
-                                        <p>
-                                            个人业绩 <b>${saleMan.achievement}单</b>
-                                        </p>
-                                    </dt>
-                                    <dd style="float: right; margin-top: 0.3rem;">
-                                        <div class="jnbtn">
-                                            <a data-ajax="false" href="">查看</a>
-                                        </div>
-                                    </dd>
-                                </dl>
-                            </li>
-                        </ul>
+            <div class="jtag">
+                <div class="taglist">
+                    <div class="jlc-morelist">
+                        <div class="jlc-mlcon clearfix">
+                            <ol>
+                                <li><span><img alt="" src="${configjscss }/images/toux.png"></span></li>
+                                <c:if test="${not empty saleMan.realName}">
+                                    <li><p>${saleMan.realName}</p></li>
+                                </c:if>
+                                <c:if test="${empty saleMan.realName}">
+                                    <c:set value="${fn:length(saleMan.phone)}" var="phoneNumberLen"/>
+                                    <li><p>*********${fn:substring(saleMan.phone,phoneNumberLen-4,phoneNumberLen)}</p></li>
+                                </c:if>
+                            </ol>
+                            <ul>
+                                <li>
+                                    <dl>
+                                        <dt style="margin-left: 40px;">级别</dt>
+                                        <dd>&nbsp;<b>${saleMan.level}</b></dd>
+                                    </dl>
+                                </li>
+                                <li>
+                                    <dl>
+                                        <dt>
+                                            <p>
+                                                加入时间 <b><span><fmt:formatDate value="${saleMan.createTime}" pattern="yyyy-MM-dd"/> </span></b>
+                                            </p>
+                                            <p>
+                                                个人业绩 <b>${saleMan.achievement}单</b>
+                                            </p>
+                                        </dt>
+                                        <dd style="float: right; margin-top: 0.3rem;display: none;">
+                                            <div class="jnbtn">
+                                                <a data-ajax="false" href="">查看</a>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
         </c:forEach>
     </div>
 </div>
