@@ -27,13 +27,18 @@
 				<img class="sl_zhzl5" src="${configjscss }/images/wdzh_07.png" alt=""> <img
 					src="${configjscss }/images/wdzh_06.png" alt="">
 				<ul class="sl_kyye">
-					<li>我的业绩<span id="MyMoney"><fmt:formatNumber value="" pattern="#,##0.00" />元</span>
-					</li>
+					<a href="${pathWeb }/myMoney/myMoneyList.do" data-ajax="false">
+						<li >我的业绩<span id="MyMoney"><fmt:formatNumber value="" pattern="#,##0.00" />元</span></li>
+					</a>
+					<a href="${pathWeb }/myMoney/myOrderList.do">
 					</li>
 					<li>本月成交量<span id="myOrderCount"></span>
 					</li>
+					</a>
+					<a href="${pathWeb }/consumeDtl/detail.do">
 					<li>本月工资 <span><fmt:formatNumber value="0" pattern="#,##0.00" />元</span>
 					</li>
+					</a>
 				</ul>
 			</div>
 		</div>

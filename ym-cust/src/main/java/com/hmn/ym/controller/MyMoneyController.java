@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
 import com.hmn.ym.common.model.BaseResp;
+import com.hmn.ym.dao.entity.po.ConsumeDtl;
 import com.hmn.ym.dao.entity.po.CustAppointment;
 import com.hmn.ym.dao.entity.po.CustConsumer;
 import com.hmn.ym.dao.entity.po.Hospital;
@@ -219,6 +220,26 @@ public class MyMoneyController extends BaseController {
         
         double myTeamMoney = this.consumeDtlService.myTeamAppointMentCustmer(listUserId2);
     }
+    
+    
+	    @GetMapping("myMoneyList.do")
+	    public String myMoneyList(HttpServletRequest request, HttpServletResponse response,Model model) {
+	        Long userId = super.getUserId(request);
+	        List<ConsumeDtl> listConsumeDtl = this.consumeDtlService.myMonesyList(userId);
+	        model.addAttribute("listConsumeDtl", listConsumeDtl);
+	        return "/salesman/moneyAndOrderList";
+	    }
+	    
+	    
+	    
+	    @GetMapping("myOrderList.do")
+	    public String myOrderList(HttpServletRequest request, HttpServletResponse response,Model model) {
+	        Long userId = super.getUserId(request);
+	        List<ConsumeDtl> listConsumeDtl = this.consumeDtlService.myMonesyList(userId);
+	        model.addAttribute("listConsumeDtl", listConsumeDtl);
+	        return "/salesman/moneyAndOrderList";
+	    }
+    
     
     
     

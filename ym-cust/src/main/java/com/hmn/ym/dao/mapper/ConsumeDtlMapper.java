@@ -24,4 +24,6 @@ public interface ConsumeDtlMapper extends Mapper<ConsumeDtl> {
 	Double myAppointMentCustmer(@Param("userId")long userId);
 
 	Double myTeamAppointMentCustmer(@Param("listUserId") List<Long> listUserId2);
+
+	List<ConsumeDtl> myMonesyList(@Param("userId")long userId);
 }

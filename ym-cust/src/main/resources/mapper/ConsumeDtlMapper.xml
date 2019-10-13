@@ -128,6 +128,16 @@ SELECT IFNULL(count(1),0) FROM t_cust_appointment
 	
 	
 	
+	  	<select id="myMonesyList" parameterType="java.lang.Long"
+		resultMap="BaseResultMap">
+SELECT * FROM t_consume_dtl 
+		WHERE  bussiness_user_id = #{userId} AND audit_status = 2  AND YEAR(create_time) = YEAR(CURDATE()) 
+		GROUP BY MONTH(CURDATE()) ORDER BY MONTH(CURDATE()) DESC LIMIT 0,1
+	</select>
+	
+	
+	
+	
 	
 	
 </mapper>

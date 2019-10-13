@@ -48,6 +48,8 @@ public interface IConsumeDtlService extends BaseService<ConsumeDtl> {
     Double myAppointMentCustmer(Long userId);
 
     Double myTeamAppointMentCustmer(List<Long> listUserId2);
+
+	List<ConsumeDtl> myMonesyList(Long userId);
 }
 
 

@@ -109,6 +109,11 @@ public class ConsumeDtlServiceImpl extends BaseServiceImpl<ConsumeDtl, ConsumeDt
 	public Double myTeamAppointMentCustmer(List<Long> listUserId2) {
 		return this.consumeDtlMapper.myTeamAppointMentCustmer(listUserId2);
 	}
+
+	@Override
+	public List<ConsumeDtl> myMonesyList(Long userId) {
+		return this.consumeDtlMapper.myMonesyList(userId);
+	}
 }
 
 
