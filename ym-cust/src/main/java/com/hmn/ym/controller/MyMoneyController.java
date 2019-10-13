@@ -85,21 +85,24 @@ public class MyMoneyController extends BaseController {
     
     
     @GetMapping("myAddShop.do")
-    public void myAddShop(HttpServletRequest request, HttpServletResponse response, Model model) {
+    @ResponseBody
+    public ResponseEntity<BaseResp> myAddShop(HttpServletRequest request, HttpServletResponse response, Model model) {
         String id = request.getParameter("id");
         Long userId = super.getUserId(request);
         Double queryMyOrderByThisMonth = this.consumeDtlService.myAddShop(userId) ;
         queryMyOrderByThisMonth = queryMyOrderByThisMonth == null ? 0 : queryMyOrderByThisMonth;
-        System.out.println("queryMyMoneyByThisMonth:"+queryMyOrderByThisMonth);
+        return RespUtil.success(queryMyOrderByThisMonth);
     }
     
     
     @GetMapping("myAppointMentCustmer.do")
-    public void myAppointMentCustmer(HttpServletRequest request, HttpServletResponse response, Model model) {
+    @ResponseBody
+    public  ResponseEntity<BaseResp> myAppointMentCustmer(HttpServletRequest request, HttpServletResponse response, Model model) {
         String id = request.getParameter("id");
         Long userId = super.getUserId(request);
-        double queryMyOrderByThisMonth = this.consumeDtlService.myAppointMentCustmer(userId);
-        System.out.println("queryMyMoneyByThisMonth:"+queryMyOrderByThisMonth);
+        Double queryMyOrderByThisMonth = this.consumeDtlService.myAppointMentCustmer(userId);
+        queryMyOrderByThisMonth = queryMyOrderByThisMonth == null ? 0 : queryMyOrderByThisMonth;
+        return RespUtil.success(queryMyOrderByThisMonth);
     }
     
     

@@ -85,22 +85,22 @@
 <body>
 	<div class="my_yeji_content">
 		<div class="item">
-			<label>我的业绩:</label><span>190000</span>
+			<label>我的业绩:</label><span id="MyMoney"></span>
 		</div>
 		<div class="item">
-			<label>本月成交量:</label><span>180单</span>
+			<label>本月成交量:</label><span id="myOrderCount"></span>
 		</div>
 	</div>
 	<div class="xinzeng_kehu">
 		<div class="item hasborder">
 			<a>
 				<P class="p1">最近新增店面</P>
-				<p class="p2">3人</p>
+				<p class="p2" id="myAddShop"></p>
 			</a>
 		</div>
 		<div class="item">
-			<P class="p1">预约顾客</P>
-			<p class="p2">5人</p>
+			<P class="p1" >预约顾客</P>
+			<p class="p2" id="myAppointMentCustmer"></p>
 		</div>
 	</div>
 
@@ -318,6 +318,81 @@
 				$('.taglist').eq(i).show().siblings().hide();
 
 			});
+			
+			
+			
+	        $.ajax({
+	            cache: false,
+	            type: "GET",
+	            url: "${pathWeb }/myMoney/myMoney.do",
+	            data: {},
+	            async: false,
+	            error: function (request) {
+	                alert("系统繁忙，请稍后重试");
+	            },
+	            success: function (data) {
+	                if (data.code == "200") {
+	                    //window.location.reload();
+	                	 //openPage("${pathWeb }/appointMent/list.do");
+	                	 $("#MyMoney").text(data.data+"元");
+	                }
+	            }
+	        });
+	        
+	        $.ajax({
+	            cache: false,
+	            type: "GET",
+	            url: "${pathWeb }/myMoney/myOrder.do",
+	            data: {},
+	            async: false,
+	            error: function (request) {
+	                alert("系统繁忙，请稍后重试");
+	            },
+	            success: function (data) {
+	                if (data.code == "200") {
+	                    //window.location.reload();
+	                	// openPage("${pathWeb }/appointMent/list.do");
+	               	 $("#myOrderCount").text(data.data+"单");
+	                }
+	            }
+	        });
+	        
+	        $.ajax({
+	            cache: false,
+	            type: "GET",
+	            url: "${pathWeb }/myMoney/myAddShop.do",
+	            data: {},
+	            async: false,
+	            error: function (request) {
+	                alert("系统繁忙，请稍后重试");
+	            },
+	            success: function (data) {
+	                if (data.code == "200") {
+	                    //window.location.reload();
+	                	// openPage("${pathWeb }/appointMent/list.do");
+	               	 $("#myAddShop").text(data.data);
+	                }
+	            }
+	        });
+	        
+	        $.ajax({
+	            cache: false,
+	            type: "GET",
+	            url: "${pathWeb }/myMoney/myAppointMentCustmer.do",
+	            data: {},
+	            async: false,
+	            error: function (request) {
+	                alert("系统繁忙，请稍后重试");
+	            },
+	            success: function (data) {
+	                if (data.code == "200") {
+	                    //window.location.reload();
+	                	// openPage("${pathWeb }/appointMent/list.do");
+	               	 $("#myAppointMentCustmer").text(data.data);
+	                }
+	            }
+	        });
+	        
 		});
 	</script>
 </body>
