@@ -34,9 +34,33 @@
 		resultType="java.lang.Double">
 SELECT IFNULL(SUM(sum_fee),0) FROM t_consume_dtl 
 		WHERE  bussiness_user_id = #{userId} AND audit_status = 2  AND YEAR(create_time) = YEAR(CURDATE()) 
-		GROUP BY MONTH(CURDATE()) ORDER BY MONTH(CURDATE()) DESC 
+		GROUP BY MONTH(CURDATE()) ORDER BY MONTH(CURDATE()) DESC LIMIT 0,1
 	</select>
 	
+	
+	  	<select id="queryMyOrderByThisMonth" parameterType="java.lang.Long"
+		resultType="java.lang.Double">
+SELECT IFNULL(count(1),0) FROM t_consume_dtl 
+		WHERE  bussiness_user_id = #{userId} AND audit_status = 2  AND YEAR(create_time) = YEAR(CURDATE()) 
+		GROUP BY MONTH(CURDATE()) ORDER BY MONTH(CURDATE()) DESC LIMIT 0,1
+	</select>
+	
+	
+		  	<select id="myAddShop" parameterType="java.lang.Long"
+		resultType="java.lang.Double">
+SELECT IFNULL(count(1),0) FROM t_cust_shop 
+		WHERE  bussiness_user_id = #{userId}   AND YEAR(create_time) = YEAR(CURDATE()) 
+		GROUP BY MONTH(CURDATE()) ORDER BY MONTH(CURDATE()) DESC LIMIT 0,1
+	</select>
+	
+	
+	
+	<select id="myAppointMentCustmer" parameterType="java.lang.Long"
+		resultType="java.lang.Double">
+SELECT IFNULL(count(1),0) FROM t_cust_appointment 
+		WHERE  bussiness_user_id = #{userId}   AND YEAR(create_time) = YEAR(CURDATE()) 
+		GROUP BY MONTH(CURDATE()) ORDER BY MONTH(CURDATE()) DESC LIMIT 0,1
+	</select>
 	
 	  
   	<select id="myTeamMoney" 
@@ -50,8 +74,59 @@ SELECT IFNULL(SUM(sum_fee),0) FROM t_consume_dtl
     </foreach>
 		
 		AND audit_status = 2  AND YEAR(create_time) = YEAR(CURDATE()) 
-		GROUP BY MONTH(CURDATE()) ORDER BY MONTH(CURDATE()) DESC 
+		GROUP BY MONTH(CURDATE()) ORDER BY MONTH(CURDATE()) DESC LIMIT 0,1
 	</select>
+	
+	
+	  	<select id="myTeamOrder" 
+		resultType="java.lang.Double">
+SELECT IFNULL(count(1),0) FROM t_consume_dtl 
+		WHERE  
+		bussiness_user_id in 
+		
+		<foreach collection="listUserId" item="userids" open="(" separator="," close=")">
+        #{userids}
+    </foreach>
+		
+		AND audit_status = 2  AND YEAR(create_time) = YEAR(CURDATE()) 
+		GROUP BY MONTH(CURDATE()) ORDER BY MONTH(CURDATE()) DESC  LIMIT 0,1
+	</select>
+	
+	
+	
+	<select id="myTeamAddShop" 
+		resultType="java.lang.Double">
+SELECT IFNULL(count(1),0) FROM t_cust_shop 
+		WHERE  
+		bussiness_user_id in 
+		
+		<foreach collection="listUserId" item="userids" open="(" separator="," close=")">
+        #{userids}
+    	</foreach>
+		
+		  AND YEAR(create_time) = YEAR(CURDATE()) 
+		GROUP BY MONTH(CURDATE()) ORDER BY MONTH(CURDATE()) DESC LIMIT 0,1 
+	</select>
+	
+	
+	
+		
+	<select id="myTeamAppointMentCustmer" 
+		resultType="java.lang.Double">
+SELECT IFNULL(count(1),0) FROM t_cust_appointment 
+		WHERE  
+		bussiness_user_id in 
+		
+		<foreach collection="listUserId" item="userids" open="(" separator="," close=")">
+        #{userids}
+    	</foreach>
+		
+		  AND YEAR(create_time) = YEAR(CURDATE()) 
+		GROUP BY MONTH(CURDATE()) ORDER BY MONTH(CURDATE()) DESC LIMIT 0,1 
+	</select>
+	
+	
+	
 	
 	
 	
