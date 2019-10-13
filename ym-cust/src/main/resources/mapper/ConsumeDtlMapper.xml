@@ -33,7 +33,7 @@
   	<select id="queryMyMoneyByThisMonth" parameterType="java.lang.Long"
 		resultType="java.lang.Double">
 SELECT IFNULL(SUM(sum_fee),0) FROM t_consume_dtl 
-		WHERE  bussiness_user_id #{userId} AND audit_status = 2  
+		WHERE  bussiness_user_id = #{userId} AND audit_status = 2  AND YEAR(create_time) = YEAR(CURDATE()) 
 		GROUP BY MONTH(CURDATE()) ORDER BY MONTH(CURDATE()) DESC 
 	</select>
 	
@@ -49,7 +49,7 @@ SELECT IFNULL(SUM(sum_fee),0) FROM t_consume_dtl
         #{userids}
     </foreach>
 		
-		AND audit_status = 2  
+		AND audit_status = 2  AND YEAR(create_time) = YEAR(CURDATE()) 
 		GROUP BY MONTH(CURDATE()) ORDER BY MONTH(CURDATE()) DESC 
 	</select>
 	
